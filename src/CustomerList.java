@@ -56,4 +56,5 @@ public class CustomerList
     }
     return null;
   }
+ //: tjek op på dette når OwnedAnimals er implementeret
 }
