@@ -10,7 +10,7 @@ public class AnimalsForSaleList extends AnimalList
     super();
   }
 
-  public AnimalsForSaleList getAnimalsByType(String type)
+  public AnimalsForSaleList getAnimalsByType(String type) throws Exception
   {
     AnimalsForSaleList result = new AnimalsForSaleList();
     for(AnimalForSale animal : animals)
@@ -48,6 +48,8 @@ public class AnimalsForSaleList extends AnimalList
     }
     animals.add(animalForSale);
   }
+
+  // Auto genererede equals og toString metoder.
 
   @Override public boolean equals(Object object)
   {
