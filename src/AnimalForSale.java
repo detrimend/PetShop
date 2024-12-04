@@ -3,7 +3,7 @@ import java.util.Objects;
 public class AnimalForSale
 {
   private double price;
-  private boolean isForSale; // Skal tilføjes til diagram
+  private boolean isForSale;
   private AnimalInfo type;
 
   public AnimalForSale(String animalType, double price, boolean isForSale,
@@ -37,13 +37,16 @@ public class AnimalForSale
     return price;
   }
 
-  // SKAL TILFØJES TIL DIAGRAMMET!!
   public void setPrice(double price)
   {
     this.price = price;
   }
 
-  //Ændring fra diagrammet
+  public boolean isForSale()
+  {
+    return isForSale;
+  }
+
   public void setSaleStatus(boolean isForSale)
   {
     this.isForSale = isForSale;

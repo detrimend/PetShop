@@ -6,13 +6,15 @@ public class OwnedAnimal
   private String foodType;
   private boolean isInCare;
   private AnimalInfo type;
+  private Customer owner;
 
-  public OwnedAnimal(String animalType, String name, String foodType, boolean isInCare,
-      char gender, int age, String species, boolean extraInfo, boolean extraInfo2)
+  public OwnedAnimal(String animalType, String name, Customer owner, char gender,
+      int age, String species, boolean extraInfo, boolean extraInfo2)
   {
     this.name = name;
-    this.foodType = foodType;
-    this.isInCare = isInCare;
+    this.owner = owner;
+    this.foodType = "Standard";
+    this.isInCare = false;
 
     // Dynamisk oprettelse af AnimalInfo-subklasser baseret på animalType
     switch (animalType.toLowerCase())
@@ -39,9 +41,29 @@ public class OwnedAnimal
     return name;
   }
 
+  public Customer getOwner()
+  {
+    return owner;
+  }
+
+  public void setFoodType(String foodType)
+  {
+    this.foodType = foodType;
+  }
+
   public String getFoodType()
   {
     return foodType;
+  }
+
+  public void putInCare()
+  {
+    this.isInCare = true;
+  }
+
+  public void removeFromCare()
+  {
+    this.isInCare = false;
   }
 
   public boolean isInCare()
