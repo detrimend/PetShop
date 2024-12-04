@@ -66,7 +66,6 @@ public class ReservationList {
     }
 
     // COMEBACK
-
     public Reservation extendReservation(Reservation reservation, int extraDays){
         for(Reservation r : reservations)
         {

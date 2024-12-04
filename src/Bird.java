@@ -2,8 +2,8 @@ public class Bird {
     private boolean tame;
     private boolean isTameable;
 
-    public boolean tame(){
-        this.tame =tame;
+    public boolean isTame(){
+        return tame;
     }
     public boolean isTameable(){
         this.isTameable = isTameable;

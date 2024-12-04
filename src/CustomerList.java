@@ -51,7 +51,7 @@ public class CustomerList
   {
     for( int i = 0; i <customers.size(); i++)
     {
-      if (customers.get(i).getOwnedAnimals() == animal)
+      if (customers.get(i).getOwnedAnimals() == animal) // getOwnedAnimals returnerer en liste
         return i;
     }
     return null;

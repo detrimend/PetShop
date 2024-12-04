@@ -6,14 +6,16 @@ public class AnimalsInCareList extends AnimalList
   private ArrayList<OwnedAnimal> animals;
   private int maxAmountOfMammals;
   private int maxAmountOfOtherAnimals;
-  private int amountOfMammals = 0; //TILFØJET
-  private int amountOfOtherAnimals = 0; //TILFØJET
+  private int amountOfMammals; //TILFØJET
+  private int amountOfOtherAnimals; //TILFØJET
 
   public AnimalsInCareList()
   {
     super();
     this.maxAmountOfMammals = 30;
     this.maxAmountOfOtherAnimals = 10;
+    this.amountOfMammals = 0;
+    this.amountOfOtherAnimals = 0;
   }
 
   // Returnerer en liste med alle dyr på AnimalsInCare listen som deler Customer.
