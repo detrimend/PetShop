@@ -28,6 +28,7 @@ public class CustomerList
   {
     return customers.size();
   }
+
   public int getCustomer(int phoneNumber)
   {
   for (int i = 0; i < customers.size(); i++)
