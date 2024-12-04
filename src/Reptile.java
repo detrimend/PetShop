@@ -1,7 +1,7 @@
 public class Reptile {
     private boolean venomous;
 
-    public Reptile venomous() {
+    public void setVenomous(venomous) {
         this.venomous = venomous;
     }
 
@@ -13,6 +13,6 @@ public class Reptile {
         return "[Is venomous = " + venomous + "]";
     }
     public String getType(){
-        return "Type of reptile:";
+        return "Reptile";
     }
 }
