@@ -33,6 +33,11 @@ private OwnedAnimal ownedAnimal;
         return getPricePerDay() * getDateInterval().getDays();
     }
 
+    public void setDateInterval(DateInterval newDateInterval)
+    {
+        this.dateInterval = newDateInterval;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
