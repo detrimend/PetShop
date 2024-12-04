@@ -15,7 +15,7 @@ public class AnimalsForSaleList
     AnimalsForSaleList result = new AnimalsForSaleList();
     for(AnimalForSale animal : animals)
     {
-      if(animal.getType().equals(type))
+      if(animal != null && animal.getAnimalInfo().getType().equals(type))
       {
         result.addAnimal(animal);
       }
@@ -28,7 +28,7 @@ public class AnimalsForSaleList
     AnimalsForSaleList result = new AnimalsForSaleList();
     for(AnimalForSale animal : animals)
     {
-      if(animal.getSpecies().equals(species))
+      if(animal != null && animal.getAnimalInfo().getSpecies().equals(species))
       {
         result.addAnimal(animal);
       }

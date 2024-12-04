@@ -7,7 +7,7 @@ public class OwnedAnimalsList
 
   public OwnedAnimalsList()
   {
-    super();
+    this.animals = new ArrayList<>();
   }
 
   // Returnerer en liste med alle dyr på OwnedAnimals listen som deler Customer.
@@ -17,7 +17,7 @@ public class OwnedAnimalsList
     OwnedAnimalsList result = new OwnedAnimalsList();
     for(OwnedAnimal animal : animals)
     {
-      if (animal.getCustomer().equals(customer))
+      if (animal != null && animal.getOwner().equals(customer))
       {
         result.addAnimal(animal);
       }
@@ -31,7 +31,7 @@ public class OwnedAnimalsList
     OwnedAnimalsList result = new OwnedAnimalsList();
     for(OwnedAnimal animal : animals)
     {
-      if (animal.getName().equals(name))
+      if (animal != null && animal.getName().equals(name))
       {
         result.addAnimal(animal);
       }
@@ -49,6 +49,16 @@ public class OwnedAnimalsList
       }
     }
     animals.add(ownedAnimal);
+  }
+
+  public OwnedAnimal removeAnimal(OwnedAnimal animal) throws Exception
+  {
+    if (animal.isInCare())
+    {
+      throw new Exception("Animal is in care and cannot be removed");
+    }
+    animals.remove(animal);
+    return animal;
   }
 
   // Auto genererede equals og toString metoder.
