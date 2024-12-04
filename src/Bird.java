@@ -1,4 +1,4 @@
-public class Bird {
+public class Bird extends AnimalInfo {
     private boolean tame;
     private boolean isTameable;
 
@@ -22,6 +22,6 @@ public class Bird {
     }
 
     public String getType(){
-        return "Bird type = ";
+        return "Bird";
     }
 }
