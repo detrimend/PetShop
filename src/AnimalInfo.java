@@ -7,6 +7,6 @@ public class AnimalInfo {
     public AnimalInfo(char gender, int age, String species){
         this.gender = gender;
         this.age = age;
-        this.species = species
+        this.species = species;
     }
 }

@@ -14,13 +14,14 @@ public class CustomerList
     customers.add(new Customer(name, email, phoneNumber));
   }
 
-  //: set er ikke blevet implementeret da den kræver instancvariabler at initialiserer
-
-  public void removeCustomer(Customer customer)
+  public Customer removeCustomer(Customer customer)
   {
     customers.remove(customer);
+    {
+      return customer;
+    }
   }
-  //: ret removeCustomer til void
+
 
 
   public int getNumberOfCustomers()
@@ -45,7 +46,6 @@ public class CustomerList
       }
   return null;
 }
-//: ret til Customer og ret getCustomer til getCustomerByIndex
 
   public  Customer getCustomerByAnimal(OwnedAnimal animal)
   {
@@ -53,6 +53,7 @@ public class CustomerList
     {
       if (customers.get(i).getOwnedAnimals() == animal)
         return i;
+
     }
     return null;
   }

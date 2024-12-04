@@ -69,7 +69,8 @@ public class ReservationList {
         return ??
     }
 
-    public Reservation stopReservation(){
+    public Reservation stopReservation()
+    {
 
     }
 
