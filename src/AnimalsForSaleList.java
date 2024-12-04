@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class AnimalsForSaleList extends AnimalList
+public class AnimalsForSaleList
 {
   private ArrayList<AnimalForSale> animals;
 
   public AnimalsForSaleList()
   {
-    super();
+    this.animals = new ArrayList<>();
   }
 
   public AnimalsForSaleList getAnimalsByType(String type) throws Exception
