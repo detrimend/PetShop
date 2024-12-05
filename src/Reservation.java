@@ -4,15 +4,15 @@ public class Reservation
   private DateInterval dateInterval;
   private int pricePerAnimal;
   private Customer customer;
-  private OwnedAnimal ownedAnimal;
+  private OwnedAnimalsList animals;
 
   public Reservation(DateInterval dateInterval, Customer customer,
-      OwnedAnimal ownedAnimal)
+      OwnedAnimalsList animals)
   {
     this.dateInterval = dateInterval;
     this.pricePerAnimal = 50;
     this.customer = customer;
-    this.ownedAnimal = ownedAnimal;
+    this.animals = new OwnedAnimalsList();
   }
 
   public DateInterval getDateInterval()
@@ -25,9 +25,9 @@ public class Reservation
     return customer;
   }
 
-  public AnimalList getAnimals()
+  public OwnedAnimalsList getAnimals()
   {
-    return animalList;
+    return animals;
   }
 
   public double getPricePerDay()
@@ -55,7 +55,7 @@ public class Reservation
     Reservation other = (Reservation) obj;
     return other.dateInterval == this.dateInterval
         && other.customer == this.customer
-        && other.ownedAnimal == this.ownedAnimal;
+        && other.animals == this.animals;
   }
 
   public void setPrice(double price)
