@@ -8,12 +8,12 @@ public class ReservationList {
         reservations = new ArrayList<>();
     }
 
-    public boolean addReservation(DateInterval dateInterval,
-                                  Customer customer, OwnedAnimal ownedAnimal) {
-        if (dateInterval == null || customer == null || ownedAnimal == null) {
+    public boolean addReservation(DateInterval dateInterval, Customer customer,
+        OwnedAnimalsList animals) {
+        if (dateInterval == null || customer == null) {
             throw new IllegalArgumentException("Parameters cannot be null");
         }
-        Reservation newReservation = new Reservation(dateInterval, customer, ownedAnimal);
+        Reservation newReservation = new Reservation(dateInterval, customer, animals);
         return reservations.add(newReservation);
     }
 
@@ -21,7 +21,7 @@ public class ReservationList {
         if (index >= 0 && index < reservations.size()) {
             this.reservations.remove(index);
         } else {
-            System.out.println("Indeks er ugyldigt.");
+            throw new IndexOutOfBoundsException("Index er OOB");
         }
     }
 

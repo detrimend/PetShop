@@ -23,7 +23,7 @@ public class AnimalsForSaleList
     return result;
   }
 
-  public AnimalsForSaleList getAnimalsBySpecies(String species) throws Exception //SE NEDENFOR
+  public AnimalsForSaleList getAnimalsBySpecies(String species)
   {
     AnimalsForSaleList result = new AnimalsForSaleList();
     for(AnimalForSale animal : animals)
@@ -36,14 +36,13 @@ public class AnimalsForSaleList
     return result;
   }
 
-  // Ikke sikkert det her check er nødvendigt. Det gør det også nødvendigt at sige "throws Exception" i den ovenstående get metode.
-  public void addAnimal(AnimalForSale animalForSale) throws Exception
+  public void addAnimal(AnimalForSale animalForSale)
   {
     for(AnimalForSale animal : animals)
     {
       if (animal.equals(animalForSale))
       {
-        throw new Exception("Animal is already on the list");
+        throw new IllegalArgumentException("Animal is already on the list");
       }
     }
     animals.add(animalForSale);

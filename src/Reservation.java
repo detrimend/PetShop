@@ -6,8 +6,7 @@ public class Reservation
   private Customer customer;
   private OwnedAnimalsList animals;
 
-  public Reservation(DateInterval dateInterval, Customer customer,
-      OwnedAnimalsList animals)
+  public Reservation(DateInterval dateInterval, Customer customer, OwnedAnimalsList animals)
   {
     this.dateInterval = dateInterval;
     this.pricePerAnimal = 50;
@@ -32,7 +31,7 @@ public class Reservation
 
   public double getPricePerDay()
   {
-    return pricePerAnimal;
+    return pricePerAnimal * animals.getAmountOfAnimals();
   }
 
   public double getTotalPrice()
