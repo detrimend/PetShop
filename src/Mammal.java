@@ -1,7 +1,8 @@
-public class Mammal {
+public class Mammal extends AnimalInfo {
     private boolean outDoorOnly;
 
-    public Mammal outDoorOnly() {
+    public Mammal (char gender, int age, String species, boolean outDoorOnly) {
+        super(gender, age, species);
         this.outDoorOnly = outDoorOnly;
     }
 
@@ -10,9 +11,9 @@ public class Mammal {
     }
 
     public String toString(){
-        return "[Out door only = " + outDoorOnly + "]";
+        return "Mammal - " + super.toString() + ", Only outdoors " + outDoorOnly;
     }
     public String getType(){
-        return "Type of Mammal:";
+        return "Mammal";
     }
 }

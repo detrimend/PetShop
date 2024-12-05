@@ -1,7 +1,8 @@
-public class Fish {
+public class Fish extends AnimalInfo {
     private boolean saltWater;
 
-    public Fish saltWater() {
+    public Fish (char gender, int age, String species, boolean saltwater){
+        super(gender, age, species);
         this.saltWater = saltWater;
     }
 
@@ -10,11 +11,9 @@ public class Fish {
     }
 
     public String toString(){
-        return "[Is salt water = " + saltWater + "]";
+        return "Fish " + super.toString() + " saltWater " + saltWater;
     }
-    public String getType(){
-        return "Type of fish:";
-    }
+    public String getType(){return "Fish";}
 
 
 }

@@ -1,16 +1,15 @@
-public class Reptile {
+public class Reptile extends AnimalInfo {
     private boolean venomous;
 
-    public void setVenomous(venomous) {
+    public Reptile (char gender, int age, String species, boolean venomous) {
+        super(gender,age,species);
         this.venomous = venomous;
     }
 
-    public boolean isVenomous(){
-        return venomous;
-    }
+    public boolean isVenomous(){return venomous;}
 
     public String toString(){
-        return "[Is venomous = " + venomous + "]";
+        return "Reptile " + super.toString() + venomous;
     }
     public String getType(){
         return "Reptile";

@@ -2,13 +2,9 @@ public class Bird extends AnimalInfo {
     private boolean tame;
     private boolean isTameable;
 
-    public boolean isTame(){
-        return tame;
+    public Bird(char gender, int age, String species, boolean tame, boolean isTameable){
+        super(gender, age, species);
     }
-    public boolean isTameable(){
-        this.isTameable = isTameable;
-    }
-
     public boolean isTame(){
         return tame;
     }
@@ -16,9 +12,8 @@ public class Bird extends AnimalInfo {
     public boolean isTameable(){
         return isTameable;
     }
-
     public String toString(){
-        return "[tame = " + tame + " Is tameable = " + isTameable + "]";
+        return "Bird " + super.toString() + " tame " + tame;
     }
 
     public String getType(){
