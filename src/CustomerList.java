@@ -48,15 +48,13 @@ public class CustomerList
   return null;
 }
 
-  public  Customer getCustomerByAnimal(OwnedAnimal animal)
+  public  Customer getCustomerByAnimal(OwnedAnimal ownedAnimal)
   {
     for( int i = 0; i <customers.size(); i++)
     {
-      if (customers.get(i).getOwnedAnimals() == animal) // getOwnedAnimals returnerer en liste
-        return i;
-
+      if (customers.get(i).getOwnedAnimals(ownedAnimal).equals(ownedAnimal))
+        return ownedAnimal.getOwner();
     }
     return null;
   }
- //: tjek op på dette når OwnedAnimals er implementeret.
 }

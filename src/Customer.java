@@ -1,6 +1,7 @@
 public class Customer extends Person
 {
   private int phoneNumber;
+  private OwnedAnimal owner;
 
   public Customer(Name name, Email email, int phoneNumber)
   {
@@ -12,13 +13,14 @@ public class Customer extends Person
   {
     return phoneNumber;
   }
+
   public void setPhoneNumber(int phoneNumber)
   {
     this.phoneNumber = phoneNumber;
   }
-  public AnimalList getOwnedAnimals()
+  public OwnedAnimal getOwnedAnimals(OwnedAnimal animal)
   {
-    return ownedAnimal;
+  return animal;
   }
 
   @Override public String toString()
