@@ -28,7 +28,7 @@ public class PurchaseList
   {
     for (Purchase purchase : purchases)
     {
-      if(purchase.getCustomer(customer).equals(customer))
+      if(purchase.getCustomer().equals(customer))
       //Vi skal se på getCustomer
       {
         return purchase;

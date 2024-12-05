@@ -10,7 +10,7 @@ public abstract class AnimalInfo {
         this.gender = gender;
         this.age = age;
         this.species = species;
-        this.comment = comment;
+        this.comment = "";
     }
     public void addComment(String newComment){
         this.comment = newComment;

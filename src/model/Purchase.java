@@ -23,7 +23,10 @@ public class Purchase
     return ownedAnimal;
   }
 
-
+  public Customer getCustomer()
+  {
+    return customer;
+  }
 
   public LocalDate getDate()
   {
