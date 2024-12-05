@@ -15,8 +15,13 @@ public class DateInterval {
     public boolean isBefore(){
         return LocalDate.now().isBefore(startDate);
     }
+
     public int getDays() {
         return days;
+    }
+
+    public LocalDate getStartDate(){
+        return startDate;
     }
 
     @Override
