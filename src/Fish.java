@@ -10,9 +10,12 @@ public class Fish extends AnimalInfo {
         return saltWater;
     }
 
+    @Override
     public String toString(){
         return "Fish " + super.toString() + " saltWater " + saltWater;
     }
+
+    @Override
     public String getType(){return "Fish";}
 
 

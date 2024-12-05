@@ -8,9 +8,12 @@ public class Reptile extends AnimalInfo {
 
     public boolean isVenomous(){return venomous;}
 
+    @Override
     public String toString(){
         return "Reptile " + super.toString() + venomous;
     }
+
+    @Override
     public String getType(){
         return "Reptile";
     }

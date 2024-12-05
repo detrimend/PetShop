@@ -10,9 +10,12 @@ public class Mammal extends AnimalInfo {
         return outDoorOnly;
     }
 
+    @Override
     public String toString(){
         return "Mammal - " + super.toString() + ", Only outdoors " + outDoorOnly;
     }
+
+    @Override
     public String getType(){
         return "Mammal";
     }

@@ -12,10 +12,13 @@ public class Bird extends AnimalInfo {
     public boolean isTameable(){
         return isTameable;
     }
+
+    @Override
     public String toString(){
-        return "Bird " + super.toString() + " tame " + tame;
+        return "Bird " + super.toString() + " tame " + tame + " isTameable " + isTameable;
     }
 
+    @Override
     public String getType(){
         return "Bird";
     }
