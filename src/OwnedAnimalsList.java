@@ -26,7 +26,7 @@ public class OwnedAnimalsList
   }
 
   // Returnerer en liste med alle dyr på OwnedAnimals listen som deler navn, i.e. samme string.
-  public OwnedAnimalsList getAnimalsByName(String name) throws Exception
+  public OwnedAnimalsList getAnimalsByName(String name)
   {
     OwnedAnimalsList result = new OwnedAnimalsList();
     for(OwnedAnimal animal : animals)
@@ -39,26 +39,31 @@ public class OwnedAnimalsList
     return result;
   }
 
-  public void addAnimal(OwnedAnimal ownedAnimal) throws Exception
+  public void addAnimal(OwnedAnimal ownedAnimal)
   {
     for(OwnedAnimal animal : animals)
     {
       if (animal.equals(ownedAnimal))
       {
-        throw new Exception("Animal is already on the list");
+        throw new IllegalArgumentException("Animal is already on the list");
       }
     }
     animals.add(ownedAnimal);
   }
 
-  public OwnedAnimal removeAnimal(OwnedAnimal animal) throws Exception
+  public OwnedAnimal removeAnimal(OwnedAnimal animal)
   {
     if (animal.isInCare())
     {
-      throw new Exception("Animal is in care and cannot be removed");
+      throw new IllegalArgumentException("Animal is in care and cannot be removed");
     }
     animals.remove(animal);
     return animal;
+  }
+
+  public int getAmountOfAnimals()
+  {
+    return animals.size();
   }
 
   // Auto genererede equals og toString metoder.

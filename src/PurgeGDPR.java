@@ -15,7 +15,7 @@ public class PurgeGDPR {
   {
     for(int i = 0; i < reservationList.getNumberOfReservations(); i++)
     {
-      if(reservationList.getReservation(i).getEndDate.)
+      if(reservationList.getReservation(i).getEndDate().isBefore(LocalDate.now().minusYears(5)));
     }
   }
 
