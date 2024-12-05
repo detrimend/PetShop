@@ -1,9 +1,13 @@
+package model;
+
 public class Bird extends AnimalInfo {
     private boolean tame;
     private boolean isTameable;
 
     public Bird(char gender, int age, String species, boolean tame, boolean isTameable){
         super(gender, age, species);
+        this.tame = tame;
+        this.isTameable = isTameable;
     }
     public boolean isTame(){
         return tame;

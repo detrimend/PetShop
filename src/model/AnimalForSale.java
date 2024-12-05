@@ -1,3 +1,5 @@
+package model;
+
 import java.util.Objects;
 
 public class AnimalForSale
@@ -12,20 +14,20 @@ public class AnimalForSale
     this.price = price;
     this.isForSale = true;
 
-    // Dynamisk oprettelse af AnimalInfo-subklasser baseret på animalType
+    // Dynamisk oprettelse af model.AnimalInfo-subklasser baseret på animalType
     switch (animalType.toLowerCase())
     {
       case "mammal":
-        this.type = new Mammal(gender, age, species, extraInfo); // Mammal: extraInfo = outdoorOnly
+        this.type = new Mammal(gender, age, species, extraInfo); // model.Mammal: extraInfo = outdoorOnly
         break;
       case "fish":
-        this.type = new Fish(gender, age, species, extraInfo); // Fish: extraInfo = saltWater
+        this.type = new Fish(gender, age, species, extraInfo); // model.Fish: extraInfo = saltWater
         break;
       case "reptile":
-        this.type = new Reptile(gender, age, species, extraInfo); // Reptile: extraInfo = venomous
+        this.type = new Reptile(gender, age, species, extraInfo); // model.Reptile: extraInfo = venomous
         break;
       case "bird":
-        this.type = new Bird(gender, age, species, extraInfo, extraInfo2); // Bird: extraInfo = tame, extraInfo2 = isTamable
+        this.type = new Bird(gender, age, species, extraInfo, extraInfo2); // model.Bird: extraInfo = tame, extraInfo2 = isTamable
         break;
       default:
         throw new IllegalArgumentException("Unknown animal type: " + animalType);

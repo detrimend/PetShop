@@ -1,3 +1,5 @@
+package model;
+
 public class FishTank
 {
   public String foodType;

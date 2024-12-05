@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -10,7 +12,7 @@ public class OwnedAnimalsList
     this.animals = new ArrayList<>();
   }
 
-  // Returnerer en liste med alle dyr på OwnedAnimals listen som deler Customer.
+  // Returnerer en liste med alle dyr på OwnedAnimals listen som deler model.Customer.
   public OwnedAnimalsList getAnimalsByCustomer(Customer customer)
       throws Exception
   {

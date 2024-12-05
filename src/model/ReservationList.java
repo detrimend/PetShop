@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 
 public class ReservationList {
@@ -48,7 +50,7 @@ public class ReservationList {
 
     public Reservation getReservationByNumber(int number) {
         for (Reservation res : reservations) {
-        if (res.getCustomer().getPhoneNumber() == number) { // Assumes Reservation has getReservationNumber()
+        if (res.getCustomer().getPhoneNumber() == number) { // Assumes model.Reservation has getReservationNumber()
             return res;
         }
     }
@@ -58,7 +60,7 @@ public class ReservationList {
 
     public Reservation getReservationByName(String name) {
         for (Reservation res : reservations) {
-            if (res.getCustomer().getName().equals(name)) { // Assumes Reservation has getReservationNumber()
+            if (res.getCustomer().getName().equals(name)) { // Assumes model.Reservation has getReservationNumber()
                 return res;
             }
         }

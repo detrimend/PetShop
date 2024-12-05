@@ -1,3 +1,5 @@
+package model;
+
 public abstract class AnimalInfo {
     private char gender;
     private int age;
