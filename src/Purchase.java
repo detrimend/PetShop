@@ -3,25 +3,25 @@ import java.time.LocalDate;
 public class Purchase
 {
   private LocalDate date;
+  private Customer customer;
+  private AnimalForSale animal;
 
-  public Purchase(Customer customer, LocalDate date, AnimalForSale AnimalForSale)
+  public Purchase(Customer customer, LocalDate date, AnimalForSale animal)
   {
     this.date = date;
-//føler jeg mangler noget her
-
+    this.customer = customer;
+    this.animal = animal;
   }
 
-  public Customer getCustomer(Customer customer)
+  public OwnedAnimal assignAnimalToCustomer(AnimalForSale animal, Customer customer, String name)
   {
-    return customer;
-  }
-
-  public OwnedAnimal assignAnimalToCustomer(AnimalForSale animalForSale, Customer customer, String name)
-  {
-    OwnedAnimal ownedAnimal = new OwnedAnimal(name, animal);
+    AnimalInfo type = animal.getAnimalInfo();
+    OwnedAnimal ownedAnimal = new OwnedAnimal(name, customer, type);
     customer.addOwnedAnimal(ownedAnimal);
     return ownedAnimal;
   }
+
+
 
   public LocalDate getDate()
   {

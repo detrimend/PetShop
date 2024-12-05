@@ -65,22 +65,14 @@ public class ReservationList {
         return null;
     }
 
-    // COMEBACK
-    public Reservation extendReservation(Reservation reservation, int extraDays){
-        for(Reservation r : reservations)
-        {
-            if(r.equals(reservation))
-            {
-                DateInterval newInterval = r.getDateInterval()
-                r.setDateInterval(DateInterval newInterval)
-            }
-        }
-    }
-
     // Tilføj senere: Check "are you sure" besked eller sådan noget
 
-    // HØR STEFFEN
-    public Reservation stopReservation(Reservation reservation){
+    public Reservation endReservation(Reservation reservation)
+    {
+
+    }
+
+    public Reservation cancelReservation(Reservation reservation){
         for(Reservation r : reservations)
         {
             if (r.equals(reservation))

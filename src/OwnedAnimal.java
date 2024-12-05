@@ -36,6 +36,15 @@ public class OwnedAnimal
     }
   }
 
+  public OwnedAnimal(String name, Customer owner, AnimalInfo type)
+  {
+    this.name = name;
+    this.owner = owner;
+    this.foodType = "Standard";
+    this.isInCare = false;
+    this.type = type;
+  }
+
   public String getName()
   {
     return name;

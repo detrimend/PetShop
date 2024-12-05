@@ -1,12 +1,13 @@
 public class Customer extends Person
 {
   private int phoneNumber;
-  private OwnedAnimal owner;
+  private OwnedAnimalsList animals;
 
   public Customer(Name name, Email email, int phoneNumber)
   {
     super(name,email);
     setPhoneNumber(phoneNumber);
+    this.animals = new OwnedAnimalsList();
   }
 
   public int getPhoneNumber()
@@ -18,9 +19,14 @@ public class Customer extends Person
   {
     this.phoneNumber = phoneNumber;
   }
-  public OwnedAnimal getOwnedAnimals(OwnedAnimal animal)
+  public OwnedAnimalsList getOwnedAnimals()
   {
-  return animal;
+  return animals;
+  }
+
+  public void addOwnedAnimal(OwnedAnimal ownedAnimal)
+  {
+    animals.addAnimal(ownedAnimal);
   }
 
   @Override public String toString()

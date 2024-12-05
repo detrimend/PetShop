@@ -7,6 +7,7 @@ public class Reservation
   private int pricePerAnimal;
   private Customer customer;
   private OwnedAnimalsList animals;
+  private String comment;
 
   public Reservation(DateInterval dateInterval, Customer customer, OwnedAnimalsList animals)
   {
@@ -14,6 +15,7 @@ public class Reservation
     this.pricePerAnimal = 50;
     this.customer = customer;
     this.animals = new OwnedAnimalsList();
+    this.comment = "";
   }
 
   public DateInterval getDateInterval()
@@ -67,5 +69,18 @@ public class Reservation
   public LocalDate getEndDate(){
     return getDateInterval().getStartDate().plusDays(getDateInterval().getDays());
   }
+
+  public String getComment()
+  {
+    return comment;
+  }
+
+  // Skal kigges på når vi er ved GUI
+  public void editComment(String extraComment)
+  {
+    this.comment += extraComment;
+  }
+
+
 
 }
