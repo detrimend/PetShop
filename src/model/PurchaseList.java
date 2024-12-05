@@ -29,12 +29,13 @@ public class PurchaseList
     return purchases.size();
   }
 
+
   public Purchase getPurchaseByCustomer(Customer customer)
   {
     for (Purchase purchase : purchases)
     {
       if(purchase.getCustomer().equals(customer))
-      //Vi skal se på getCustomer
+
       {
         return purchase;
       }
