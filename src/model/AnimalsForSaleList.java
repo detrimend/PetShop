@@ -50,6 +50,11 @@ public class AnimalsForSaleList
     animals.add(animalForSale);
   }
 
+  public void removeAnimal(AnimalForSale animal)
+  {
+    animals.remove(animal);
+  }
+
   // Auto genererede equals og toString metoder.
 
   @Override public boolean equals(Object object)

@@ -24,6 +24,11 @@ public class PurchaseList
     throw new IndexOutOfBoundsException("index out of bounds");
   }
 
+  public int getNumberOfPurchases()
+  {
+    return purchases.size();
+  }
+
   public Purchase getPurchaseByCustomer(Customer customer)
   {
     for (Purchase purchase : purchases)
