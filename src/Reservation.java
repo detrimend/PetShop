@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Reservation
 {
 
@@ -60,6 +62,10 @@ public class Reservation
   public void setPrice(double price)
   {
     setPrice(price);
+  }
+
+  public LocalDate getEndDate(){
+    return getDateInterval().getStartDate().plusDays(getDateInterval().getDays());
   }
 
 }
