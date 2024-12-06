@@ -7,7 +7,7 @@ public class Customer extends Person
 
   public Customer(Name name, Email email, int phoneNumber)
   {
-    super(name,email);
+    super(name, email);
     setPhoneNumber(phoneNumber);
     this.animals = new OwnedAnimalsList();
   }
@@ -21,9 +21,10 @@ public class Customer extends Person
   {
     this.phoneNumber = phoneNumber;
   }
+
   public OwnedAnimalsList getOwnedAnimals()
   {
-  return animals;
+    return animals;
   }
 
   public void addOwnedAnimal(OwnedAnimal ownedAnimal)
@@ -33,16 +34,17 @@ public class Customer extends Person
 
   @Override public String toString()
   {
-    return super.toString() + "\n" + "kundens telefonnummer er: " + phoneNumber + "\n" + "kunden ejer følgende dyr" + getOwnedAnimals().toString();
+    return super.toString() + "\n" + "kundens telefonnummer er: " + phoneNumber
+        + "\n" + "kunden ejer følgende dyr" + getOwnedAnimals().toString();
   }
 
   public boolean equals(Object obj)
   {
-   if(this == obj)
-     return true;
-   if(obj == null || getClass() != obj.getClass())
-     return false;
-   Customer customer = (Customer) obj;
-   return super.equals(customer) && phoneNumber == customer.phoneNumber;
+    if (this == obj)
+      return true;
+    if (obj == null || getClass() != obj.getClass())
+      return false;
+    Customer customer = (Customer) obj;
+    return super.equals(customer) && phoneNumber == customer.phoneNumber;
   }
 }

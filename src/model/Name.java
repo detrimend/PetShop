@@ -4,12 +4,16 @@ public class Name
 {
   private String firstName;
   private String lastName;
+  private String fullName;
 
-  public Name (String fullName)
+  public Name(String fullName)
   {
-    // SKAL IMPLEMENTERES
-    return
+    this.fullName = fullName;
+    String[] names = fullName.split(" ");
+    this.firstName = names[0];
+    this.lastName = names[1];
   }
+
   public Name(String firstName, String lastName)
   {
     this.firstName = firstName;
@@ -25,9 +29,10 @@ public class Name
   {
     return lastName;
   }
+
   public String getFullName()
   {
-    return firstName + lastName;
+    return firstName + " " + lastName;
   }
 
   public String getFormalName()
@@ -37,14 +42,15 @@ public class Name
 
   public String toString()
   {
-    return "kundens fornavn er: " + firstName + " og deres efternavn er: " +lastName;
+    return "kundens fornavn er: " + firstName + " og deres efternavn er: "
+        + lastName;
   }
 
   @Override public boolean equals(Object obj)
   {
-    if(this == obj)
+    if (this == obj)
       return true;
-    if(obj == null || obj.getClass() != getClass())
+    if (obj == null || obj.getClass() != getClass())
       return false;
     Name name = (Name) obj;
     return firstName.equals(name.firstName) && lastName.equals(name.lastName);

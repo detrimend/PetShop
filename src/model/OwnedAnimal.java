@@ -10,8 +10,9 @@ public class OwnedAnimal
   private AnimalInfo type;
   private Customer owner;
 
-  public OwnedAnimal(String animalType, String name, Customer owner, char gender,
-      int age, String species, boolean extraInfo, boolean extraInfo2)
+  public OwnedAnimal(String animalType, String name, Customer owner,
+      char gender, int age, String species, boolean extraInfo,
+      boolean extraInfo2)
   {
     this.name = name;
     this.owner = owner;
@@ -22,19 +23,24 @@ public class OwnedAnimal
     switch (animalType.toLowerCase())
     {
       case "mammal":
-        this.type = new Mammal(gender, age, species, extraInfo); // model.Mammal: extraInfo = outdoorOnly
+        this.type = new Mammal(gender, age, species,
+            extraInfo); // model.Mammal: extraInfo = outdoorOnly
         break;
       case "fish":
-        this.type = new Fish(gender, age, species, extraInfo); // model.Fish: extraInfo = saltWater
+        this.type = new Fish(gender, age, species,
+            extraInfo); // model.Fish: extraInfo = saltWater
         break;
       case "reptile":
-        this.type = new Reptile(gender, age, species, extraInfo); // model.Reptile: extraInfo = venomous
+        this.type = new Reptile(gender, age, species,
+            extraInfo); // model.Reptile: extraInfo = venomous
         break;
       case "bird":
-        this.type = new Bird(gender, age, species, extraInfo, extraInfo2); // model.Bird: extraInfo = tame, extraInfo2 = isTamable
+        this.type = new Bird(gender, age, species, extraInfo,
+            extraInfo2); // model.Bird: extraInfo = tame, extraInfo2 = isTameable
         break;
       default:
-        throw new IllegalArgumentException("Unknown animal type: " + animalType);
+        throw new IllegalArgumentException(
+            "Unknown animal type: " + animalType);
     }
   }
 
@@ -99,15 +105,11 @@ public class OwnedAnimal
         that.type);
   }
 
-  @Override
-  public String toString()
+  @Override public String toString()
   {
-    return "OwnedAnimal{" +
-        "name='" + name + '\'' +
-        ", foodType='" + foodType + '\'' +
-        ", isInCare=" + isInCare +
-        ", animalInfo=" + type.toString() +
-        '}';
+    return "OwnedAnimal{" + "name='" + name + '\'' + ", foodType='" + foodType
+        + '\'' + ", isInCare=" + isInCare + ", animalInfo=" + type.toString()
+        + '}';
   }
 }
 

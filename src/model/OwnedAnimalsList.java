@@ -17,7 +17,7 @@ public class OwnedAnimalsList
       throws Exception
   {
     OwnedAnimalsList result = new OwnedAnimalsList();
-    for(OwnedAnimal animal : animals)
+    for (OwnedAnimal animal : animals)
     {
       if (animal != null && animal.getOwner().equals(customer))
       {
@@ -31,7 +31,7 @@ public class OwnedAnimalsList
   public OwnedAnimalsList getAnimalsByName(String name)
   {
     OwnedAnimalsList result = new OwnedAnimalsList();
-    for(OwnedAnimal animal : animals)
+    for (OwnedAnimal animal : animals)
     {
       if (animal != null && animal.getName().equals(name))
       {
@@ -48,7 +48,7 @@ public class OwnedAnimalsList
 
   public void addAnimal(OwnedAnimal ownedAnimal)
   {
-    for(OwnedAnimal animal : animals)
+    for (OwnedAnimal animal : animals)
     {
       if (animal.equals(ownedAnimal))
       {
@@ -58,14 +58,15 @@ public class OwnedAnimalsList
     animals.add(ownedAnimal);
   }
 
-  public OwnedAnimal removeAnimal(OwnedAnimal animal)
+  public OwnedAnimal removeAnimal(OwnedAnimal ownedAnimal)
   {
-    if (animal.isInCare())
+    if (ownedAnimal.isInCare())
     {
-      throw new IllegalArgumentException("Animal is in care and cannot be removed");
+      throw new IllegalArgumentException(
+          "Animal is in care and cannot be removed");
     }
-    animals.remove(animal);
-    return animal;
+    animals.remove(ownedAnimal);
+    return ownedAnimal;
   }
 
   public int getAmountOfAnimals()

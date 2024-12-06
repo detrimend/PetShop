@@ -4,16 +4,16 @@ import java.time.LocalDate;
 
 public class Reservation
 {
-
   private DateInterval dateInterval;
-  private int pricePerAnimal;
+  private double pricePerAnimal;
   private Customer customer;
   private OwnedAnimalsList animals;
   private String comment;
 
-  public Reservation(DateInterval dateInterval, Customer customer, OwnedAnimalsList animals)
+  public Reservation(DateInterval dateInterval, Customer customer,
+      OwnedAnimalsList animals)
   {
-    this.dateInterval = dateInterval;
+    this.dateInterval = dateInterval.copy();
     this.pricePerAnimal = 50;
     this.customer = customer;
     this.animals = new OwnedAnimalsList();
@@ -45,31 +45,15 @@ public class Reservation
     return getPricePerDay() * getDateInterval().getDays();
   }
 
-  public void setDateInterval(DateInterval newDateInterval)
-  {
-    this.dateInterval = newDateInterval; // Kigger senere
-  }
-
-  @Override public boolean equals(Object obj)
-  {
-    if (this == obj)
-      return true;
-    if (obj == null || getClass() != obj.getClass())
-      return false;
-
-    Reservation other = (Reservation) obj;
-    return other.dateInterval == this.dateInterval
-        && other.customer == this.customer
-        && other.animals == this.animals;
-  }
-
   public void setPrice(double price)
   {
     setPrice(price);
   }
 
-  public LocalDate getEndDate(){
-    return getDateInterval().getStartDate().plusDays(getDateInterval().getDays());
+  public LocalDate getEndDate()
+  {
+    return getDateInterval().getStartDate()
+        .plusDays(getDateInterval().getDays());
   }
 
   public String getComment()
@@ -83,6 +67,22 @@ public class Reservation
     this.comment += extraComment;
   }
 
+  @Override public boolean equals(Object obj)
+  {
+    if (this == obj)
+      return true;
+    if (obj == null || getClass() != obj.getClass())
+      return false;
 
+    Reservation other = (Reservation) obj;
+    return other.dateInterval == this.dateInterval
+        && other.customer == this.customer && other.animals == this.animals;
+  }
 
+  @Override public String toString()
+  {
+    return "Reservation{" + "dateInterval=" + dateInterval + ", pricePerAnimal="
+        + pricePerAnimal + ", customer=" + customer + ", animals=" + animals
+        + ", comment='" + comment + '\'' + '}';
+  }
 }

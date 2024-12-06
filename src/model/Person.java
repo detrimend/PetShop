@@ -15,29 +15,32 @@ public abstract class Person
   {
     return name;
   }
+
   public Email getEmail()
   {
     return email;
   }
+
   public void setName(Name name)
   {
     this.name = name;
   }
+
   public void setEmail(Email email)
   {
     this.email = email;
   }
 
-   public String toString()
+  public String toString()
   {
-    return "kundens navn er: " + name + "\n" + "kunden email er: " + email ;
+    return "kundens navn er: " + name + "\n" + "kunden email er: " + email;
   }
 
   public boolean equals(Object obj)
   {
     if (this == obj)
       return true;
-    if(obj == null || getClass() != obj.getClass())
+    if (obj == null || getClass() != obj.getClass())
       return false;
     Person person = (Person) obj;
     return name.equals(person.name) && email.equals((person.email));

@@ -15,9 +15,9 @@ public class AnimalsForSaleList
   public AnimalsForSaleList getAnimalsByType(String type)
   {
     AnimalsForSaleList result = new AnimalsForSaleList();
-    for(AnimalForSale animal : animals)
+    for (AnimalForSale animal : animals)
     {
-      if(animal != null && animal.getAnimalInfo().getType().equals(type))
+      if (animal != null && animal.getAnimalInfo().getType().equals(type))
       {
         result.addAnimal(animal);
       }
@@ -28,9 +28,9 @@ public class AnimalsForSaleList
   public AnimalsForSaleList getAnimalsBySpecies(String species)
   {
     AnimalsForSaleList result = new AnimalsForSaleList();
-    for(AnimalForSale animal : animals)
+    for (AnimalForSale animal : animals)
     {
-      if(animal != null && animal.getAnimalInfo().getSpecies().equals(species))
+      if (animal != null && animal.getAnimalInfo().getSpecies().equals(species))
       {
         result.addAnimal(animal);
       }
@@ -40,7 +40,7 @@ public class AnimalsForSaleList
 
   public void addAnimal(AnimalForSale animalForSale)
   {
-    for(AnimalForSale animal : animals)
+    for (AnimalForSale animal : animals)
     {
       if (animal.equals(animalForSale))
       {

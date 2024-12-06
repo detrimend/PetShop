@@ -9,7 +9,8 @@ public class AnimalForSale
   private AnimalInfo type;
 
   public AnimalForSale(String animalType, double price, boolean isForSale,
-      char gender, int age, String species, boolean extraInfo, boolean extraInfo2)
+      char gender, int age, String species, boolean extraInfo,
+      boolean extraInfo2)
   {
     this.price = price;
     this.isForSale = true;
@@ -18,19 +19,24 @@ public class AnimalForSale
     switch (animalType.toLowerCase())
     {
       case "mammal":
-        this.type = new Mammal(gender, age, species, extraInfo); // model.Mammal: extraInfo = outdoorOnly
+        this.type = new Mammal(gender, age, species,
+            extraInfo); // model.Mammal: extraInfo = outdoorOnly
         break;
       case "fish":
-        this.type = new Fish(gender, age, species, extraInfo); // model.Fish: extraInfo = saltWater
+        this.type = new Fish(gender, age, species,
+            extraInfo); // model.Fish: extraInfo = saltWater
         break;
       case "reptile":
-        this.type = new Reptile(gender, age, species, extraInfo); // model.Reptile: extraInfo = venomous
+        this.type = new Reptile(gender, age, species,
+            extraInfo); // model.Reptile: extraInfo = venomous
         break;
       case "bird":
-        this.type = new Bird(gender, age, species, extraInfo, extraInfo2); // model.Bird: extraInfo = tame, extraInfo2 = isTamable
+        this.type = new Bird(gender, age, species, extraInfo,
+            extraInfo2); // model.Bird: extraInfo = tame, extraInfo2 = isTamable
         break;
       default:
-        throw new IllegalArgumentException("Unknown animal type: " + animalType);
+        throw new IllegalArgumentException(
+            "Unknown animal type: " + animalType);
     }
   }
 
@@ -70,13 +76,9 @@ public class AnimalForSale
         && Objects.equals(type, that.type);
   }
 
-  @Override
-  public String toString()
+  @Override public String toString()
   {
-    return "AnimalForSale{" +
-        "price='" + price + '\'' +
-        ", isForSale='" + isForSale + '\'' +
-        ", animalInfo=" + type.toString() +
-        '}';
+    return "AnimalForSale{" + "price='" + price + '\'' + ", isForSale='"
+        + isForSale + '\'' + ", animalInfo=" + type.toString() + '}';
   }
 }

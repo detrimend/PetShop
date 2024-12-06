@@ -40,6 +40,7 @@ public class Email
     if (object == null || getClass() != object.getClass())
       return false;
     Email email = (Email) object;
-    return user.equals(email.user) && host.equals(email.host) && domain.equals(email.domain);
+    return user.equals(email.user) && host.equals(email.host) && domain.equals(
+        email.domain);
   }
 }
