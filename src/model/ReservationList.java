@@ -10,12 +10,26 @@ public class ReservationList {
         reservations = new ArrayList<>();
     }
 
+    /* Er implementeret: Der skal laves en oprettes et OwnedAnimalList objekt med
+    de dyr som skal stå på reservationen. Denne liste bruges så i addReservation.
+    Skal implementeres: Tjek på om der er plads i pensionen i det indtastede
+    DateInteval OG loop som skal ændre isInCare boolean på samtlige dyr på
+    listen NÅR DateIntervallet/reservationen begynder (dvs. ikke endnu, hvis
+    reservationen oprettes f.eks. 2 dage i forvejen)
+
+    for(int i = 0; i < animals.getAmountOfAnimals(); i++)
+        {
+            animals.getAnimalByIndex(i).putInCare();
+        }
+     */
+
     public boolean addReservation(DateInterval dateInterval, Customer customer,
         OwnedAnimalsList animals) {
         if (dateInterval == null || customer == null) {
             throw new IllegalArgumentException("Parameters cannot be null");
         }
         Reservation newReservation = new Reservation(dateInterval, customer, animals);
+
         return reservations.add(newReservation);
     }
 
@@ -71,20 +85,23 @@ public class ReservationList {
 
     public Reservation endReservation(Reservation reservation)
     {
-
-    }
-
-    public Reservation cancelReservation(Reservation reservation){
         for(Reservation r : reservations)
         {
             if (r.equals(reservation))
             {
-                r.getAnimals()
-                reservations.remove(r);
-
+                OwnedAnimalsList animalsGoingHome = r.getAnimals();
+                for(int i = 0; i < animalsGoingHome.getAmountOfAnimals(); i++)
+                {
+                    animalsGoingHome.getAnimalByIndex(i).removeFromCare();
+                }
             }
         }
+        return reservation;
+    }
 
+    public Reservation cancelReservation(Reservation reservation){
+        reservations.remove(reservation);
+        return reservation;
     }
 
     public void addReservation(Reservation reservation){

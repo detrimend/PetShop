@@ -41,6 +41,11 @@ public class OwnedAnimalsList
     return result;
   }
 
+  public OwnedAnimal getAnimalByIndex(int index)
+  {
+    return animals.get(index);
+  }
+
   public void addAnimal(OwnedAnimal ownedAnimal)
   {
     for(OwnedAnimal animal : animals)
