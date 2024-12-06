@@ -17,11 +17,19 @@ public class CustomerList
     customers.add(new Customer(name, email, phoneNumber));
   }
 
-  public Customer removeCustomer(Customer customer)
+  // I ModelManger skal der tjek på om customer *kan* slettes jf. usecase
+  public void removeCustomer(Customer customer)
   {
-    customers.remove(customer);
+    for(Customer c : customers)
     {
-      return customer;
+      if (c.equals(customer))
+      {
+        Name nullName = new Name(null, null);
+        Email nullEmail = new Email(null, null, null);
+        c.setName(nullName);
+        c.setEmail(nullEmail);
+        c.setPhoneNumber(-1);
+      }
     }
   }
 

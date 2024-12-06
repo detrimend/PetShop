@@ -35,7 +35,7 @@ public interface PetShopModel
 
   public void addCustomer(Name name, int phoneNumber, Email email);
 
-  public Customer removeCustomer(Customer customer);
+  public void removeCustomer(Customer customer);
 
   public void setName();
 

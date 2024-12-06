@@ -71,9 +71,9 @@ public class PetShopModelManager implements PetShopModel
     addCustomer(name, phoneNumber, email);
   }
 
-  @Override public Customer removeCustomer(Customer customer)
+  @Override public void removeCustomer(Customer customer)
   {
-    return removeCustomer(customer);
+    removeCustomer(customer);
   }
 
   @Override public void setName()
