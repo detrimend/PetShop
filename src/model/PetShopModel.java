@@ -4,22 +4,20 @@ import java.time.LocalDate;
 
 public interface PetShopModel
 {
-  public void removeOldCustomerDate();
+  public void removeOldCustomerData();
 
 
   // Administrer reservation til dyrepension.
 
   public boolean addReservation(DateInterval dateInterval, Customer customer);
 
+  void registerAnimalHandover(Reservation reservation);
+
   public void removeReservation(int index);
 
-  public DateInterval addDateInterval();
+  public Customer getCustomer(int phoneNumber); //By phonenumber
 
-  public Customer getCustomer(); //By phonenumber
-
-  public OwnedAnimalsList getOwnedAnimal();
-
-  public int getAnimal();
+  public OwnedAnimalsList getAnimals();
 
   public int getNumberOfReservations();
 
@@ -28,8 +26,6 @@ public interface PetShopModel
   public Reservation getReservationByName(String name);
 
   public Reservation CancelReservation(Reservation reservation);
-
-  public void getAnimalInCare(int DateInterval);
 
   public Reservation endReservation(Reservation reservation);
 
@@ -75,7 +71,7 @@ public interface PetShopModel
 
   AnimalsForSaleList getAnimalsBySpecies();
 
-  void PutInCare();
+  void putInCare();
 
   AnimalInfo getAnimalInfo();
 

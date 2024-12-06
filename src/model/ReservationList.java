@@ -19,10 +19,6 @@ public class ReservationList
     listen NÅR DateIntervallet/reservationen begynder (dvs. ikke endnu, hvis
     reservationen oprettes f.eks. 2 dage i forvejen)
 
-    for(int i = 0; i < animals.getAmountOfAnimals(); i++)
-        {
-            animals.getAnimalByIndex(i).putInCare();
-        }
 
     Ovenstående bliver til ny metode, handAnimalInForCare (eller sådan noget)
      */
@@ -39,6 +35,21 @@ public class ReservationList
 
     return reservations.add(newReservation);
   }
+
+  public void registerAnimalHandover(Reservation reservation)
+  {
+    OwnedAnimalsList incomingAnimals = reservation.getAnimals();
+    for (int i = 0; i < incomingAnimals.getAmountOfAnimals(); i++)
+    {
+      if (incomingAnimals.getAnimalByIndex(i).isInCare() && incomingAnimals.getAnimalByIndex(i) != null)
+      {
+        throw new IllegalStateException("Animal is already registered as in care.");
+      }
+      incomingAnimals.getAnimalByIndex(i).putInCare();
+    }
+  }
+
+
 
   public void removeReservation(int index)
   {
