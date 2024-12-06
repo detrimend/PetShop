@@ -33,7 +33,7 @@ public class Customer extends Person
 
   @Override public String toString()
   {
-    return super.toString() + "\n" + "kundens telefonnummer er: " + phoneNumber + "\n" + "kunden ejer følgende dyr" + ownedAnimals;
+    return super.toString() + "\n" + "kundens telefonnummer er: " + phoneNumber + "\n" + "kunden ejer følgende dyr" + getOwnedAnimals().toString();
   }
 
   public boolean equals(Object obj)

@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class CustomerList
 {
@@ -24,39 +25,60 @@ public class CustomerList
     }
   }
 
-
-
   public int getNumberOfCustomers()
   {
     return customers.size();
   }
 
-  public int getCustomer(int phoneNumber)
+  public Customer getCustomer(int phoneNumber)
   {
-  for (int i = 0; i < customers.size(); i++)
-  {
-    if(customers.get(i).getPhoneNumber() == phoneNumber) {
-      return i;}
-  }
-  return -1;
-}
-
-  public Customer getCustomerByIndex(int index)
+    for (int i = 0; i < customers.size(); i++)
     {
-      if(index>= 0 && index < customers.size())
+      if (customers.get(i).getPhoneNumber() == phoneNumber)
       {
-        return customers.get(index);
+        return customers.get(i);
       }
-  return null;
-}
-
-  public  Customer getCustomerByAnimal(OwnedAnimal ownedAnimal)
-  {
-    for( int i = 0; i <customers.size(); i++)
-    {
-      if (customers.get(i).getOwnedAnimals(ownedAnimal).equals(ownedAnimal))
-        return ownedAnimal.getOwner();
     }
     return null;
+  }
+
+  public Customer getCustomerByIndex(int index)
+  {
+    if (index >= 0 && index < customers.size())
+    {
+      return customers.get(index);
+    }
+    return null;
+  }
+
+  public Customer getCustomerByAnimal(OwnedAnimal ownedAnimal)
+  {
+    for (int i = 0; i < customers.size(); i++)
+    {
+      OwnedAnimalsList customersAnimals = customers.get(i).getOwnedAnimals();
+      for (int j = 0; j < customersAnimals.getAmountOfAnimals(); j++)
+      {
+        if (customersAnimals.getAnimalByIndex(j).equals(ownedAnimal))
+        {
+          return ownedAnimal.getOwner();
+        }
+      }
+    }
+    return null;
+  }
+
+  // Genereret toString og equals
+
+  @Override public String toString()
+  {
+    return "CustomerList{" + "customers=" + customers + '}';
+  }
+
+  @Override public boolean equals(Object o)
+  {
+    if (o == null || getClass() != o.getClass())
+      return false;
+    CustomerList that = (CustomerList) o;
+    return Objects.equals(customers, that.customers);
   }
 }

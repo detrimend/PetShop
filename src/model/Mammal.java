@@ -1,20 +1,20 @@
 package model;
 
 public class Mammal extends AnimalInfo {
-    private boolean outDoorOnly;
+    private boolean outdoorOnly;
 
-    public Mammal (char gender, int age, String species, boolean outDoorOnly) {
+    public Mammal (char gender, int age, String species, boolean outdoorOnly) {
         super(gender, age, species);
-        this.outDoorOnly = outDoorOnly;
+        this.outdoorOnly = outdoorOnly;
     }
 
     public boolean isOutDoorOnly(){
-        return outDoorOnly;
+        return outdoorOnly;
     }
 
     @Override
     public String toString(){
-        return "Mammal - " + super.toString() + ", Only outdoors " + outDoorOnly;
+        return "Mammal - " + super.toString() + ", Only outdoors " + outdoorOnly;
     }
 
     @Override

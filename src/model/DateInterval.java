@@ -24,6 +24,12 @@ public class DateInterval {
         return startDate;
     }
 
+    public void set(LocalDate startDate, int days)
+    {
+        this.days=days;
+        this.startDate = startDate;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;

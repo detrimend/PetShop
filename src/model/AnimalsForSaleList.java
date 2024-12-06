@@ -12,7 +12,7 @@ public class AnimalsForSaleList
     this.animals = new ArrayList<>();
   }
 
-  public AnimalsForSaleList getAnimalsByType(String type) throws Exception
+  public AnimalsForSaleList getAnimalsByType(String type)
   {
     AnimalsForSaleList result = new AnimalsForSaleList();
     for(AnimalForSale animal : animals)

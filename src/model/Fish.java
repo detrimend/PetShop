@@ -3,7 +3,7 @@ package model;
 public class Fish extends AnimalInfo {
     private boolean saltWater;
 
-    public Fish (char gender, int age, String species, boolean saltwater){
+    public Fish (char gender, int age, String species, boolean saltWater){
         super(gender, age, species);
         this.saltWater = saltWater;
     }

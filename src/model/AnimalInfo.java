@@ -24,7 +24,11 @@ public abstract class AnimalInfo {
     public String getSpecies(){
         return species;
     }
-    public abstract String getType();
+
+    public String getComment()
+    {
+        return comment;
+    }
 
     public boolean equals(Object obj) {
         if(obj instanceof AnimalInfo){
@@ -36,4 +40,5 @@ public abstract class AnimalInfo {
     public String toString(){
         return "Species " + species + "Age " + age + " Gender " + gender + " Comment " + comment;
     }
+    public abstract String getType();
 }

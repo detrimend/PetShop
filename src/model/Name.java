@@ -7,7 +7,8 @@ public class Name
 
   public Name (String fullName)
   {
-
+    // SKAL IMPLEMENTERES
+    return
   }
   public Name(String firstName, String lastName)
   {
