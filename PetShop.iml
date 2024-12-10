@@ -10,11 +10,11 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/XmlJsonParser-1.4.jar!/" />
+          <root url="jar://$MODULE_DIR$/XmlJsonParser-1.4.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$USER_HOME$/Documents/XmlJsonParser-1.4.jar!/" />
+          <root url="jar://$MODULE_DIR$/XmlJsonParser-1.4.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
