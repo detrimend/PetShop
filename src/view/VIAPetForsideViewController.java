@@ -30,7 +30,7 @@ public class VIAPetForsideViewController {
   }
   public void switchToCareScene(ActionEvent event) throws IOException {
     // Load the new FXML file
-    root = FXMLLoader.load(getClass().getResource("VIAPetCare.fxml"));
+    root = FXMLLoader.load(getClass().getResource("VIACare.fxml"));
 
     // Get the stage from the event source
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -42,7 +42,7 @@ public class VIAPetForsideViewController {
   }
   public void switchToCustomerListScene(ActionEvent event) throws IOException {
     // Load the new FXML file
-    root = FXMLLoader.load(getClass().getResource("VIAPetCustomerList.fxml"));
+    root = FXMLLoader.load(getClass().getResource("CustomerList.fxml"));
 
     // Get the stage from the event source
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -66,7 +66,7 @@ public class VIAPetForsideViewController {
   }
   public void switchToAnimalListScene(ActionEvent event) throws IOException {
     // Load the new FXML file
-    root = FXMLLoader.load(getClass().getResource("VIAPetAnimalList.fxml"));
+    root = FXMLLoader.load(getClass().getResource("AnimalList.fxml"));
 
     // Get the stage from the event source
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -78,7 +78,7 @@ public class VIAPetForsideViewController {
   }
   public void switchToAnimalSaleScene(ActionEvent event) throws IOException {
     // Load the new FXML file
-    root = FXMLLoader.load(getClass().getResource("VIAPetAddAnimal.fxml"));
+    root = FXMLLoader.load(getClass().getResource("AddAnimal.fxml"));
 
     // Get the stage from the event source
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
