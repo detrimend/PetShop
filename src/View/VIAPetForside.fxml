@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: lightgrey;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="400.0" prefWidth="145.0">
+         <children>
+            <VBox prefHeight="400.0" prefWidth="145.0" style="-fx-border-color: lightgrey;">
+               <children>
+                  <ImageView>
+                     <image>
+                        <Image url="@../Hjemmesider/Assignment%202%20sample/Pictures/Logo2.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="VIAPets">
+                     <font>
+                        <Font size="37.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Text>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Button layoutX="197.0" layoutY="51.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="166.0" text="Sale" />
+      <Button layoutX="394.0" layoutY="51.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="166.0" text="ViaCare" />
+      <Button layoutX="394.0" layoutY="170.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="166.0" text="New Costumer" />
+      <Button layoutX="197.0" layoutY="170.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="166.0" text="Customer list" />
+      <Button layoutX="197.0" layoutY="291.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="166.0" text="Animal list" />
+      <Button layoutX="394.0" layoutY="291.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="166.0" text="Add Animal for sale" />
+   </children>
+</AnchorPane>

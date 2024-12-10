@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TabPane layoutX="-12.0" layoutY="-4.0" prefHeight="413.0" prefWidth="613.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="     Sale     ">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="390.0" prefWidth="626.0">
+                     <children>
+                        <TableView layoutX="238.0" layoutY="117.0" prefHeight="247.0" prefWidth="374.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="Type" />
+                            <TableColumn prefWidth="75.0" text="Species" />
+                              <TableColumn prefWidth="75.0" text="ExtraInfo" />
+                              <TableColumn prefWidth="75.0" text="ExtraInfo2" />
+                              <TableColumn prefWidth="75.0" text="Price" />
+                          </columns>
+                        </TableView>
+                        <TextField layoutX="296.0" layoutY="81.0" promptText="Species" />
+                        <Button layoutX="238.0" layoutY="81.0" mnemonicParsing="false" text="Søg" />
+                        <TextField layoutX="296.0" layoutY="51.0" promptText="Type" />
+                        <Button layoutX="238.0" layoutY="51.0" mnemonicParsing="false" text="Søg" />
+                        <TableView layoutX="23.0" layoutY="118.0" prefHeight="247.0" prefWidth="205.0">
+                           <columns>
+                              <TableColumn prefWidth="75.0" text="Name" />
+                              <TableColumn prefWidth="128.6666692097982" text="Phone Nr." />
+                           </columns>
+                        </TableView>
+                        <TextField layoutX="81.0" layoutY="81.0" promptText="Phone Nr." />
+                        <Button layoutX="23.0" layoutY="81.0" mnemonicParsing="false" text="Søg" />
+                        <Button layoutX="542.0" layoutY="26.0" mnemonicParsing="false" text="Asign" />
+                        <Text layoutX="25.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sale">
+                           <font>
+                              <Font size="38.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#dd3737" layoutX="533.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Missing info" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="New customer">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="487.0" layoutY="304.0" mnemonicParsing="false" text="Create">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Button>
+                        <TextField layoutX="75.0" layoutY="74.0" promptText="First Name" />
+                        <TextField layoutX="75.0" layoutY="194.0" promptText="Phone Nr." />
+                        <TextField layoutX="75.0" layoutY="254.0" promptText="Email" />
+                        <TextField layoutX="75.0" layoutY="134.0" promptText="Last Name" />
+                        <Text layoutX="25.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Customer">
+                           <font>
+                              <Font size="38.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
