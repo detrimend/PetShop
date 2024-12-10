@@ -52,7 +52,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="487.0" layoutY="304.0" mnemonicParsing="false" text="Create">
+                        <Button onAction="#CreateButton" layoutX="487.0" layoutY="304.0" mnemonicParsing="false" text="Create">
                            <font>
                               <Font size="26.0" />
                            </font>

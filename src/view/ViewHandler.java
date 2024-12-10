@@ -102,8 +102,10 @@ public class ViewHandler
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource(fxmlFile));
       root = loader.load();
+      AddAnimalViewController controller = loader.getController();
+      controller.init(this, petShopModel, root);
     }
-    catch (Exception e)
+    catch (IOException e)
     {
       e.printStackTrace();
     }
