@@ -26,6 +26,8 @@ public class VIAPetForsideViewController
     this.petShopModel = petShopModel;
     this.viewHandler = viewHandler;
     this.root = root;
+    this.stage = stage;
+    this.scene = scene;
   }
 
   @FXML
