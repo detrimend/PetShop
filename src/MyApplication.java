@@ -1,5 +1,4 @@
-import View.ViaPetsForsideViewController;
-import View.ViewHandler;
+import view.ViewHandler;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import model.PetShopModel;

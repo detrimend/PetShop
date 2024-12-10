@@ -1,4 +1,4 @@
-package View;
+package view;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -6,7 +6,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 import model.PetShopModel;
 
-public class ViaPetsForsideViewController
+public class VIAPetForsideViewController
 {
   @FXML private TextField inputField;
   @FXML private Label errorLabel;
@@ -14,7 +14,7 @@ public class ViaPetsForsideViewController
   private PetShopModel petShopModel;
   private ViewHandler viewHandler;
 
-  public ViaPetsForsideViewController()
+  public VIAPetForsideViewController()
   {
 
   }
@@ -34,7 +34,7 @@ public class ViaPetsForsideViewController
 {
 try {
 
-  viewHandler.openView();
+  viewHandler.openView("forside");
   }
     catch (Exception e) {
   e.printStackTrace();
