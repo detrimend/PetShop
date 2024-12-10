@@ -18,7 +18,7 @@ public class ViewHandler
   private CustomerListViewController customerListViewController;
   private VIACareViewController viaCareViewController;
   private VIAPetNewCustomerViewController viaPetNewCustomerViewController;
-  private VIApetSaleViewController viaPetSaleViewController;
+  private VIAPetSaleViewController viaPetSaleViewController;
   private VIAPetForsideViewController viaPetForsideViewController;
 
   public ViewHandler(PetShopModel petShopModel)
@@ -37,7 +37,7 @@ public class ViewHandler
     switch (id)
     {
       case "forside":
-        root = loadView("VIAPetForside.fxml");
+        root = loadForsideView("VIAPetForside.fxml");
         break;
       case  "AddAnimal":
         root = loadAddAnimalView("AddAnimal.fxml");
@@ -75,14 +75,17 @@ public class ViewHandler
     primaryStage.setHeight(root.getPrefHeight());
     primaryStage.show();
   }
-  private Region loadView(String fxmlFile) {
+  private Region loadForsideView(String fxmlFile)
+  {
     Region root = null;
-    try {
+    try
+    {
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource(fxmlFile));
-      root = loader.<Region> load();
-    } catch (Exception e) {
-      System.err.println("Kunne ikke indlæse view");
+      root = loader.load();
+    }
+    catch (Exception e)
+    {
       e.printStackTrace();
     }
     return root;
