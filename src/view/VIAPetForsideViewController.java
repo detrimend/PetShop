@@ -6,87 +6,74 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+import model.PetShopModel;
+
 import java.io.IOException;
 
-public class VIAPetForsideViewController {
+public class VIAPetForsideViewController
+{
 
   private Stage stage;
   private Scene scene;
-  private Parent root;
+  private Region root;
+  private ViewHandler viewHandler;
+  private PetShopModel petShopModel;
 
-  // Switches to the sale scene
-  public void switchToSaleScene(ActionEvent event) throws IOException {
-    // Load the new FXML file
-    root = FXMLLoader.load(getClass().getResource("VIAPetSale.fxml"));
-
-    // Get the stage from the event source
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-    // Create a new scene and set it on the stage
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show(); // Display the updated stage
-  }
-  public void switchToCareScene(ActionEvent event) throws IOException {
-    // Load the new FXML file
-    root = FXMLLoader.load(getClass().getResource("VIAPetCare.fxml"));
-
-    // Get the stage from the event source
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-    // Create a new scene and set it on the stage
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show(); // Display the updated stage
-  }
-  public void switchToCustomerListScene(ActionEvent event) throws IOException {
-    // Load the new FXML file
-    root = FXMLLoader.load(getClass().getResource("VIAPetCustomerList.fxml"));
-
-    // Get the stage from the event source
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-    // Create a new scene and set it on the stage
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show(); // Display the updated stage
-  }
-  public void switchToNewCustomerScene(ActionEvent event) throws IOException {
-    // Load the new FXML file
-    root = FXMLLoader.load(getClass().getResource("VIAPetNewCustomer.fxml"));
-
-    // Get the stage from the event source
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-    // Create a new scene and set it on the stage
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show(); // Display the updated stage
-  }
-  public void switchToAnimalListScene(ActionEvent event) throws IOException {
-    // Load the new FXML file
-    root = FXMLLoader.load(getClass().getResource("VIAPetAnimalList.fxml"));
-
-    // Get the stage from the event source
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-    // Create a new scene and set it on the stage
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show(); // Display the updated stage
-  }
-  public void switchToAnimalSaleScene(ActionEvent event) throws IOException {
-    // Load the new FXML file
-    root = FXMLLoader.load(getClass().getResource("VIAPetAddAnimal.fxml"));
-
-    // Get the stage from the event source
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-    // Create a new scene and set it on the stage
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show(); // Display the updated stage
+  public void init(ViewHandler viewHandler, PetShopModel petShopModel, Region root)
+  {
+    this.petShopModel = petShopModel;
+    this.viewHandler = viewHandler;
+    this.root = root;
   }
 
+  @FXML
+  private void SaleButton() {
+    try {
+      viewHandler.openView("Sale");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+  @FXML
+  private void CareButton() {
+    try {
+      viewHandler.openView("Care");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+  @FXML
+  private void NewCustomerButton() {
+    try {
+      viewHandler.openView("NewCustomer");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+  @FXML
+  private void CustomerListButton() {
+    try {
+      viewHandler.openView("CustomerList");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+  @FXML
+  private void AnimalListButton() {
+    try {
+      viewHandler.openView("AnimalList");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+  @FXML
+  private void AnimalForSaleButton() {
+    try {
+      viewHandler.openView("AnimalSale");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
 }

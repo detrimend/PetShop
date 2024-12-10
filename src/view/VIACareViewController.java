@@ -1,4 +1,4 @@
-package VIACareViewController;
+package view;
 
 public class VIACareViewController {
 }

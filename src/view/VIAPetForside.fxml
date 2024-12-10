@@ -36,11 +36,11 @@
             </VBox>
          </children>
       </HBox>
-      <Button fx:id="goToSalePage" layoutX="197.0" layoutY="51.0" mnemonicParsing="false" onAction="#switchToSaleScene" prefHeight="81.0" prefWidth="166.0" text="Sale" />
-      <Button layoutX="394.0" layoutY="51.0" mnemonicParsing="false" onAction="#switchToCareScene" prefHeight="81.0" prefWidth="166.0" text="ViaCare" />
-      <Button layoutX="394.0" layoutY="170.0" mnemonicParsing="false" onAction="#switchToNewCustomerScene" prefHeight="81.0" prefWidth="166.0" text="New Costumer" />
-      <Button layoutX="197.0" layoutY="170.0" mnemonicParsing="false" onAction="#switchToCustomerListScene" prefHeight="81.0" prefWidth="166.0" text="Customer list" />
-      <Button layoutX="197.0" layoutY="291.0" mnemonicParsing="false" onAction="#switchToAnimalListScene" prefHeight="81.0" prefWidth="166.0" text="Animal list" />
-      <Button layoutX="394.0" layoutY="291.0" mnemonicParsing="false" onAction="#switchToAnimalSaleScene" prefHeight="81.0" prefWidth="166.0" text="Add Animal for sale" />
+      <Button onAction="#SaleButton" layoutX="197.0" layoutY="51.0" mnemonicParsing="false"  prefHeight="81.0" prefWidth="166.0" text="Sale" />
+      <Button onAction="#CareButton" layoutX="394.0" layoutY="51.0" mnemonicParsing="false"  prefHeight="81.0" prefWidth="166.0" text="ViaCare" />
+      <Button onAction="#NewCustomerButton" layoutX="394.0" layoutY="170.0" mnemonicParsing="false"  prefHeight="81.0" prefWidth="166.0" text="New Costumer" />
+      <Button onAction="#CustomerListButton" layoutX="197.0" layoutY="170.0" mnemonicParsing="false"  prefHeight="81.0" prefWidth="166.0" text="Customer list" />
+      <Button onAction="#AnimalListButton" layoutX="197.0" layoutY="291.0" mnemonicParsing="false"  prefHeight="81.0" prefWidth="166.0" text="Animal list" />
+      <Button onAction="#AnimalForSaleButton" layoutX="394.0" layoutY="291.0" mnemonicParsing="false"  prefHeight="81.0" prefWidth="166.0" text="Add Animal for sale" />
    </children>
 </AnchorPane>

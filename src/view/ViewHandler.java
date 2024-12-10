@@ -1,11 +1,13 @@
 package view;
 
-import VIACareViewController.VIACareViewController;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import model.PetShopModel;
+
+import java.io.IOException;
 
 public class ViewHandler
 {
@@ -43,7 +45,7 @@ public class ViewHandler
         root = loadAddAnimalView("AddAnimal.fxml");
         break;
       case "AnimalList":
-        root= loadAddAnimalView("AnimalList.fxml");
+        root= loadAnimalListView("AnimalList.fxml");
         break;
       case "AnimalSale":
         root= loadAnimalSaleView("AnimalSaleConfirm.fxml");
@@ -55,7 +57,7 @@ public class ViewHandler
         root= loadViaCareView("VIACare.fxml");
         break;
       case "NewCustomer":
-        root= loadNewCustomerView("VIAPetNewCustomerV2.fxml");
+        root= loadNewCustomerView("VIAPetNewCustomer.fxml");
         break;
       case  "Sale":
         root = loadSaleView("VIAPetSale.fxml");
@@ -83,8 +85,12 @@ public class ViewHandler
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource(fxmlFile));
       root = loader.load();
+
+      // Hent controller og kald init
+      VIAPetForsideViewController controller = loader.getController();
+      controller.init(this, petShopModel, root); // Sørg for at sende `this` som ViewHandler
     }
-    catch (Exception e)
+    catch (IOException e)
     {
       e.printStackTrace();
     }
