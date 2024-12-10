@@ -29,9 +29,15 @@ public class ViewHandler
     this.primaryStage= primaryStage;
     openView();
   }
-  public void openView()
+  public void openView(String id)
   {
-    Region root = loadSimpleGUIView("ViaPetsForside.fxml");
+    Region root = null;
+    switch (id)
+    {
+      case "list":
+        root = load
+
+    }
     currentScene.setRoot(root);
     String title = "";
     if (root.getUserData() != null)
