@@ -37,7 +37,7 @@ public class ViewHandler
     switch (id)
     {
       case "forside":
-        root = loadforsideView("VIAPetForside.fxml");
+        root = loadForsideView("VIAPetForside.fxml");
         break;
       case  "AddAnimal":
         root = loadAddAnimalView("AddAnimal.fxml");
