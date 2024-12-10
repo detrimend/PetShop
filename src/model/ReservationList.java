@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ReservationList
@@ -15,25 +16,62 @@ public class ReservationList
     /* Er implementeret: Der skal laves en oprettes et OwnedAnimalList objekt med
     de dyr som skal stå på reservationen. Denne liste bruges så i addReservation.
     Skal implementeres: Tjek på om der er plads i pensionen i det indtastede
-    DateInteval OG loop som skal ændre isInCare boolean på samtlige dyr på
-    listen NÅR DateIntervallet/reservationen begynder (dvs. ikke endnu, hvis
-    reservationen oprettes f.eks. 2 dage i forvejen)
-
-
-    Ovenstående bliver til ny metode, handAnimalInForCare (eller sådan noget)
+    DateInteval
      */
 
   public boolean addReservation(DateInterval dateInterval, Customer customer,
       OwnedAnimalsList animals)
   {
-    if (dateInterval == null || customer == null)
-    {
-      throw new IllegalArgumentException("Parameters cannot be null");
-    }
-    Reservation newReservation = new Reservation(dateInterval, customer,
-        animals);
+    LocalDate newStart = dateInterval.getStartDate();
+    LocalDate newEnd = newStart.plusDays(dateInterval.getDays() - 1);
 
-    return reservations.add(newReservation);
+    // Iterer gennem hver dag i det nye reservationsinterval
+    for (LocalDate date = newStart; !date.isAfter(newEnd); date = date.plusDays(
+        1))
+    {
+      int totalAnimals = animals.getAmountOfAnimals();
+
+      /*
+      POTENTIEL LØSNING PÅ AT ALLE ANIMALS BLANDES SAMMEN
+      int totalSmallAnimals = 0;
+      int totalOtherAnimals = 0;
+      for (int i = 0; i < animals.getAmountOfAnimals(); i++)
+      {
+        if (animals.getAnimalByIndex(i).getAnimalInfo().getType()
+            .equals("Mammal"))
+        {
+          totalSmallAnimals++;
+        }
+        else
+        {
+          totalOtherAnimals++;
+        }
+      }
+       */
+
+      // Tæl eksisterende gæster for samme dato
+      for (Reservation existingReservation : reservations)
+      {
+        DateInterval existingInterval = existingReservation.getDateInterval();
+        LocalDate existingStart = existingInterval.getStartDate();
+        LocalDate existingEnd = existingStart.plusDays(
+            existingInterval.getDays() - 1);
+
+        if (!date.isBefore(existingStart) && !date.isAfter(existingEnd))
+        {
+          totalAnimals += existingReservation.getAnimals().getAmountOfAnimals();
+        }
+      }
+
+      // Tjek om vi overstiger kapaciteten
+      if (totalAnimals > 40)
+      {
+        return false; // Kapaciteten er overskredet
+      }
+    }
+    Reservation newReservation = new Reservation(dateInterval, customer, animals);
+    reservations.add(newReservation);
+    return true; // Ingen kapacitetsproblemer fundet
   }
 
   public void registerAnimalHandover(Reservation reservation)
