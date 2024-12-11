@@ -81,9 +81,7 @@ public interface PetShopModel
 
   String getType();
 
-
-
-
+  int customerListSize();
 
 }
 
