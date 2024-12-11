@@ -14,12 +14,26 @@ public class CustomerList
 
   public void addCustomer(Name name, int phoneNumber, Email email)
   {
+    if (name == null || email == null) {
+      throw new IllegalArgumentException("Name and email cannot be null");
+    }
+    if (phoneNumber <= 0) {
+      throw new IllegalArgumentException("Phone number must be a positive integer");
+    }
     customers.add(new Customer(name, email, phoneNumber));
   }
 
   // I ModelManger skal der tjek på om customer *kan* slettes jf. usecase
   public void removeCustomer(Customer customer)
   {
+    if (!customers.contains(customer)) {
+      throw new IllegalArgumentException("Customer not found in the list");
+    }
+    for (int i = 0; i < customer.getOwnedAnimals().getAmountOfAnimals(); i++){
+      if (customer.getOwnedAnimals().getAnimalByIndex(i).isInCare()) {
+        throw new IllegalArgumentException("Customer cannot be removed because one or more owned animals are in care");
+      }
+    }
     for(Customer c : customers)
     {
       if (c.equals(customer))
@@ -28,7 +42,7 @@ public class CustomerList
         Email nullEmail = new Email(null, null, null);
         c.setName(nullName);
         c.setEmail(nullEmail);
-        c.setPhoneNumber(-1);
+        c.setPhoneNumber(0);
       }
     }
   }
@@ -40,14 +54,17 @@ public class CustomerList
 
   public Customer getCustomer(int phoneNumber)
   {
-    for (int i = 0; i < customers.size(); i++)
+    if (phoneNumber <= 0) {
+      throw new IllegalArgumentException("Phone number must be a positive integer");
+    }
+    for (Customer customer : customers)
     {
-      if (customers.get(i).getPhoneNumber() == phoneNumber)
+      if (customer.getPhoneNumber() == phoneNumber)
       {
-        return customers.get(i);
+        return customer;
       }
     }
-    return null;
+    throw new IllegalArgumentException("Customer with phone number " + phoneNumber + " not found");
   }
 
   public Customer getCustomerByIndex(int index)
