@@ -17,7 +17,8 @@ public class VIACareViewController
     this.root = root;
   }
   @FXML
-  private void CreateButton() {
+  private void CreateButton()
+  {
     try {
       viewHandler.openView("forside");
     } catch (Exception e) {
