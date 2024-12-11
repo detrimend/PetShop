@@ -1,11 +1,10 @@
 package view;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Region;
 import model.PetShopModel;
-import javax.swing.table.TableColumn;
-import javax.swing.text.TabableView;
 
 public class CustomerListViewController
 {
@@ -15,7 +14,7 @@ public class CustomerListViewController
   @FXML private TableColumn<CustomerViewModel, String> emailColumn;
   private Region root;
   private ViewHandler viewHandler;
-  private PetShopModel model;
+  private PetShopModel petShopModel;
   private CustomerListViewModel viewModel;
 
   public CustomerListViewController()
@@ -23,12 +22,12 @@ public class CustomerListViewController
 
   }
 
-  public void init(ViewHandler viewHandler, PetShopModel model, Region root)
+  public void init(ViewHandler viewHandler, PetShopModel petShopModel, Region root)
   {
-    this.model = model;
+    this.petShopModel = petShopModel;
     this.viewHandler = viewHandler;
     this.root = root;
-    this.viewModel = new CustomerListViewModel(model);
+    this.viewModel = new CustomerListViewModel(petShopModel);
 
     nameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
     numberColumn.setCellValueFactory(cellData -> cellData.getValue().getPhoneNumberProperty());
@@ -36,6 +35,18 @@ public class CustomerListViewController
 
     customerListTable.setItems(viewModel.getList());
   }
+
+  public void reset()
+  {
+    viewModel.update();
+  }
+
+  public Region getRoot()
+  {
+    return root;
+  }
+
+
   @FXML
   private void BackButton() {
     try {

@@ -177,9 +177,9 @@ public class PetShopModelManager implements PetShopModel
     return getType();
   }
 
-@Override public int customerListSize()
-{
-   return customerListSize();
-}
+  @Override public int customerListSize()
+  {
+    return 0;
+  }
 
 }

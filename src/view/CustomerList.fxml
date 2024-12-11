@@ -17,11 +17,11 @@
          </font>
       </Text>
       <Button layoutX="164.0" layoutY="83.0" mnemonicParsing="false" text="Søg" />
-      <TableView layoutX="14.0" layoutY="108.0" prefHeight="271.0" prefWidth="455.0">
+      <TableView fx:id="customerListTable" layoutX="14.0" layoutY="108.0" prefHeight="271.0" prefWidth="455.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Name" />
-          <TableColumn prefWidth="102.00000762939453" text="Phone nr." />
-            <TableColumn prefWidth="205.3332977294922" text="Email" />
+          <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+          <TableColumn fx:id="numberColumn" prefWidth="102.00000762939453" text="Phone nr." />
+            <TableColumn fx:id="emailColumn" prefWidth="205.3332977294922" text="Email" />
         </columns>
       </TableView>
       <Button layoutX="465.0" layoutY="26.0" mnemonicParsing="false" text="GDPR NUKE" />
