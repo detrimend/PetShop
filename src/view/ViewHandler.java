@@ -120,8 +120,10 @@ public class ViewHandler
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource(fxmlFile));
       root = loader.load();
+      AnimalListViewController controller = loader.getController();
+      controller.init(this, petShopModel, root);
     }
-    catch (Exception e)
+    catch (IOException e)
     {
       e.printStackTrace();
     }
@@ -135,8 +137,10 @@ public class ViewHandler
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource(fxmlFile));
       root = loader.load();
+      AnimalSaleConfirmViewController controller = loader.getController();
+      controller.init(this, petShopModel, root);
     }
-    catch (Exception e)
+    catch (IOException e)
     {
       e.printStackTrace();
     }
@@ -150,8 +154,10 @@ public class ViewHandler
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource(fxmlFile));
       root = loader.load();
+      CustomerListViewController controller = loader.getController();
+      controller.init(this, petShopModel, root);
     }
-    catch (Exception e)
+    catch (IOException e)
     {
       e.printStackTrace();
     }
@@ -166,8 +172,10 @@ public class ViewHandler
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource(fxmlFile));
       root = loader.load();
+      VIACareViewController controller = loader.getController();
+      controller.init(this, petShopModel, root);
     }
-    catch (Exception e)
+    catch (IOException e)
     {
       e.printStackTrace();
     }
@@ -200,13 +208,15 @@ public class ViewHandler
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource(fxmlFile));
       root = loader.load();
+      VIAPetSaleViewController controller = loader.getController();
+      controller.init(this, petShopModel, root);
     }
-    catch (Exception e)
+    catch (IOException e)
     {
       e.printStackTrace();
     }
     return root;
+    }
   }
-}
 
 

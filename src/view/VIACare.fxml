@@ -117,5 +117,6 @@
             </Tab>
          </tabs>
       </TabPane>
+
    </children>
 </AnchorPane>

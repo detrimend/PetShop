@@ -24,4 +24,13 @@ public class AnimalSaleConfirmViewController
     this.viewHandler = viewHandler;
     this.root = root;
   }
+
+  @FXML
+  private void BackButton() {
+    try {
+      viewHandler.openView("forside");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
 }
