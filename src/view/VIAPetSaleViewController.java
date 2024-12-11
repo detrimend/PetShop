@@ -1,5 +1,4 @@
 package view;
 
-public class VIAPetSaleViewController
-{
+public class VIAPetSaleViewController {
 }
