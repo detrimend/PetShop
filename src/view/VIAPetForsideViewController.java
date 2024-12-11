@@ -1,13 +1,7 @@
 package view;
 
-import javafx.event.ActionEvent; // Correct import for JavaFX ActionEvent
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.Region;
-import javafx.stage.Stage;
 import model.PetShopModel;
 
 import java.io.IOException;
@@ -15,8 +9,6 @@ import java.io.IOException;
 public class VIAPetForsideViewController
 {
 
-  private Stage stage;
-  private Scene scene;
   private Region root;
   private ViewHandler viewHandler;
   private PetShopModel petShopModel;
