@@ -45,7 +45,8 @@ public interface PetShopModel
 
   LocalDate getDate();
 
-  OwnedAnimal assignAnimalToCustomer(AnimalForSale animal, Customer customer, String name);
+  OwnedAnimal assignAnimalToCustomer(AnimalForSale animal, Customer customer,
+      String name);
 
   AnimalForSale removeAnimal();
 

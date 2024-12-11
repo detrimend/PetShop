@@ -14,7 +14,6 @@ public class OwnedAnimalsList
 
   // Returnerer en liste med alle dyr på OwnedAnimals listen som deler model.Customer.
   public OwnedAnimalsList getAnimalsByCustomer(Customer customer)
-      throws Exception
   {
     OwnedAnimalsList result = new OwnedAnimalsList();
     for (OwnedAnimal animal : animals)

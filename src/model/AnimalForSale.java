@@ -12,6 +12,10 @@ public class AnimalForSale
       char gender, int age, String species, boolean extraInfo,
       boolean extraInfo2)
   {
+    if (price < 0)
+    {
+      throw new IllegalArgumentException("Price cannot be negative");
+    }
     this.price = price;
     this.isForSale = true;
 
@@ -47,6 +51,10 @@ public class AnimalForSale
 
   public void setPrice(double price)
   {
+    if (price < 0)
+    {
+      throw new IllegalArgumentException("Price cannot be negative");
+    }
     this.price = price;
   }
 

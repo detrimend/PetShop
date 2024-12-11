@@ -9,6 +9,15 @@ public abstract class AnimalInfo
 
   public AnimalInfo(char gender, int age, String species)
   {
+    gender = Character.toUpperCase(gender);
+    if (gender != 'M' && gender != 'F')
+    {
+      throw new IllegalArgumentException("Gender must be 'M' or 'F'");
+    }
+    if (age < 0)
+    {
+      throw new IllegalArgumentException("Age cannot be negative");
+    }
     this.gender = gender;
     this.age = age;
     this.species = species;

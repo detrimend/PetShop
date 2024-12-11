@@ -13,12 +13,6 @@ public class ReservationList
     reservations = new ArrayList<>();
   }
 
-    /* Er implementeret: Der skal laves en oprettes et OwnedAnimalList objekt med
-    de dyr som skal stå på reservationen. Denne liste bruges så i addReservation.
-    Skal implementeres: Tjek på om der er plads i pensionen i det indtastede
-    DateInteval
-     */
-
   public boolean addReservation(DateInterval dateInterval, Customer customer,
       OwnedAnimalsList animals)
   {
@@ -69,7 +63,8 @@ public class ReservationList
         return false; // Kapaciteten er overskredet
       }
     }
-    Reservation newReservation = new Reservation(dateInterval, customer, animals);
+    Reservation newReservation = new Reservation(dateInterval, customer,
+        animals);
     reservations.add(newReservation);
     return true; // Ingen kapacitetsproblemer fundet
   }
@@ -79,15 +74,15 @@ public class ReservationList
     OwnedAnimalsList incomingAnimals = reservation.getAnimals();
     for (int i = 0; i < incomingAnimals.getAmountOfAnimals(); i++)
     {
-      if (incomingAnimals.getAnimalByIndex(i).isInCare() && incomingAnimals.getAnimalByIndex(i) != null)
+      if (incomingAnimals.getAnimalByIndex(i).isInCare()
+          && incomingAnimals.getAnimalByIndex(i) != null)
       {
-        throw new IllegalStateException("Animal is already registered as in care.");
+        throw new IllegalStateException(
+            "Animal is already registered as in care.");
       }
       incomingAnimals.getAnimalByIndex(i).putInCare();
     }
   }
-
-
 
   public void removeReservation(int index)
   {
