@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -14,6 +15,14 @@ public class PurchaseList
 
   public void addPurchase(Purchase purchase)
   {
+    purchases.add(purchase);
+  }
+
+  public void addNewPurchase(Customer customer, LocalDate date,
+      AnimalForSale animal, AnimalsForSaleList animalsForSaleList)
+  {
+    Purchase purchase = new Purchase(customer, date, animal,
+        animalsForSaleList);
     purchases.add(purchase);
   }
 

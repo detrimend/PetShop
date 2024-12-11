@@ -13,6 +13,18 @@ public class Purchase
   public Purchase(Customer customer, LocalDate date, AnimalForSale animal,
       AnimalsForSaleList animalsForSaleList)
   {
+    if (customer == null)
+    {
+      throw new IllegalArgumentException("Customer cannot be null");
+    }
+    if (date == null)
+    {
+      throw new IllegalArgumentException("Date cannot be null");
+    }
+    if (animal == null)
+    {
+      throw new IllegalArgumentException("Animal cannot be null");
+    }
     this.date = date;
     this.customer = customer;
     this.animal = animal;

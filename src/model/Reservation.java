@@ -13,6 +13,18 @@ public class Reservation
   public Reservation(DateInterval dateInterval, Customer customer,
       OwnedAnimalsList animals)
   {
+    if (dateInterval == null)
+    {
+      throw new IllegalArgumentException("DateInterval cannot be null");
+    }
+    if (customer == null)
+    {
+      throw new IllegalArgumentException("Customer cannot be null");
+    }
+    if (animals == null)
+    {
+      throw new IllegalArgumentException("OwnedAnimalsList cannot be null");
+    }
     this.dateInterval = dateInterval.copy();
     this.pricePerAnimal = 50;
     this.customer = customer;
