@@ -159,9 +159,10 @@ public class ReservationList
    */
   public Reservation getReservationByName(String name)
   {
+    Name nameObj = new Name(name);
     for (Reservation res : reservations)
     {
-      if (res.getCustomer().getName().equals(name))
+      if (res.getCustomer().getName().equals(nameObj))
       {
         return res;
       }

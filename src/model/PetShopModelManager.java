@@ -82,13 +82,7 @@ public class PetShopModelManager implements PetShopModel
 
   @Override public void removeReservation(int index)
   {
-    for (int i = 0; i < reservationList.getNumberOfReservations(); i++)
-    {
-      if (reservationList.getReservation(i).equals(index))
-      {
-        reservationList.removeReservation(index);
-      }
-    }
+    reservationList.removeReservation(index);
   }
 
   @Override public Customer getCustomer(int phoneNumber)

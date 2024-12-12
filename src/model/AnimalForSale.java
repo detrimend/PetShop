@@ -22,7 +22,6 @@ public class AnimalForSale
    *
    * @param animalType the type of the animal (e.g., mammal, fish, reptile, bird)
    * @param price the price of the animal
-   * @param isForSale the sale status of the animal
    * @param gender the gender of the animal
    * @param age the age of the animal
    * @param species the species of the animal
