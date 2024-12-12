@@ -7,6 +7,7 @@ public class PetShopModelManager implements PetShopModel
 
   private CustomerList customerList;
 
+
   public PetShopModelManager()
   {
     this.customerList = new CustomerList();
