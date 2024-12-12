@@ -22,6 +22,11 @@ public class FilePersistenceManager {
 
   }
 
+  public void saveCustomerList(CustomerList customerList, String filePath) throws IOException, ParserException {
+    parser.toXml(customerList,"AnimalsForSaleList.xml" );
+
+  }
+
   // Ikke nødvendigvis noget vi skal bruge
   public AnimalsForSaleList loadAnimalsForSaleList(String filePath) throws IOException, ParserException {
     return parser.fromXml(filePath, AnimalsForSaleList.class);

@@ -8,6 +8,8 @@ public interface PetShopModel
 
   void saveAnimalsForSaleList();
 
+  void saveCustomerList();
+
   // Administrer reservation til dyrepension.
 
   boolean addReservation(DateInterval dateInterval,

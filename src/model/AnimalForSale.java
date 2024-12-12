@@ -30,7 +30,7 @@ public class AnimalForSale
    * @param extraInfo2 additional information specific to the animal type (used for birds)
    * @throws IllegalArgumentException if the price is negative or the animal type is unknown
    */
-  public AnimalForSale(String animalType, double price, boolean isForSale,
+  public AnimalForSale(String animalType, double price,
       char gender, int age, String species, boolean extraInfo,
       boolean extraInfo2)
   {

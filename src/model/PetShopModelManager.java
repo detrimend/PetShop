@@ -27,12 +27,21 @@ public class PetShopModelManager implements PetShopModel
     this.purgeGDPR = new PurgeGDPR(this.reservationList, this.purchaseList,
         this.customerList);
     this.filePersistenceManager = new FilePersistenceManager();
+    animalsForSaleList.addAnimal(new AnimalForSale("mammal",25.5,'m',2,"bunny",false,false));
   }
 
   @Override
   public void saveAnimalsForSaleList() {
     try {
-      filePersistenceManager.saveAnimalsForSaleList(animalsForSaleList, "path/to/your/file.xml");
+      filePersistenceManager.saveAnimalsForSaleList(animalsForSaleList, "AnimalsForSaleList.xml");
+    } catch (IOException | ParserException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public void saveCustomerList() {
+    try {
+      filePersistenceManager.saveCustomerList(customerList, "AnimalsForSaleList.xml");
     } catch (IOException | ParserException e) {
       e.printStackTrace();
     }
@@ -110,6 +119,7 @@ public class PetShopModelManager implements PetShopModel
     String domain = split[0];
     String host = split[1];
     customerList.addCustomer(firstName, lastName,new Email(user,domain,host),Integer.parseInt(phoneNumber));
+    saveCustomerList();
   }
 
   @Override public void addCustomer(Name name, int phoneNumber, Email email)
@@ -189,7 +199,8 @@ public class PetShopModelManager implements PetShopModel
 
   @Override public void addAnimal(AnimalForSale animal)
   {
-    addAnimal(animal);
+    animalsForSaleList.addAnimal(animal);
+    saveAnimalsForSaleList();
   }
 
   @Override public AnimalsForSaleList getAnimalsByType()
