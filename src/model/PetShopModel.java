@@ -6,10 +6,12 @@ public interface PetShopModel
 {
   public void removeOldCustomerData();
 
+  void saveAnimalsForSaleList();
 
   // Administrer reservation til dyrepension.
 
-  public boolean addReservation(DateInterval dateInterval, Customer customer);
+  boolean addReservation(DateInterval dateInterval,
+      Customer customer, OwnedAnimalsList ownedAnimals);
 
   void registerAnimalHandover(Reservation reservation);
 
@@ -49,7 +51,7 @@ public interface PetShopModel
   OwnedAnimal assignAnimalToCustomer(AnimalForSale animal, Customer customer,
       String name);
 
-  AnimalForSale removeAnimal();
+  AnimalForSale removeAnimal(AnimalForSale animal);
 
   void setSalesStatus(boolean isForSale);
 
