@@ -13,7 +13,7 @@ public class CustomerList
     this.customers = new ArrayList<>();
   }
 
-  public void addCustomer(Name name, int phoneNumber, Email email)
+  public void addCustomer(Name name, Email email, int phoneNumber)
   {
     if (name == null || email == null)
     {
@@ -25,6 +25,20 @@ public class CustomerList
           "Phone number must be a positive integer");
     }
     customers.add(new Customer(name, email, phoneNumber));
+  }
+
+  public void addCustomer(String firstName, String lastName, Email email, int phoneNumber)
+  {
+    if (firstName == null || lastName == null || email == null)
+    {
+      throw new IllegalArgumentException("Name and email cannot be null");
+    }
+    if (phoneNumber <= 0)
+    {
+      throw new IllegalArgumentException(
+          "Phone number must be a positive integer");
+    }
+    customers.add(new Customer(firstName, lastName, email, phoneNumber));
   }
 
   // I ModelManger skal der tjek på om customer *kan* slettes jf. usecase
