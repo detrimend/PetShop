@@ -38,11 +38,12 @@ public class PurchaseList
   /**
    * Creates a new purchase and adds it to the list.
    *
-   * @param customer the customer making the purchase
-   * @param animal the animal being purchased
+   * @param customer               the customer making the purchase
+   * @param animal                 the animal being purchased
    * @param nameForPurchasedAnimal the name to assign to the purchased animal
    */
-  public void addNewPurchase(Customer customer, AnimalForSale animal, String nameForPurchasedAnimal)
+  public void addNewPurchase(Customer customer, AnimalForSale animal,
+      String nameForPurchasedAnimal)
   {
     Purchase purchase = new Purchase(customer, animal, nameForPurchasedAnimal);
     purchases.add(purchase);

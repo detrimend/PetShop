@@ -21,12 +21,13 @@ public class Purchase
   /**
    * Constructs a Purchase with the specified attributes.
    *
-   * @param customer the customer making the purchase
-   * @param animal the animal being purchased
+   * @param customer               the customer making the purchase
+   * @param animal                 the animal being purchased
    * @param nameForPurchasedAnimal the name to assign to the purchased animal
    * @throws IllegalArgumentException if any of the parameters are null
    */
-  public Purchase(Customer customer, AnimalForSale animal, String nameForPurchasedAnimal)
+  public Purchase(Customer customer, AnimalForSale animal,
+      String nameForPurchasedAnimal)
   {
     if (customer == null)
     {
@@ -49,15 +50,16 @@ public class Purchase
   /**
    * Assigns an animal for sale to a customer by copying it's information to an owned animal.
    *
-   * @param animal the animal to be assigned
-   * @param customer the customer to whom the animal is assigned
+   * @param animal                 the animal to be assigned
+   * @param customer               the customer to whom the animal is assigned
    * @param nameForPurchasedAnimal the name to assign to the purchased animal
    */
-  public void assignAnimalToCustomer(AnimalForSale animal,
-      Customer customer, String nameForPurchasedAnimal)
+  public void assignAnimalToCustomer(AnimalForSale animal, Customer customer,
+      String nameForPurchasedAnimal)
   {
     AnimalInfo type = animal.getAnimalInfo();
-    OwnedAnimal ownedAnimal = new OwnedAnimal(nameForPurchasedAnimal, customer, type);
+    OwnedAnimal ownedAnimal = new OwnedAnimal(nameForPurchasedAnimal, customer,
+        type);
     customer.addOwnedAnimal(ownedAnimal);
   }
 

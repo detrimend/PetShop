@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public interface PetShopModel
 {
-  public void removeOldCustomerData();
+  void removeOldCustomerData();
 
   void saveAnimalsForSaleList();
 
@@ -12,33 +12,37 @@ public interface PetShopModel
 
   // Administrer reservation til dyrepension.
 
-  boolean addReservation(DateInterval dateInterval,
-      Customer customer, OwnedAnimalsList animalsToPutInCare);
+  boolean addReservation(DateInterval dateInterval, Customer customer,
+      OwnedAnimalsList animalsToPutInCare);
 
   void registerAnimalHandover(Reservation reservation);
 
-  public void removeReservation(int index);
+  void removeReservation(int index);
 
-  public Customer getCustomer(int phoneNumber); //By phonenumber
+  Customer getCustomer(int phoneNumber); //By phonenumber
 
-  public int getNumberOfReservations();
+  int getNumberOfReservations();
 
-  public Reservation getReservationByPhoneNumber(int phoneNumber);
+  Reservation getReservationByPhoneNumber(int phoneNumber);
 
-  public Reservation getReservationByName(String name);
+  Reservation getReservationByName(String name);
 
-  public Reservation cancelReservation(Reservation reservation);
+  Reservation cancelReservation(Reservation reservation);
 
-  public Reservation endReservation(Reservation reservation);
+  Reservation endReservation(Reservation reservation);
 
-  public Customer getCustomerByAnimal(OwnedAnimal animal);
+  Customer getCustomerByAnimal(OwnedAnimal animal);
+
+  void addExistingReservation(Reservation reservation);
 
   // Salg af dyr
 
-  public void addCustomer(String firstName,String lastName, String phoneNumber, String email);
+  void addCustomer(String firstName, String lastName, String phoneNumber,
+      String email);
 
   void addCustomer(Name name, int phoneNumber, Email email);
-  public void removeCustomer(Customer customer);
+
+  void removeCustomer(Customer customer);
 
   /*
   Se kommentar til tilsvarende metoder i ModelManager
@@ -111,14 +115,14 @@ public interface PetShopModel
 
   void addExistingPurchase(Purchase purchase);
 
-  void addNewPurchase(Customer customer, AnimalForSale animal, String nameForPurchasedAnimal);
+  void addNewPurchase(Customer customer, AnimalForSale animal,
+      String nameForPurchasedAnimal);
 
-  public Purchase getPurchase(int index);
+  Purchase getPurchase(int index);
 
-  public int getNumberOfPurchases();
+  int getNumberOfPurchases();
 
-  public Purchase getPurchaseByCustomer(Customer customer);
-
+  Purchase getPurchaseByCustomer(Customer customer);
 
 }
 

@@ -16,7 +16,6 @@ public class PetShopModelManager implements PetShopModel
   private PurgeGDPR purgeGDPR;
   private FilePersistenceManager filePersistenceManager;
 
-
   public PetShopModelManager()
   {
     this.customerList = new CustomerList();
@@ -27,22 +26,32 @@ public class PetShopModelManager implements PetShopModel
     this.purgeGDPR = new PurgeGDPR(this.reservationList, this.purchaseList,
         this.customerList);
     this.filePersistenceManager = new FilePersistenceManager();
-    animalsForSaleList.addAnimal(new AnimalForSale("mammal",25.5,'m',2,"bunny",false,false));
+    animalsForSaleList.addAnimal(
+        new AnimalForSale("mammal", 25.5, 'm', 2, "bunny", false, false));
   }
 
-  @Override
-  public void saveAnimalsForSaleList() {
-    try {
-      filePersistenceManager.saveAnimalsForSaleList(animalsForSaleList, "AnimalsForSaleList.xml");
-    } catch (IOException | ParserException e) {
+  @Override public void saveAnimalsForSaleList()
+  {
+    try
+    {
+      filePersistenceManager.saveAnimalsForSaleList(animalsForSaleList,
+          "AnimalsForSaleList.xml");
+    }
+    catch (IOException | ParserException e)
+    {
       e.printStackTrace();
     }
   }
 
-  public void saveCustomerList() {
-    try {
-      filePersistenceManager.saveCustomerList(customerList, "AnimalsForSaleList.xml");
-    } catch (IOException | ParserException e) {
+  public void saveCustomerList()
+  {
+    try
+    {
+      filePersistenceManager.saveCustomerList(customerList,
+          "AnimalsForSaleList.xml");
+    }
+    catch (IOException | ParserException e)
+    {
       e.printStackTrace();
     }
   }
@@ -56,14 +65,15 @@ public class PetShopModelManager implements PetShopModel
   @Override public boolean addReservation(DateInterval dateInterval,
       Customer customer, OwnedAnimalsList animalsToPutInCare)
   {
-    return reservationList.addReservation(dateInterval, customer, animalsToPutInCare);
+    return reservationList.addReservation(dateInterval, customer,
+        animalsToPutInCare);
   }
 
   @Override public void registerAnimalHandover(Reservation reservation)
   {
-    for(int i = 0; i < reservationList.getNumberOfReservations(); i++)
+    for (int i = 0; i < reservationList.getNumberOfReservations(); i++)
     {
-      if(reservationList.getReservation(i).equals(reservation))
+      if (reservationList.getReservation(i).equals(reservation))
       {
         reservationList.registerAnimalHandover(reservation);
       }
@@ -72,9 +82,9 @@ public class PetShopModelManager implements PetShopModel
 
   @Override public void removeReservation(int index)
   {
-    for(int i = 0; i < reservationList.getNumberOfReservations(); i++)
+    for (int i = 0; i < reservationList.getNumberOfReservations(); i++)
     {
-      if(reservationList.getReservation(i).equals(index))
+      if (reservationList.getReservation(i).equals(index))
       {
         reservationList.removeReservation(index);
       }
@@ -118,8 +128,13 @@ public class PetShopModelManager implements PetShopModel
     return customerList.getCustomerByAnimal(animal);
   }
 
+  @Override public void addExistingReservation(Reservation reservation)
+  {
+    reservationList.addExistingReservation(reservation);
+  }
+
   @Override public void addCustomer(String firstName, String lastName,
-      String email,String phoneNumber)
+      String email, String phoneNumber)
 
   {
     System.out.println(email);
@@ -128,13 +143,14 @@ public class PetShopModelManager implements PetShopModel
     split = split[1].split("\\.");
     String domain = split[0];
     String host = split[1];
-    customerList.addCustomer(firstName, lastName,new Email(user,domain,host),Integer.parseInt(phoneNumber));
+    customerList.addCustomer(firstName, lastName, new Email(user, domain, host),
+        Integer.parseInt(phoneNumber));
     saveCustomerList();
   }
 
   @Override public void addCustomer(Name name, int phoneNumber, Email email)
   {
-   customerList.addCustomer(name,email,phoneNumber);
+    customerList.addCustomer(name, email, phoneNumber);
   }
 
   @Override public void removeCustomer(Customer customer)
@@ -164,8 +180,6 @@ public class PetShopModelManager implements PetShopModel
     return getDate();
   }
    */
-
-
 
   @Override public AnimalForSale removeAnimal(AnimalForSale animal)
   {
@@ -301,7 +315,8 @@ public class PetShopModelManager implements PetShopModel
     purchaseList.addExistingPurchase(purchase);
   }
 
-  @Override public void addNewPurchase(Customer customer, AnimalForSale animal, String nameForPurchasedAnimal)
+  @Override public void addNewPurchase(Customer customer, AnimalForSale animal,
+      String nameForPurchasedAnimal)
   {
     purchaseList.addNewPurchase(customer, animal, nameForPurchasedAnimal);
     animalsForSaleList.removeAnimal(animal);
