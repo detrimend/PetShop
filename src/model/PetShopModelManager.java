@@ -1,7 +1,9 @@
 package model;
 
+import parser.ParserException;
 import persistence.FilePersistenceManager;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class PetShopModelManager implements PetShopModel
@@ -24,6 +26,15 @@ public class PetShopModelManager implements PetShopModel
     this.purgeGDPR = new PurgeGDPR(this.reservationList, this.purchaseList,
         this.customerList);
     this.filePersistenceManager = new FilePersistenceManager();
+  }
+
+  @Override
+  public void saveAnimalsForSaleList() {
+    try {
+      filePersistenceManager.saveAnimalsForSaleList(animalsForSaleList, "path/to/your/file.xml");
+    } catch (IOException | ParserException e) {
+      e.printStackTrace();
+    }
   }
 
   @Override public void removeOldCustomerData()
@@ -133,12 +144,16 @@ public class PetShopModelManager implements PetShopModel
   @Override public OwnedAnimal assignAnimalToCustomer(AnimalForSale animal,
       Customer customer, String name)
   {
+    // Mangler implementation
+    saveAnimalsForSaleList();
     return assignAnimalToCustomer(animal, customer, name);
   }
 
-  @Override public AnimalForSale removeAnimal()
+  @Override public AnimalForSale removeAnimal(AnimalForSale animal)
   {
-    return removeAnimal();
+    animalsForSaleList.removeAnimal(animal);
+    saveAnimalsForSaleList();
+    return animal;
   }
 
   @Override public void setSalesStatus(boolean isForSale)
