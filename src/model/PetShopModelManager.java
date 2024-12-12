@@ -52,20 +52,33 @@ public class PetShopModelManager implements PetShopModel
     purgeGDPR.removeOldCustomerData();
   }
 
+  //Statement til at oprette animalsToPutInCare?
   @Override public boolean addReservation(DateInterval dateInterval,
-      Customer customer, OwnedAnimalsList ownedAnimals)
+      Customer customer, OwnedAnimalsList animalsToPutInCare)
   {
-    return reservationList.addReservation(dateInterval, customer,ownedAnimals);
+    return reservationList.addReservation(dateInterval, customer, animalsToPutInCare);
   }
 
   @Override public void registerAnimalHandover(Reservation reservation)
   {
-    registerAnimalHandover(reservation);
+    for(int i = 0; i < reservationList.getNumberOfReservations(); i++)
+    {
+      if(reservationList.getReservation(i).equals(reservation))
+      {
+        reservationList.registerAnimalHandover(reservation);
+      }
+    }
   }
 
   @Override public void removeReservation(int index)
   {
-    removeReservation(index);
+    for(int i = 0; i < reservationList.getNumberOfReservations(); i++)
+    {
+      if(reservationList.getReservation(i).equals(index))
+      {
+        reservationList.removeReservation(index);
+      }
+    }
   }
 
   @Override public Customer getCustomer(int phoneNumber)
@@ -73,39 +86,36 @@ public class PetShopModelManager implements PetShopModel
     return customerList.getCustomer(phoneNumber);
   }
 
-  @Override public OwnedAnimalsList getAnimals()
-  {
-    return getAnimals();
-  }
-
   @Override public int getNumberOfReservations()
   {
-    return getNumberOfReservations();
+    return reservationList.getNumberOfReservations();
   }
 
   @Override public Reservation getReservationByPhoneNumber(int phoneNumber)
   {
-    return getReservationByPhoneNumber(phoneNumber);
+    return reservationList.getReservationByNumber(phoneNumber);
   }
 
   @Override public Reservation getReservationByName(String name)
   {
-    return getReservationByName(name);
+    return reservationList.getReservationByName(name);
   }
 
-  @Override public Reservation CancelReservation(Reservation reservation)
+  @Override public Reservation cancelReservation(Reservation reservation)
   {
-    return CancelReservation(reservation);
+    reservationList.cancelReservation(reservation);
+    return reservation;
   }
 
   @Override public Reservation endReservation(Reservation reservation)
   {
-    return endReservation(reservation);
+    reservationList.endReservation(reservation);
+    return reservation;
   }
 
-  @Override public Customer getCustomerByAnimal(Customer customer)
+  @Override public Customer getCustomerByAnimal(OwnedAnimal animal)
   {
-    return getCustomerByAnimal(customer);
+    return customerList.getCustomerByAnimal(animal);
   }
 
   @Override public void addCustomer(String firstName, String lastName,
@@ -129,9 +139,11 @@ public class PetShopModelManager implements PetShopModel
 
   @Override public void removeCustomer(Customer customer)
   {
-    removeCustomer(customer);
+    customerList.removeCustomer(customer);
   }
 
+  /*
+  Ret sikker på at de fire nedenstående metoder er overflødige
   @Override public void setName()
   {
     setName();
@@ -151,6 +163,7 @@ public class PetShopModelManager implements PetShopModel
   {
     return getDate();
   }
+   */
 
   @Override public OwnedAnimal assignAnimalToCustomer(AnimalForSale animal,
       Customer customer, String name)
@@ -167,6 +180,7 @@ public class PetShopModelManager implements PetShopModel
     return animal;
   }
 
+  /*
   @Override public void setSalesStatus(boolean isForSale)
   {
     setSalesStatus(isForSale);
@@ -197,22 +211,25 @@ public class PetShopModelManager implements PetShopModel
     return setPrice();
   }
 
+   */
+
   @Override public void addAnimal(AnimalForSale animal)
   {
     animalsForSaleList.addAnimal(animal);
     saveAnimalsForSaleList();
   }
 
-  @Override public AnimalsForSaleList getAnimalsByType()
+  @Override public AnimalsForSaleList getAnimalsByType(String type)
   {
-    return getAnimalsByType();
+    return animalsForSaleList.getAnimalsByType(type);
   }
 
-  @Override public AnimalsForSaleList getAnimalsBySpecies()
+  @Override public AnimalsForSaleList getAnimalsBySpecies(String species)
   {
-    return getAnimalsBySpecies();
+    return animalsForSaleList.getAnimalsBySpecies(species);
   }
 
+  /*
   @Override public void putInCare()
   {
     putInCare();
@@ -237,6 +254,8 @@ public class PetShopModelManager implements PetShopModel
   {
     return getType();
   }
+
+   */
 
   @Override public Customer getCustomerByIndex(int index)
   {

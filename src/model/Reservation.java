@@ -24,11 +24,11 @@ public class Reservation
    *
    * @param dateInterval the date interval of the reservation
    * @param customer the customer making the reservation
-   * @param animals the list of animals being reserved
+   * @param animalsToPutInCare the list of animals being reserved
    * @throws IllegalArgumentException if any of the parameters are null
    */
   public Reservation(DateInterval dateInterval, Customer customer,
-      OwnedAnimalsList animals)
+      OwnedAnimalsList animalsToPutInCare)
   {
     if (dateInterval == null)
     {
@@ -38,14 +38,14 @@ public class Reservation
     {
       throw new IllegalArgumentException("Customer cannot be null");
     }
-    if (animals == null)
+    if (animalsToPutInCare == null)
     {
       throw new IllegalArgumentException("OwnedAnimalsList cannot be null");
     }
     this.dateInterval = dateInterval.copy();
     this.pricePerAnimal = 50;
     this.customer = customer;
-    this.animals = new OwnedAnimalsList();
+    this.animals = animalsToPutInCare;
     this.comment = "";
   }
 

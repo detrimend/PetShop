@@ -13,7 +13,7 @@ public interface PetShopModel
   // Administrer reservation til dyrepension.
 
   boolean addReservation(DateInterval dateInterval,
-      Customer customer, OwnedAnimalsList ownedAnimals);
+      Customer customer, OwnedAnimalsList animalsToPutInCare);
 
   void registerAnimalHandover(Reservation reservation);
 
@@ -21,19 +21,17 @@ public interface PetShopModel
 
   public Customer getCustomer(int phoneNumber); //By phonenumber
 
-  public OwnedAnimalsList getAnimals();
-
   public int getNumberOfReservations();
 
   public Reservation getReservationByPhoneNumber(int phoneNumber);
 
   public Reservation getReservationByName(String name);
 
-  public Reservation CancelReservation(Reservation reservation);
+  public Reservation cancelReservation(Reservation reservation);
 
   public Reservation endReservation(Reservation reservation);
 
-  public Customer getCustomerByAnimal(Customer customer);
+  public Customer getCustomerByAnimal(OwnedAnimal animal);
 
   // Salg af dyr
 
@@ -42,6 +40,8 @@ public interface PetShopModel
   void addCustomer(Name name, int phoneNumber, Email email);
   public void removeCustomer(Customer customer);
 
+  /*
+  Se kommentar til tilsvarende metoder i ModelManager
   public void setName();
 
   void setEmail();
@@ -50,11 +50,14 @@ public interface PetShopModel
 
   LocalDate getDate();
 
+   */
+
   OwnedAnimal assignAnimalToCustomer(AnimalForSale animal, Customer customer,
       String name);
 
   AnimalForSale removeAnimal(AnimalForSale animal);
 
+  /*
   void setSalesStatus(boolean isForSale);
 
   double getPrice();
@@ -71,12 +74,15 @@ public interface PetShopModel
 
   double setPrice();
 
+   */
+
   void addAnimal(AnimalForSale animal);
 
-  AnimalsForSaleList getAnimalsByType();
+  AnimalsForSaleList getAnimalsByType(String type);
 
-  AnimalsForSaleList getAnimalsBySpecies();
+  AnimalsForSaleList getAnimalsBySpecies(String species);
 
+  /*
   void putInCare();
 
   AnimalInfo getAnimalInfo();
@@ -86,6 +92,8 @@ public interface PetShopModel
   void removeFromCare();
 
   String getType();
+
+   */
 
 Customer getCustomerByIndex(int index);
 

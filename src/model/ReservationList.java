@@ -29,11 +29,11 @@ public class ReservationList
    *
    * @param dateInterval the date interval of the reservation
    * @param customer the customer making the reservation
-   * @param animals the list of animals being reserved
+   * @param animalsToPutInCare the list of animals being reserved
    * @return true if the reservation was added, false if it exceeds capacity
    */
   public boolean addReservation(DateInterval dateInterval, Customer customer,
-      OwnedAnimalsList animals)
+      OwnedAnimalsList animalsToPutInCare)
   {
     LocalDate newStart = dateInterval.getStartDate();
     LocalDate newEnd = newStart.plusDays(dateInterval.getDays() - 1);
@@ -41,7 +41,7 @@ public class ReservationList
     // Iterate through each day in the new reservation interval
     for (LocalDate date = newStart; !date.isAfter(newEnd); date = date.plusDays(1))
     {
-      int totalAnimals = animals.getAmountOfAnimals();
+      int totalAnimals = animalsToPutInCare.getAmountOfAnimals();
 
       // Count existing guests for the same date
       for (Reservation existingReservation : reservations)
@@ -62,7 +62,7 @@ public class ReservationList
         return false; // Capacity exceeded
       }
     }
-    Reservation newReservation = new Reservation(dateInterval, customer, animals);
+    Reservation newReservation = new Reservation(dateInterval, customer, animalsToPutInCare);
     reservations.add(newReservation);
     return true; // No capacity issues found
   }
