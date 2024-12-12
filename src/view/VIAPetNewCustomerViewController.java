@@ -48,4 +48,13 @@ public class VIAPetNewCustomerViewController
       throw new RuntimeException(e);
     }
   }
+
+  @FXML
+  private void BackButton() {
+    try {
+      viewHandler.openView("forside");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
 }
