@@ -3,7 +3,9 @@ package model;
 import parser.ParserException;
 import persistence.FilePersistenceManager;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -43,8 +45,27 @@ public class PetShopModelManager implements PetShopModel, Serializable
       e.printStackTrace();
     }
   }
+  @Override
+  public void saveCustomerList() {
+    saveCustomerList(this.customerList, "CustomerList.bin");
+  }
+  public void saveCustomerList(CustomerList customerList, String filePath) {
+    try (FileOutputStream fileOutputStream = new FileOutputStream("Customerlist.bin");
+         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
+      objectOutputStream.writeObject(customerList);
+      System.out.println("Customer list saved in binary format to " + filePath);
+    }
+    catch (IOException e) {
+      e.printStackTrace();
+      System.err.println("Failed to save the customer list.");
+    }
+  }
 
-  public void saveCustomerList()
+
+
+
+
+  /*public void saveCustomerList()
   {
     try
     {
@@ -55,7 +76,7 @@ public class PetShopModelManager implements PetShopModel, Serializable
     {
       e.printStackTrace();
     }
-  }
+  }*/
 
   @Override public void removeOldCustomerData()
   {
@@ -146,6 +167,7 @@ public class PetShopModelManager implements PetShopModel, Serializable
   @Override public void addCustomer(Name name, int phoneNumber, Email email)
   {
     customerList.addCustomer(name, email, phoneNumber);
+    saveCustomerList();
   }
 
   @Override public void removeCustomer(Customer customer)

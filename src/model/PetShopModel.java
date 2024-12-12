@@ -3,8 +3,7 @@ package model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public interface PetShopModel
-{
+public interface PetShopModel extends Serializable {
   void removeOldCustomerData();
 
   void saveAnimalsForSaleList();
