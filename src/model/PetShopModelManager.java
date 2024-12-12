@@ -4,9 +4,10 @@ import parser.ParserException;
 import persistence.FilePersistenceManager;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class PetShopModelManager implements PetShopModel
+public class PetShopModelManager implements PetShopModel, Serializable
 {
   private CustomerList customerList;
   private AnimalsForSaleList animalsForSaleList;
