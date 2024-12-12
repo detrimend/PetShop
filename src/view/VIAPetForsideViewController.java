@@ -1,9 +1,15 @@
 package view;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.Region;
+import javafx.stage.Stage;
 import model.PetShopModel;
 
+import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 public class VIAPetForsideViewController
@@ -19,6 +25,7 @@ public class VIAPetForsideViewController
     this.viewHandler = viewHandler;
     this.root = root;
   }
+
 
   @FXML
   private void SaleButton() {
@@ -63,7 +70,7 @@ public class VIAPetForsideViewController
   @FXML
   private void AnimalForSaleButton() {
     try {
-      viewHandler.openView("AnimalSale");
+      viewHandler.openView("AddAnimal");
     } catch (Exception e) {
       e.printStackTrace();
     }
