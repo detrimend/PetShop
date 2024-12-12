@@ -11,6 +11,12 @@ public abstract class Person
     setEmail(email);
   }
 
+  public Person(String firstName, String lastName, Email email)
+  {
+    setName(new Name(firstName, lastName));
+    setEmail(email);
+  }
+
   public Name getName()
   {
     return name;

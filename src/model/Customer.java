@@ -12,6 +12,13 @@ public class Customer extends Person
     this.animals = new OwnedAnimalsList();
   }
 
+  public Customer(String firstName, String lastName, Email email, int phoneNumber)
+  {
+    super(firstName, lastName, email);
+    setPhoneNumber(phoneNumber);
+    this.animals = new OwnedAnimalsList();
+  }
+
   public int getPhoneNumber()
   {
     return phoneNumber;
