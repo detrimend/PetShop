@@ -2,13 +2,28 @@ package model;
 
 import java.time.LocalDate;
 
+/**
+ * Class responsible for purging old customer data in compliance with GDPR regulations.
+ *
+ * @author Martin Skovby Andersen
+ * @author Rasmus Duus Kristensen
+ * @author Victor Grud Oksen
+ * @author Victor Sander Marx Hoelgaard
+ * @version 1.0 - December 2024
+ */
 public class PurgeGDPR
 {
-
   private ReservationList reservationList;
   private PurchaseList purchaseList;
   private CustomerList customerList;
 
+  /**
+   * Constructs a PurgeGDPR with the specified reservation list, purchase list, and customer list.
+   *
+   * @param reservationList the list of reservations
+   * @param purchaseList the list of purchases
+   * @param customerList the list of customers
+   */
   public PurgeGDPR(ReservationList reservationList, PurchaseList purchaseList,
       CustomerList customerList)
   {
@@ -17,6 +32,9 @@ public class PurgeGDPR
     this.customerList = customerList;
   }
 
+  /**
+   * Removes customer data that is older than 5 years and has no recent reservations or purchases.
+   */
   public void removeOldCustomerData()
   {
     for (int i = 0; i < customerList.getNumberOfCustomers(); i++)
@@ -58,4 +76,3 @@ public class PurgeGDPR
     }
   }
 }
-
