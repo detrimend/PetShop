@@ -33,7 +33,7 @@ public interface PetShopModel
 
   // Salg af dyr
 
-  public void addCustomer(String name, String phoneNumber, String email);
+  public void addCustomer(String firstName,String lastName, String phoneNumber, String email);
 
   void addCustomer(Name name, int phoneNumber, Email email);
   public void removeCustomer(Customer customer);

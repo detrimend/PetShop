@@ -10,8 +10,7 @@ public class PetShopModelManager implements PetShopModel
   public PetShopModelManager()
   {
     this.customerList = new CustomerList();
-    customerList.addCustomer(new Name("Bob Builder"),12345678,new Email("Bob","Builder","dk"));
-    customerList.addCustomer(new Name("Wendy Helper"),12345679,new Email("Wendy","Builder","dk"));
+
   }
 
   @Override public void removeOldCustomerData()
@@ -75,21 +74,22 @@ public class PetShopModelManager implements PetShopModel
     return getCustomerByAnimal(customer);
   }
 
-  @Override public void addCustomer(String name, String phoneNumber,
-      String email)
+  @Override public void addCustomer(String firstName, String lastName,
+      String email,String phoneNumber)
 
   {
+    System.out.println(email);
     String[] split = email.split("@");
     String user = split[0];
-    split = split[1].split(".");
+    split = split[1].split("\\.");
     String domain = split[0];
     String host = split[1];
-    customerList.addCustomer(new Name(name),Integer.parseInt(phoneNumber),new Email(user,domain,host));
+    customerList.addCustomer(firstName, lastName,new Email(user,domain,host),Integer.parseInt(phoneNumber));
   }
 
   @Override public void addCustomer(Name name, int phoneNumber, Email email)
   {
-   customerList.addCustomer(name,phoneNumber,email);
+   customerList.addCustomer(name,email,phoneNumber);
   }
 
   @Override public void removeCustomer(Customer customer)

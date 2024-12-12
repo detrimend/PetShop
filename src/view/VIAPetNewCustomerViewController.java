@@ -38,12 +38,13 @@ public class VIAPetNewCustomerViewController
     try
     {
 
-      petShopModel.addCustomer(firstNameField.getText(),
-          phoneNumberField.getText(), emailField.getText());
+      petShopModel.addCustomer(firstNameField.getText(),lastNameField.getText(),
+          emailField.getText(),phoneNumberField.getText());
       viewHandler.openView("CustomerList");
     }
     catch (Exception e)
     {
+      e.printStackTrace();
       throw new RuntimeException(e);
     }
   }
