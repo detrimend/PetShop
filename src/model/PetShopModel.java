@@ -52,9 +52,6 @@ public interface PetShopModel
 
    */
 
-  OwnedAnimal assignAnimalToCustomer(AnimalForSale animal, Customer customer,
-      String name);
-
   AnimalForSale removeAnimal(AnimalForSale animal);
 
   /*
@@ -69,18 +66,29 @@ public interface PetShopModel
   Name getName();
 
   Person getPhoneNumber();
-
+  */
+  OwnedAnimalsList getAnimalsByCustomer(Customer customer);
+  /*
   //Administrer dyr
 
   double setPrice();
-
    */
+
+  OwnedAnimalsList getAnimalsByName(String name);
 
   void addAnimal(AnimalForSale animal);
 
   AnimalsForSaleList getAnimalsByType(String type);
 
   AnimalsForSaleList getAnimalsBySpecies(String species);
+
+  OwnedAnimal getAnimalByIndex(int index);
+
+  void addAnimal(OwnedAnimal ownedAnimal);
+
+  OwnedAnimal removeAnimal(OwnedAnimal ownedAnimal);
+
+  int getAmountOfAnimals();
 
   /*
   void putInCare();
@@ -95,9 +103,21 @@ public interface PetShopModel
 
    */
 
-Customer getCustomerByIndex(int index);
+  Customer getCustomerByIndex(int index);
 
-int getNumberOfCustomers();
+  int getNumberOfCustomers();
+
+  // Purchase ting
+
+  void addExistingPurchase(Purchase purchase);
+
+  void addNewPurchase(Customer customer, AnimalForSale animal, String nameForPurchasedAnimal);
+
+  public Purchase getPurchase(int index);
+
+  public int getNumberOfPurchases();
+
+  public Purchase getPurchaseByCustomer(Customer customer);
 
 
 }

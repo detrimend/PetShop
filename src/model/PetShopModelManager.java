@@ -165,13 +165,7 @@ public class PetShopModelManager implements PetShopModel
   }
    */
 
-  @Override public OwnedAnimal assignAnimalToCustomer(AnimalForSale animal,
-      Customer customer, String name)
-  {
-    // Mangler implementation
-    saveAnimalsForSaleList();
-    return assignAnimalToCustomer(animal, customer, name);
-  }
+
 
   @Override public AnimalForSale removeAnimal(AnimalForSale animal)
   {
@@ -205,6 +199,12 @@ public class PetShopModelManager implements PetShopModel
   {
     return getPhoneNumber();
   }
+  */
+  public OwnedAnimalsList getAnimalsByCustomer(Customer customer)
+  {
+    return ownedAnimalsList.getAnimalsByCustomer(customer);
+  }
+  /*
 
   @Override public double setPrice()
   {
@@ -212,6 +212,12 @@ public class PetShopModelManager implements PetShopModel
   }
 
    */
+
+  // Name her er navnet på dyret
+  @Override public OwnedAnimalsList getAnimalsByName(String name)
+  {
+    return ownedAnimalsList.getAnimalsByName(name);
+  }
 
   @Override public void addAnimal(AnimalForSale animal)
   {
@@ -227,6 +233,27 @@ public class PetShopModelManager implements PetShopModel
   @Override public AnimalsForSaleList getAnimalsBySpecies(String species)
   {
     return animalsForSaleList.getAnimalsBySpecies(species);
+  }
+
+  public OwnedAnimal getAnimalByIndex(int index)
+  {
+    return ownedAnimalsList.getAnimalByIndex(index);
+  }
+
+  public void addAnimal(OwnedAnimal ownedAnimal)
+  {
+    ownedAnimalsList.addAnimal(ownedAnimal);
+  }
+
+  public OwnedAnimal removeAnimal(OwnedAnimal ownedAnimal)
+  {
+    ownedAnimalsList.removeAnimal(ownedAnimal);
+    return ownedAnimal;
+  }
+
+  public int getAmountOfAnimals()
+  {
+    return ownedAnimalsList.getAmountOfAnimals();
   }
 
   /*
@@ -265,6 +292,34 @@ public class PetShopModelManager implements PetShopModel
   @Override public int getNumberOfCustomers()
   {
     return customerList.getNumberOfCustomers();
+  }
+
+  //Purchase ting
+
+  @Override public void addExistingPurchase(Purchase purchase)
+  {
+    purchaseList.addExistingPurchase(purchase);
+  }
+
+  @Override public void addNewPurchase(Customer customer, AnimalForSale animal, String nameForPurchasedAnimal)
+  {
+    purchaseList.addNewPurchase(customer, animal, nameForPurchasedAnimal);
+    animalsForSaleList.removeAnimal(animal);
+  }
+
+  @Override public Purchase getPurchase(int index)
+  {
+    return purchaseList.getPurchase(index);
+  }
+
+  @Override public int getNumberOfPurchases()
+  {
+    return purchaseList.getNumberOfPurchases();
+  }
+
+  @Override public Purchase getPurchaseByCustomer(Customer customer)
+  {
+    return purchaseList.getPurchaseByCustomer(customer);
   }
 
 }
