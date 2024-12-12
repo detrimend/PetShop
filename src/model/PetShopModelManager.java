@@ -5,6 +5,14 @@ import java.time.LocalDate;
 public class PetShopModelManager implements PetShopModel
 {
 
+  private CustomerList customerList;
+
+  public PetShopModelManager()
+  {
+    this.customerList = new CustomerList();
+
+  }
+
   @Override public void removeOldCustomerData()
   {
     removeOldCustomerData();
@@ -28,7 +36,7 @@ public class PetShopModelManager implements PetShopModel
 
   @Override public Customer getCustomer(int phoneNumber)
   {
-    return getCustomer(phoneNumber);
+    return customerList.getCustomer(phoneNumber);
   }
 
   @Override public OwnedAnimalsList getAnimals()
@@ -66,9 +74,22 @@ public class PetShopModelManager implements PetShopModel
     return getCustomerByAnimal(customer);
   }
 
+  @Override public void addCustomer(String firstName, String lastName,
+      String email,String phoneNumber)
+
+  {
+    System.out.println(email);
+    String[] split = email.split("@");
+    String user = split[0];
+    split = split[1].split("\\.");
+    String domain = split[0];
+    String host = split[1];
+    customerList.addCustomer(firstName, lastName,new Email(user,domain,host),Integer.parseInt(phoneNumber));
+  }
+
   @Override public void addCustomer(Name name, int phoneNumber, Email email)
   {
-    addCustomer(name, phoneNumber, email);
+   customerList.addCustomer(name,email,phoneNumber);
   }
 
   @Override public void removeCustomer(Customer customer)
@@ -177,9 +198,14 @@ public class PetShopModelManager implements PetShopModel
     return getType();
   }
 
-  @Override public int customerListSize()
+  @Override public Customer getCustomerByIndex(int index)
   {
-    return 0;
+    return customerList.getCustomerByIndex(index);
+  }
+
+  @Override public int getNumberOfCustomers()
+  {
+    return customerList.getNumberOfCustomers();
   }
 
 }

@@ -33,8 +33,9 @@ public interface PetShopModel
 
   // Salg af dyr
 
-  public void addCustomer(Name name, int phoneNumber, Email email);
+  public void addCustomer(String firstName,String lastName, String phoneNumber, String email);
 
+  void addCustomer(Name name, int phoneNumber, Email email);
   public void removeCustomer(Customer customer);
 
   public void setName();
@@ -82,7 +83,10 @@ public interface PetShopModel
 
   String getType();
 
-  int customerListSize();
+Customer getCustomerByIndex(int index);
+
+int getNumberOfCustomers();
+
 
 }
 
