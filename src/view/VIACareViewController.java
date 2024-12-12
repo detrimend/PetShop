@@ -25,4 +25,14 @@ public class VIACareViewController
       e.printStackTrace();
     }
   }
+
+  @FXML
+  private void BackButton() {
+    try {
+      viewHandler.openView("forside");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
 }
+

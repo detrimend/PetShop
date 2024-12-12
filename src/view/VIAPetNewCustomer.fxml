@@ -27,6 +27,6 @@
          </font>
       </Text>
       <Text fill="#ff3a3a" layoutX="225.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alle kasser skal være udfyldt" />
-      <Button layoutX="25.0" layoutY="367.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="87.0" text="Back" />
+      <Button layoutX="25.0" layoutY="367.0" mnemonicParsing="false" onAction="#BackButton" prefHeight="33.0" prefWidth="87.0" text="Back" />
    </children>
 </AnchorPane>

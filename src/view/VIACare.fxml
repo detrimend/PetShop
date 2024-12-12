@@ -36,7 +36,7 @@
             <TextField accessibleRole="DATE_PICKER" layoutX="386.0" layoutY="180.0" promptText="fx. 4" />
             <Text layoutX="386.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date:" />
             <Text layoutX="386.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How many days:" />
-            <Button layoutX="14.0" layoutY="367.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="87.0" text="Back" />
+            <Button layoutX="14.0" layoutY="367.0" mnemonicParsing="false" onAction="#BackButton" prefHeight="33.0" prefWidth="87.0" text="Back" />
          </children>
       </AnchorPane>
 
