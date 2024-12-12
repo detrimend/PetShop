@@ -9,7 +9,8 @@ public interface PetShopModel
 
   // Administrer reservation til dyrepension.
 
-  public boolean addReservation(DateInterval dateInterval, Customer customer);
+  boolean addReservation(DateInterval dateInterval,
+      Customer customer, OwnedAnimalsList ownedAnimals);
 
   void registerAnimalHandover(Reservation reservation);
 

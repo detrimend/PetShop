@@ -1,27 +1,40 @@
 package model;
 
+import persistence.FilePersistenceManager;
+
 import java.time.LocalDate;
 
 public class PetShopModelManager implements PetShopModel
 {
-
   private CustomerList customerList;
+  private AnimalsForSaleList animalsForSaleList;
+  private OwnedAnimalsList ownedAnimalsList;
+  private ReservationList reservationList;
+  private PurchaseList purchaseList;
+  private PurgeGDPR purgeGDPR;
+  private FilePersistenceManager filePersistenceManager;
 
   public PetShopModelManager()
   {
     this.customerList = new CustomerList();
-
+    this.animalsForSaleList = new AnimalsForSaleList();
+    this.ownedAnimalsList = new OwnedAnimalsList();
+    this.reservationList = new ReservationList();
+    this.purchaseList = new PurchaseList();
+    this.purgeGDPR = new PurgeGDPR(this.reservationList, this.purchaseList,
+        this.customerList);
+    this.filePersistenceManager = new FilePersistenceManager();
   }
 
   @Override public void removeOldCustomerData()
   {
-    removeOldCustomerData();
+    purgeGDPR.removeOldCustomerData();
   }
 
   @Override public boolean addReservation(DateInterval dateInterval,
-      Customer customer)
+      Customer customer, OwnedAnimalsList ownedAnimals)
   {
-    return addReservation(dateInterval, customer); // måske?
+    return reservationList.addReservation(dateInterval, customer,ownedAnimals);
   }
 
   @Override public void registerAnimalHandover(Reservation reservation)
