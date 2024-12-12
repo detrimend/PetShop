@@ -39,13 +39,14 @@ public class CustomerListViewController
   public void reset()
   {
     viewModel.update();
+
+    customerListTable.setItems(viewModel.getList());
   }
 
   public Region getRoot()
   {
     return root;
   }
-
 
   @FXML
   private void BackButton() {

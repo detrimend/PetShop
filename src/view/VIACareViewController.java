@@ -20,7 +20,7 @@ public class VIACareViewController
   private void CreateButton()
   {
     try {
-      viewHandler.openView("forside");
+      viewHandler.openView("CustomerList");
     } catch (Exception e) {
       e.printStackTrace();
     }

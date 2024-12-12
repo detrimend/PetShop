@@ -14,6 +14,7 @@ public class ViewHandler
   private PetShopModel petShopModel;
   private Scene currentScene;
   private Stage primaryStage;
+  private CustomerListViewModel customerListViewModel;
   private AddAnimalViewController addAnimalViewController;
   private AnimalListViewController animalListViewController;
   private AnimalSaleConfirmViewController animalSaleConfirmV2ViewController;
@@ -27,6 +28,7 @@ public class ViewHandler
   {
     this.currentScene= new Scene(new Region());
     this.petShopModel = petShopModel;
+    this.customerListViewModel = new CustomerListViewModel(petShopModel);
   }
   public void start(Stage primaryStage)
   {
