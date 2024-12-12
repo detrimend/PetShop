@@ -66,6 +66,12 @@ public class PetShopModelManager implements PetShopModel
     return getCustomerByAnimal(customer);
   }
 
+  @Override public void addCustomer(String name, String phoneNumber,
+      String email)
+  {
+
+  }
+
   @Override public void addCustomer(Name name, int phoneNumber, Email email)
   {
     addCustomer(name, phoneNumber, email);
@@ -177,9 +183,6 @@ public class PetShopModelManager implements PetShopModel
     return getType();
   }
 
-  @Override public int customerListSize()
-  {
-    return 0;
-  }
+
 
 }

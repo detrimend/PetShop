@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class CustomerList
@@ -116,4 +117,5 @@ public class CustomerList
     CustomerList that = (CustomerList) o;
     return Objects.equals(customers, that.customers);
   }
+
 }

@@ -3,6 +3,7 @@ package view;
 
 import javafx.collections.*;
 import model.Customer;
+import model.CustomerList;
 import model.PetShopModel;
 
 public class CustomerListViewModel
@@ -20,10 +21,8 @@ public class CustomerListViewModel
   public void update()
   {
     list.clear();
-    for (int i = 0 ; i < model.customerListSize(); i++)
-    {
-      list.add(new CustomerViewModel(model.getCustomer(i)));
-    }
+
+
   }
   public ObservableList<CustomerViewModel> getList()
   {
@@ -40,8 +39,8 @@ public class CustomerListViewModel
     for ( int i = 0; i < list.size(); i++)
     {
       if(list.get(i).getNameProperty().get().equals(customer.getName()) &&
-      list.get(i).getPhoneNumberProperty().get() == customer.getPhoneNumber() &&
-      list.get(i).getEmailProperty().get().equals(customer.getEmail()))
+          list.get(i).getPhoneNumberProperty().get() == customer.getPhoneNumber() &&
+          list.get(i).getEmailProperty().get().equals(customer.getEmail()))
       {
         list.remove(i);
         break;
