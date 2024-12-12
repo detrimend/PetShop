@@ -37,11 +37,10 @@ public class VIAPetNewCustomerViewController
   {
     try
     {
-      viewHandler.openView("NewCustomer");
+
       petShopModel.addCustomer(firstNameField.getText(),
           phoneNumberField.getText(), emailField.getText());
-
-
+      viewHandler.openView("CustomerList");
     }
     catch (Exception e)
     {

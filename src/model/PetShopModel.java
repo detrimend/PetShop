@@ -83,6 +83,10 @@ public interface PetShopModel
 
   String getType();
 
+Customer getCustomerByIndex(int index);
+
+int getNumberOfCustomers();
+
 
 }
 

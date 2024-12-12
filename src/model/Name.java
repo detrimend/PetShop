@@ -42,8 +42,7 @@ public class Name
 
   public String toString()
   {
-    return "kundens fornavn er: " + firstName + " og deres efternavn er: "
-        + lastName;
+    return  getFullName();
   }
 
   @Override public boolean equals(Object obj)

@@ -30,7 +30,7 @@ public class Email
 
   public String toString()
   {
-    return "kundes email er: " + user + "@" + host + "." + domain;
+    return  user + "@" + host + "." + domain;
   }
 
   @Override public boolean equals(Object object)

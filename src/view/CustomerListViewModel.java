@@ -21,6 +21,10 @@ public class CustomerListViewModel
   public void update()
   {
     list.clear();
+    for (int i = 0; i < model.getNumberOfCustomers(); i++)
+    {
+      list.add(new CustomerViewModel(model.getCustomerByIndex(i)));
+    }
 
 
   }
