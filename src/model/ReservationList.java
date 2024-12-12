@@ -3,53 +3,52 @@ package model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * Class representing a list of reservations with various methods to manipulate and retrieve the list.
+ *
+ * @author Martin Skovby Andersen
+ * @author Rasmus Duus Kristensen
+ * @author Victor Grud Oksen
+ * @author Victor Sander Marx Hoelgaard
+ * @version 1.0 - December 2024
+ */
 public class ReservationList
 {
-
   private ArrayList<Reservation> reservations;
 
+  /**
+   * Constructs an empty ReservationList.
+   */
   public ReservationList()
   {
     reservations = new ArrayList<>();
   }
 
+  /**
+   * Adds a reservation to the list if it does not exceed the capacity.
+   *
+   * @param dateInterval the date interval of the reservation
+   * @param customer the customer making the reservation
+   * @param animals the list of animals being reserved
+   * @return true if the reservation was added, false if it exceeds capacity
+   */
   public boolean addReservation(DateInterval dateInterval, Customer customer,
       OwnedAnimalsList animals)
   {
     LocalDate newStart = dateInterval.getStartDate();
     LocalDate newEnd = newStart.plusDays(dateInterval.getDays() - 1);
 
-    // Iterer gennem hver dag i det nye reservationsinterval
-    for (LocalDate date = newStart; !date.isAfter(newEnd); date = date.plusDays(
-        1))
+    // Iterate through each day in the new reservation interval
+    for (LocalDate date = newStart; !date.isAfter(newEnd); date = date.plusDays(1))
     {
       int totalAnimals = animals.getAmountOfAnimals();
 
-      /*
-      POTENTIEL LØSNING PÅ AT ALLE ANIMALS BLANDES SAMMEN
-      int totalSmallAnimals = 0;
-      int totalOtherAnimals = 0;
-      for (int i = 0; i < animals.getAmountOfAnimals(); i++)
-      {
-        if (animals.getAnimalByIndex(i).getAnimalInfo().getType()
-            .equals("Mammal"))
-        {
-          totalSmallAnimals++;
-        }
-        else
-        {
-          totalOtherAnimals++;
-        }
-      }
-       */
-
-      // Tæl eksisterende gæster for samme dato
+      // Count existing guests for the same date
       for (Reservation existingReservation : reservations)
       {
         DateInterval existingInterval = existingReservation.getDateInterval();
         LocalDate existingStart = existingInterval.getStartDate();
-        LocalDate existingEnd = existingStart.plusDays(
-            existingInterval.getDays() - 1);
+        LocalDate existingEnd = existingStart.plusDays(existingInterval.getDays() - 1);
 
         if (!date.isBefore(existingStart) && !date.isAfter(existingEnd))
         {
@@ -57,18 +56,23 @@ public class ReservationList
         }
       }
 
-      // Tjek om vi overstiger kapaciteten
+      // Check if capacity is exceeded
       if (totalAnimals > 40)
       {
-        return false; // Kapaciteten er overskredet
+        return false; // Capacity exceeded
       }
     }
-    Reservation newReservation = new Reservation(dateInterval, customer,
-        animals);
+    Reservation newReservation = new Reservation(dateInterval, customer, animals);
     reservations.add(newReservation);
-    return true; // Ingen kapacitetsproblemer fundet
+    return true; // No capacity issues found
   }
 
+  /**
+   * Registers the handover of animals for a reservation.
+   *
+   * @param reservation the reservation for which animals are handed over
+   * @throws IllegalStateException if any animal is already registered as in care
+   */
   public void registerAnimalHandover(Reservation reservation)
   {
     OwnedAnimalsList incomingAnimals = reservation.getAnimals();
@@ -77,13 +81,18 @@ public class ReservationList
       if (incomingAnimals.getAnimalByIndex(i).isInCare()
           && incomingAnimals.getAnimalByIndex(i) != null)
       {
-        throw new IllegalStateException(
-            "Animal is already registered as in care.");
+        throw new IllegalStateException("Animal is already registered as in care.");
       }
       incomingAnimals.getAnimalByIndex(i).putInCare();
     }
   }
 
+  /**
+   * Removes a reservation at the specified index.
+   *
+   * @param index the index of the reservation to be removed
+   * @throws IndexOutOfBoundsException if the index is out of bounds
+   */
   public void removeReservation(int index)
   {
     if (index >= 0 && index < reservations.size())
@@ -92,15 +101,21 @@ public class ReservationList
     }
     else
     {
-      throw new IndexOutOfBoundsException("Index er OOB");
+      throw new IndexOutOfBoundsException("Index is out of bounds");
     }
   }
 
+  /**
+   * Returns the reservation at the specified index.
+   *
+   * @param index the index of the reservation to be retrieved
+   * @return the reservation at the specified index, or null if the index is out of bounds
+   */
   public Reservation getReservation(int index)
   {
     if (index >= 0 && index < reservations.size())
     {
-      return getReservation(index);
+      return reservations.get(index);
     }
     else
     {
@@ -108,38 +123,58 @@ public class ReservationList
     }
   }
 
+  /**
+   * Returns the number of reservations in the list.
+   *
+   * @return the number of reservations in the list
+   */
   public int getNumberOfReservations()
   {
     return reservations.size();
   }
 
+  /**
+   * Returns the reservation made by the customer with the specified phone number.
+   *
+   * @param phoneNumber the phone number of the customer
+   * @return the reservation made by the customer, or null if no such reservation exists
+   */
   public Reservation getReservationByNumber(int phoneNumber)
   {
     for (Reservation res : reservations)
     {
       if (res.getCustomer().getPhoneNumber() == phoneNumber)
-      { // Assumes model.Reservation has getReservationNumber()
+      {
         return res;
       }
     }
-
     return null;
   }
 
+  /**
+   * Returns the reservation made by the customer with the specified name.
+   *
+   * @param name the name of the customer
+   * @return the reservation made by the customer, or null if no such reservation exists
+   */
   public Reservation getReservationByName(String name)
   {
     for (Reservation res : reservations)
     {
       if (res.getCustomer().getName().equals(name))
-      { // Assumes model.Reservation has getReservationNumber()
+      {
         return res;
       }
     }
     return null;
   }
 
-  // Tilføj senere: Check "are you sure" besked eller sådan noget
-
+  /**
+   * Ends a reservation and removes the animals from care.
+   *
+   * @param reservation the reservation to be ended
+   * @return the ended reservation
+   */
   public Reservation endReservation(Reservation reservation)
   {
     for (Reservation r : reservations)
@@ -156,17 +191,34 @@ public class ReservationList
     return reservation;
   }
 
+  /**
+   * Cancels a reservation and removes it from the list.
+   *
+   * @param reservation the reservation to be canceled
+   * @return the canceled reservation
+   */
   public Reservation cancelReservation(Reservation reservation)
   {
     reservations.remove(reservation);
     return reservation;
   }
 
+  /**
+   * Adds an existing reservation to the list.
+   *
+   * @param reservation the reservation to be added
+   */
   public void addExistingReservation(Reservation reservation)
   {
     this.reservations.add(reservation);
   }
 
+  /**
+   * Indicates whether some other object is "equal to" this one.
+   *
+   * @param obj the reference object with which to compare
+   * @return true if this object is the same as the obj argument; false otherwise
+   */
   @Override public boolean equals(Object obj)
   {
     if (this == obj)
@@ -175,9 +227,14 @@ public class ReservationList
       return false;
 
     ReservationList other = (ReservationList) obj;
-    return other.reservations == this.reservations;
+    return other.reservations.equals(this.reservations);
   }
 
+  /**
+   * Returns a string representation of the reservation list.
+   *
+   * @return a string representation of the reservation list
+   */
   @Override public String toString()
   {
     return "ReservationList{" + "reservations=" + reservations + '}';
