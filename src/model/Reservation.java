@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -11,7 +12,7 @@ import java.time.LocalDate;
  * @author Victor Sander Marx Hoelgaard
  * @version 1.0 - December 2024
  */
-public class Reservation
+public class Reservation implements Serializable
 {
   private DateInterval dateInterval;
   private double pricePerAnimal;

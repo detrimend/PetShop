@@ -1,5 +1,7 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Class representing a fish tank with specific attributes such as food type and number of fish.
  *
@@ -9,7 +11,7 @@ package model;
  * @author Victor Sander Marx Hoelgaard
  * @version 1.0 - December 2024
  */
-public class FishTank
+public class FishTank implements Serializable
 {
   private String foodType;
   private int numberOfFish;

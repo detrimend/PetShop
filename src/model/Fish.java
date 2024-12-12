@@ -1,5 +1,7 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Class representing a fish with specific attributes such as whether it lives in salt water.
  *
@@ -9,7 +11,7 @@ package model;
  * @author Victor Sander Marx Hoelgaard
  * @version 1.0 - December 2024
  */
-public class Fish extends AnimalInfo
+public class Fish extends AnimalInfo implements Serializable
 {
   private boolean saltWater;
 

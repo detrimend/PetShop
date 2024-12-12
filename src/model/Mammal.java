@@ -1,5 +1,7 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Class representing a mammal with specific attributes such as whether it is outdoor only.
  *
@@ -9,7 +11,7 @@ package model;
  * @author Victor Sander Marx Hoelgaard
  * @version 1.0 - December 2024
  */
-public class Mammal extends AnimalInfo
+public class Mammal extends AnimalInfo implements Serializable
 {
   private boolean outdoorOnly;
 

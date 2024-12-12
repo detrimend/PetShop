@@ -1,5 +1,7 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Class representing a bird with specific attributes such as tameness and tamability.
  *
@@ -9,7 +11,7 @@ package model;
  * @author Victor Sander Marx Hoelgaard
  * @version 1.0 - December 2024
  */
-public class Bird extends AnimalInfo
+public class Bird extends AnimalInfo implements Serializable
 {
   private boolean tame;
   private boolean isTameable;

@@ -1,5 +1,7 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Abstract class representing a person with a name and email.
  *
@@ -10,7 +12,7 @@ package model;
  * @author Victor Sander Marx Hoelgaard
  * @version 1.0 - December 2024
  */
-public abstract class Person
+public abstract class Person implements Serializable
 {
   private Name name;
   private Email email;

@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -11,7 +12,7 @@ import java.time.LocalDate;
  * @author Victor Sander Marx Hoelgaard
  * @version 1.0 - December 2024
  */
-public class DateInterval
+public class DateInterval implements Serializable
 {
   private int days;
   private LocalDate startDate;

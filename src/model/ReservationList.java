@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  * @author Victor Sander Marx Hoelgaard
  * @version 1.0 - December 2024
  */
-public class ReservationList
+public class ReservationList implements Serializable
 {
   private ArrayList<Reservation> reservations;
 
