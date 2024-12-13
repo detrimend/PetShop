@@ -95,5 +95,6 @@ public interface PetShopModel extends Serializable {
 
   Purchase getPurchaseByCustomer(Customer customer);
 
+  void addAnimal(String text, String text1, String text2, String text3, String value, String value1);
 }
 

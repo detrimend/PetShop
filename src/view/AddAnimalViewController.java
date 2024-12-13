@@ -14,6 +14,7 @@ import javax.swing.*;
 public class AddAnimalViewController
 {
   @FXML TextField priceField;
+  @FXML TextField ageField;
   @FXML TextField extraInfoField;
   @FXML TextField extraInfo2Field;
   @FXML TextField speciesField;
@@ -29,7 +30,7 @@ public class AddAnimalViewController
     this.viewHandler = viewHandler;
     this.root = root;
     genderBox.getItems().addAll("Male","Female");
-    typeBox.getItems().addAll("Fishies","Mammal","Bird","Reptile");
+    typeBox.getItems().addAll("Fish","Mammal","Bird","Reptile");
 
   }
 

@@ -321,4 +321,10 @@ public class PetShopModelManager implements PetShopModel, Serializable
     return purchaseList.getPurchaseByCustomer(customer);
   }
 
+  @Override public void addAnimal(String text, String text1, String text2,
+      String text3, String value, String value1)
+  {
+
+  }
+
 }
