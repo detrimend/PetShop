@@ -64,6 +64,25 @@ public class AnimalsForSaleList implements Serializable
   }
 
   /**
+   * Returns the number of animals for sale.
+   *
+   * @return the number of animals for sale
+   */
+  public AnimalForSale getAnimalForSaleByIndex(int index)
+  {
+    return animals.get(index);
+  }
+
+  /**
+   * Returns a list of all animals for sale.
+   * @return a list of all animals for sale
+   */
+  public AnimalsForSaleList getAllAnimalsForSale()
+  {
+    return this;
+  }
+
+  /**
    * Adds an animal to the list of animals for sale.
    *
    * @param animalForSale the animal to add

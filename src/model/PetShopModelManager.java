@@ -42,6 +42,8 @@ public class PetShopModelManager implements PetShopModel, Serializable
       e.printStackTrace();
     }
   }
+
+  /*
   @Override
   public void saveCustomerList() throws IOException {
 
@@ -84,7 +86,7 @@ public class PetShopModelManager implements PetShopModel, Serializable
 
 
 
-  /*public void saveCustomerList()
+  public void saveCustomerList()
   {
     try
     {
