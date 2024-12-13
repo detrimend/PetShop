@@ -15,8 +15,8 @@ public class AddAnimalViewController
 {
   @FXML TextField priceField;
   @FXML TextField ageField;
-  @FXML TextField extraInfoField;
-  @FXML TextField extraInfo2Field;
+  @FXML ComboBox<String> extraInfoBox;
+  @FXML ComboBox<String> extraInfo2Box;
   @FXML TextField speciesField;
   @FXML ComboBox<String> typeBox;
   @FXML ComboBox<String> genderBox;
@@ -31,7 +31,8 @@ public class AddAnimalViewController
     this.root = root;
     genderBox.getItems().addAll("Male","Female");
     typeBox.getItems().addAll("Fish","Mammal","Bird","Reptile");
-
+    extraInfoBox.getItems().addAll("true","false");
+    extraInfo2Box.getItems().addAll("true","false");
   }
 
 
@@ -39,8 +40,8 @@ public class AddAnimalViewController
   public void reset()
   {
     priceField.setText("");
-    extraInfoField.setText("");
-    extraInfo2Field.setText("");
+    extraInfoBox.getItems().clear();
+    extraInfo2Box.getItems().clear();
     speciesField.setText("");
     typeBox.getItems().clear();
     typeBox.getItems().addAll();
@@ -51,7 +52,10 @@ public class AddAnimalViewController
     try
     {
 
-      petShopModel.addNewAnimalForSaleWithStrings(typeBox.getValue(),priceField.getText(),genderBox.getValue(),ageField.getText(),speciesField.getText(),extraInfoField.getText(),extraInfo2Field.getText());
+      petShopModel.addNewAnimalForSaleWithStrings(typeBox.getValue()
+          ,priceField.getText(),genderBox.getValue()
+          ,ageField.getText(),speciesField.getText()
+          ,extraInfoBox.getValue(),extraInfo2Box.getValue());
       viewHandler.openView("AnimalList");
     }
     catch (Exception e)
