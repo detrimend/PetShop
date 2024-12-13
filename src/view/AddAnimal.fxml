@@ -19,10 +19,10 @@
                </font>
             </Text>
             <TextField fx:id="speciesField" layoutX="75.0" layoutY="154.0" promptText="Species" />
-            <TextField fx:id="extraInfoField" layoutX="75.0" layoutY="274.0" promptText="Extra Info" />
-            <TextField fx:id="extraInfo2Field" layoutX="75.0" layoutY="314.0" promptText="Extra Info 2" />
             <ComboBox fx:id="typeBox" layoutX="75.0" layoutY="114.0" prefWidth="150.0" promptText="Type" visibleRowCount="2" />
             <ComboBox fx:id="genderBox" layoutX="75.0" layoutY="194.0" prefWidth="150.0" promptText="Gender" />
+            <ComboBox fx:id="genderBox1" layoutX="75.0" layoutY="314.0" prefWidth="150.0" promptText="Extra info 2" />
+            <ComboBox fx:id="genderBox2" layoutX="75.0" layoutY="274.0" prefWidth="150.0" promptText="Extra info 1" />
          </children>
       </AnchorPane>
       <TextField alignment="TOP_LEFT" layoutX="257.0" layoutY="200.0" prefHeight="133.0" prefWidth="207.0" promptText="Fx. Missing Arm" />
@@ -32,7 +32,7 @@
       <Text fill="#e03131" layoutX="525.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Missing info" />
       <Text layoutX="257.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Comment" />
       <Button layoutX="14.0" layoutY="367.0" mnemonicParsing="false" onAction="#BackButton" prefHeight="33.0" prefWidth="87.0" text="Back" />
-      <Button onAction="#addButton" layoutX="514.0" layoutY="367.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="87.0" text="Add">
+      <Button layoutX="514.0" layoutY="367.0" mnemonicParsing="false" onAction="#addButton" prefHeight="33.0" prefWidth="87.0" text="Add">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
