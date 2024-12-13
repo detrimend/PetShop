@@ -44,7 +44,7 @@ public class VIAPetNewCustomerViewController
 
       petShopModel.addCustomer(firstNameField.getText(),lastNameField.getText(),
           emailField.getText(),phoneNumberField.getText());
-      viewHandler.openView("CustomerList");
+      viewHandler.openView("forside");
     }
     catch (Exception e)
     {

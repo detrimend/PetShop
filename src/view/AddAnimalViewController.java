@@ -4,6 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.Region;
 import model.PetShopModel;
 
+import javax.annotation.processing.Generated;
+import java.awt.*;
+
 public class AddAnimalViewController
 {
   private Region root;
@@ -25,3 +28,6 @@ public class AddAnimalViewController
     }
   }
 }
+
+
+

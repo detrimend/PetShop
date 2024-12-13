@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
@@ -32,7 +33,7 @@ public class VIAPetSaleViewController {
 
     @FXML
        private void addCustomerButton() {
-           /* viewHandler.openView("NewCustomer");*/ //Snakket med Steffen, kan bruge boolean til at ændres til at åbne nyt window(if - else) før og efter FXMLLOader
+        boolean opInNewTab = true;
        try
 
     {
@@ -41,16 +42,45 @@ public class VIAPetSaleViewController {
         VIAPetNewCustomerViewController controller = fxmlLoader.getController();
         controller.init(viewHandler, petShopModel, root);
 
-        Stage newStage = new Stage();
-        newStage.setTitle("Add Customer");  //set titlen
-        newStage.setScene(new Scene(root));
-        newStage.show();
+        if (opInNewTab) {
+            Stage newStage = new Stage();
+            newStage.setTitle("Add Customer");  //set titlen
+            newStage.setScene(new Scene(root));
+            newStage.show();
+        }
+        else {
+            Stage currentStage = (Stage) ((Node)root).getScene().getWindow();
+            currentStage.setTitle("Add Customer");
+            currentStage.setScene(new Scene(root));
+            currentStage.show();
+        }
     } catch(IOException e)
-
     {
         e.printStackTrace();
     }
 }
+
+    @FXML
+    private void LoadVIACareFromSale() {
+        /* viewHandler.openView("NewCustomer");*/ //Snakket med Steffen, kan bruge boolean til at ændres til at åbne nyt window(if - else) før og efter FXMLLOader
+        try
+
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("VIACare.fxml")); // vælg path
+            Region root = fxmlLoader.load();
+            VIAPetNewCustomerViewController controller = fxmlLoader.getController();
+            controller.init(viewHandler, petShopModel, root);
+
+            Stage newStage = new Stage();
+            newStage.setTitle("VIACare");  //set titlen
+            newStage.setScene(new Scene(root));
+            newStage.show();
+        } catch(IOException e)
+
+        {
+            e.printStackTrace();
+        }
+    }
 
 
         @FXML
