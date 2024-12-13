@@ -54,7 +54,7 @@ public class VIAPetNewCustomerViewController
       );
 
       if (OpenNewTab) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(VIAPetNewCustomer.fxml));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViaPetNewCustomer.fxml"));
         Region root = fxmlLoader.load();
         VIAPetNewCustomerViewController controller = fxmlLoader.getController();
         controller.init(viewHandler, petShopModel, root);
