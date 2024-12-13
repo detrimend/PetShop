@@ -41,7 +41,7 @@ public class VIAPetNewCustomerViewController
 
   }
 
-  /*@FXML
+  /*@FXML Kode der kan vises til eksamen på hvad vi prøvet på
   private void CreateButton() {
     boolean OpenNewTab = true;
 
