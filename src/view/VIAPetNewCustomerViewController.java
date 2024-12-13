@@ -41,7 +41,7 @@ public class VIAPetNewCustomerViewController
 
   }
 
-  @FXML
+  /*@FXML
   private void CreateButton() {
     boolean OpenNewTab = true;
 
@@ -73,6 +73,7 @@ public class VIAPetNewCustomerViewController
 
   }
   }
+*/
 
 
 
@@ -85,8 +86,7 @@ public class VIAPetNewCustomerViewController
 
 
 
-
-/*  @FXML private void CreateButton()
+ @FXML private void CreateButton()
   {
     try
     {
@@ -100,7 +100,7 @@ public class VIAPetNewCustomerViewController
       e.printStackTrace();
       throw new RuntimeException(e);
     }
-  }*/
+  }
 
   @FXML
   private void BackButton() {
