@@ -17,13 +17,13 @@ public class PetShopModelManager implements PetShopModel, Serializable
   private ReservationList reservationList;
   private PurchaseList purchaseList;
   private PurgeGDPR purgeGDPR;
-  private FilePersistenceManager filePersistenceManager;
-
+  private transient FilePersistenceManager filePersistenceManager;
   private transient PetShopPersistenceManager persistenceManager;
 
   public PetShopModelManager()
   {
     this.persistenceManager = new PetShopPersistenceManager();
+    this.filePersistenceManager = new FilePersistenceManager();
     PetShopModelManager loaded = persistenceManager.loadState();
     if (loaded != null) {
       this.customerList = loaded.customerList;
