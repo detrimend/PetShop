@@ -32,6 +32,8 @@ public class PetShopModelManager implements PetShopModel, Serializable
       this.reservationList = loaded.reservationList;
       this.purchaseList = loaded.purchaseList;
       this.purgeGDPR = loaded.purgeGDPR;
+
+      System.out.println("PetShopModelManager loaded from file");
     }
     else
     {
@@ -42,6 +44,7 @@ public class PetShopModelManager implements PetShopModel, Serializable
       this.purchaseList = new PurchaseList();
       this.purgeGDPR = new PurgeGDPR(this.reservationList, this.purchaseList,
           this.customerList);
+      System.out.println("PetShopModelManager file created");
     }
   }
 
@@ -286,6 +289,13 @@ public class PetShopModelManager implements PetShopModel, Serializable
     boolean extraInfo2 = Boolean.parseBoolean(value1);
     animalsForSaleList.addAnimal(new AnimalForSale(animalType, price, gender, age, species, extraInfo, extraInfo2));
     saveAnimalsForSaleList();
+    saveState();
   }
+
+  @Override public int getNumberOfAnimalsForSale()
+  {
+    return animalsForSaleList.getNumberOfAnimalsForSale();
+  }
+
 
 }

@@ -14,9 +14,12 @@ import java.util.Objects;
  */
 public class AnimalForSale implements Serializable
 {
+  private static final long serialVersionUID = -3325512946745289881L;
+
   private double price;
   private boolean isForSale;
-  private AnimalInfo type;
+  private AnimalInfo animalInfo;
+  private String animalType;
 
   /**
    * Constructs an AnimalForSale with the specified attributes.
@@ -40,24 +43,25 @@ public class AnimalForSale implements Serializable
     }
     this.price = price;
     this.isForSale = true;
+    this.animalType = animalType;
 
     // Dynamically create AnimalInfo subclasses based on animalType
     switch (animalType.toLowerCase())
     {
       case "mammal":
-        this.type = new Mammal(gender, age, species,
+        this.animalInfo = new Mammal(gender, age, species,
             extraInfo); // Mammal: extraInfo = outdoorOnly
         break;
       case "fish":
-        this.type = new Fish(gender, age, species,
+        this.animalInfo = new Fish(gender, age, species,
             extraInfo); // Fish: extraInfo = saltWater
         break;
       case "reptile":
-        this.type = new Reptile(gender, age, species,
+        this.animalInfo = new Reptile(gender, age, species,
             extraInfo); // Reptile: extraInfo = venomous
         break;
       case "bird":
-        this.type = new Bird(gender, age, species, extraInfo,
+        this.animalInfo = new Bird(gender, age, species, extraInfo,
             extraInfo2); // Bird: extraInfo = tame, extraInfo2 = isTamable
         break;
       default:
@@ -118,7 +122,7 @@ public class AnimalForSale implements Serializable
    */
   public AnimalInfo getAnimalInfo()
   {
-    return type;
+    return animalInfo;
   }
 
   /**
@@ -135,7 +139,7 @@ public class AnimalForSale implements Serializable
       return false;
     AnimalForSale that = (AnimalForSale) object;
     return Double.compare(price, that.price) == 0 && isForSale == that.isForSale
-        && Objects.equals(type, that.type);
+        && Objects.equals(animalInfo, that.animalInfo);
   }
 
   /**
@@ -146,6 +150,6 @@ public class AnimalForSale implements Serializable
   @Override public String toString()
   {
     return "AnimalForSale{" + "price='" + price + '\'' + ", isForSale='"
-        + isForSale + '\'' + ", animalInfo=" + type.toString() + '}';
+        + isForSale + '\'' + ", animalInfo=" + animalInfo.toString() + '}';
   }
 }

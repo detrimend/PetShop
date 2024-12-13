@@ -34,6 +34,8 @@ public class CustomerListViewController
     emailColumn.setCellValueFactory(cellData -> cellData.getValue().getEmailProperty());
 
     customerListTable.setItems(viewModel.getList());
+
+    // til debug: System.out.println("CustomerListViewController initialized");
   }
 
   public void reset()
