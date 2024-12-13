@@ -86,17 +86,17 @@ public class AnimalsForSaleList implements Serializable
    * Adds an animal to the list of animals for sale.
    *
    * @param animalForSale the animal to add
-   * @throws IllegalArgumentException if the animal is already on the list
+   * //@throws IllegalArgumentException if the animal is already on the list
    */
   public void addAnimal(AnimalForSale animalForSale)
-  {
+  {/*
     for (AnimalForSale animal : animals)
     {
       if (animal.equals(animalForSale))
       {
         throw new IllegalArgumentException("Animal is already on the list");
       }
-    }
+    }*/
     animals.add(animalForSale);
   }
 
