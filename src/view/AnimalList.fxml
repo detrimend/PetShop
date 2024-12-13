@@ -17,15 +17,17 @@
          </font>
       </Text>
       <Button layoutX="164.0" layoutY="83.0" mnemonicParsing="false" text="Søg" />
-      <TableView fx:id="animalListTable" layoutX="14.0" layoutY="108.0" prefHeight="259.0" prefWidth="523.0">
+      <TableView fx:id="animalListTable" layoutX="14.0" layoutY="108.0" prefHeight="259.0" prefWidth="599.0">
          <columns>
             <TableColumn fx:id="animalNameColumn" prefWidth="75.0" text="Name" />
             <TableColumn fx:id="animalTypeColumn" prefWidth="70.66669464111328" text="Type" />
+            <TableColumn fx:id="animalNameColumn1" prefWidth="75.0" text="Species" />
             <TableColumn fx:id="animalGenderColumn" prefWidth="54.66668701171875" text="Gender" />
             <TableColumn fx:id="animalAgeColumn" prefWidth="43.99998474121094" text="Age" />
-            <TableColumn fx:id="animalExtraInfoColumn" prefWidth="102.0" text="Extra info" />
-            <TableColumn fx:id="animalExtraInfo2Column" prefWidth="106.6666259765625" text="Extra info2" />
-            <TableColumn prefWidth="67.3333638509115" text="For sale" />
+            <TableColumn fx:id="animalExtraInfoColumn" prefWidth="63.3333740234375" text="Extra info" />
+            <TableColumn fx:id="animalExtraInfo2Column" prefWidth="70.66668701171875" text="Extra info2" />
+            <TableColumn prefWidth="78.66671752929688" text="For sale" />
+            <TableColumn fx:id="animalNameColumn2" prefWidth="63.33327229817712" text="Price" />
          </columns>
       </TableView>
       <Button layoutX="14.0" layoutY="367.0" mnemonicParsing="false" onAction="#BackButton" prefHeight="33.0" prefWidth="87.0" text="Back" />
