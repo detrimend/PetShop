@@ -1,13 +1,17 @@
 package view;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
+import javafx.stage.Stage;
 import model.*;
 import model.PetShopModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+
+import java.io.IOException;
 
 public class VIAPetNewCustomerViewController
 {
@@ -37,7 +41,52 @@ public class VIAPetNewCustomerViewController
 
   }
 
-  @FXML private void CreateButton()
+  @FXML
+  private void CreateButton() {
+    boolean OpenNewTab = true;
+
+    try {
+      petShopModel.addCustomer(
+              firstNameField.getText(),
+              lastNameField.getText(),
+              emailField.getText(),
+              phoneNumberField.getText()
+      );
+
+      if (OpenNewTab) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(VIAPetNewCustomer.fxml));
+        Region root = fxmlLoader.load();
+        VIAPetNewCustomerViewController controller = fxmlLoader.getController();
+        controller.init(viewHandler, petShopModel, root);
+
+        Stage newStage = new Stage();
+        newStage.setTitle("Add Customer");
+        newStage.show();
+
+        Stage currentStage = (Stage) firstNameField.getScene().getWindow();
+        currentStage.close();
+      } else {
+        viewHandler.openView("forside");
+      }
+    }
+  catch (IOException e){
+
+  }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  @FXML private void CreateButton()
   {
     try
     {
@@ -51,7 +100,7 @@ public class VIAPetNewCustomerViewController
       e.printStackTrace();
       throw new RuntimeException(e);
     }
-  }
+  }*/
 
   @FXML
   private void BackButton() {
