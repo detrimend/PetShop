@@ -16,17 +16,17 @@ public class AnimalViewModel
   private StringProperty extraInfo2Property;
   private DoubleProperty priceProperty;
 
-  public AnimalViewModel(AnimalForSale animalforsale, AnimalInfo animalinfo, OwnedAnimal ownedAnimal)
+  public AnimalViewModel(AnimalForSale animalforsale)
 
   {
     genderProperty = new SimpleStringProperty();
-    typeProperty = new SimpleStringProperty(animalinfo.getType());
-    speciesProperty = new SimpleStringProperty(animalinfo.getSpecies());
-    ageProperty = new SimpleIntegerProperty(animalinfo.getAge());
+    typeProperty = new SimpleStringProperty();
+    speciesProperty = new SimpleStringProperty();
+    ageProperty = new SimpleIntegerProperty();
     extraInfoProperty = new SimpleStringProperty();
     extraInfo2Property = new SimpleStringProperty();
     priceProperty = new SimpleDoubleProperty(animalforsale.getPrice());
-    nameProperty = new SimpleStringProperty(ownedAnimal.getName());
+    nameProperty = new SimpleStringProperty();
   }
 
   public StringProperty getGenderProperty()
@@ -68,5 +68,5 @@ public class AnimalViewModel
   {
     return priceProperty;
   }
-  public StringProperty getName
+
 }

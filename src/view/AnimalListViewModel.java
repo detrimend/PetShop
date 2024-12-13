@@ -2,9 +2,9 @@ package view;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import model.AnimalForSale;
 import model.PetShopModel;
 
-import static jdk.jfr.internal.consumer.EventLog.update;
 
 public class AnimalListViewModel
 {
@@ -18,12 +18,22 @@ public class AnimalListViewModel
     update();
   }
 
-  public update();
+  public void update()
   {
     list.clear();
     for(int i = 0; i < petShopModel.getAmountOfAnimals(); i++)
     {
-      list.add(new AnimalViewModel(petShopModel.getAnimalByIndex(i)))
+      list.add(new AnimalViewModel(petShopModel.getAnimalForSaleByIndex(i)));
     }
+  }
+
+  public ObservableList<AnimalViewModel> getList()
+  {
+    return list;
+  }
+
+  public void add(AnimalForSale animalForSale)
+  {
+    list.add(new AnimalViewModel(animalForSale));
   }
 }
