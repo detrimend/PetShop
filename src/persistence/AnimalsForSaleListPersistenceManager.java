@@ -6,11 +6,11 @@ import parser.XmlJsonParser;
 
 import java.io.IOException;
 
-public class FilePersistenceManager {
+public class AnimalsForSaleListPersistenceManager {
 
   private XmlJsonParser parser;
 
-  public FilePersistenceManager() {
+  public AnimalsForSaleListPersistenceManager() {
     this.parser = new XmlJsonParser();
   }
 

@@ -11,13 +11,6 @@ public interface PetShopModel extends Serializable {
 
   void saveState();
 
-  /*
-  void saveCustomerList() throws IOException;
-
-  void loadCustomerList();
-
-   */
-
   // Administrer reservation til dyrepension.
 
   boolean addReservation(DateInterval dateInterval, Customer customer,
