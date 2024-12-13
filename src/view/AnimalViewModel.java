@@ -1,9 +1,7 @@
 package view;
 
 import javafx.beans.property.*;
-import model.AnimalForSale;
-import model.AnimalInfo;
-import model.OwnedAnimal;
+import model.*;
 
 public class AnimalViewModel
 {
@@ -20,12 +18,38 @@ public class AnimalViewModel
   public AnimalViewModel(AnimalForSale animalforsale)
 
   {
-    genderProperty = new SimpleStringProperty();
+    genderProperty = new SimpleStringProperty(String.valueOf(animalforsale.getAnimalInfo().getGender()));
     typeProperty = new SimpleStringProperty(animalforsale.getAnimalInfo().getType());
     speciesProperty = new SimpleStringProperty(animalforsale.getAnimalInfo().getSpecies());
     ageProperty = new SimpleIntegerProperty(animalforsale.getAnimalInfo().getAge());
-    extraInfoProperty = new SimpleStringProperty();
-    extraInfo2Property = new SimpleStringProperty();
+    switch (animalforsale.getAnimalInfo().getType().toLowerCase())
+    {
+      case "mammal":
+        Mammal mammal = (Mammal) animalforsale.getAnimalInfo();
+        extraInfoProperty = new SimpleStringProperty(
+            String.valueOf(mammal.isOutDoorOnly()));
+        break;
+      case "fish":
+        Fish fish = (Fish) animalforsale.getAnimalInfo();
+        extraInfoProperty = new SimpleStringProperty(
+            String.valueOf(fish.isSaltWater()));
+        break;
+      case "reptile":
+        Reptile reptile = (Reptile) animalforsale.getAnimalInfo();
+        extraInfoProperty = new SimpleStringProperty(
+            String.valueOf(reptile.isVenomous()));
+        break;
+      case "bird":
+        Bird bird = (Bird) animalforsale.getAnimalInfo();
+        extraInfoProperty = new SimpleStringProperty(
+            String.valueOf(bird.isTame()));
+        extraInfo2Property = new SimpleStringProperty(
+            String.valueOf(bird.isTameable()));
+        break;
+      default:
+        extraInfoProperty = new SimpleStringProperty("false");
+        extraInfo2Property = new SimpleStringProperty("false");
+    }
     priceProperty = new SimpleDoubleProperty(animalforsale.getPrice());
     nameProperty = new SimpleStringProperty();
     forSaleProperty = new SimpleStringProperty();
