@@ -20,7 +20,8 @@ public class Purchase implements Serializable
   private AnimalForSale animal;
 
   /**
-   * Constructs a Purchase with the specified attributes.
+   * Constructs a Purchase with the specified attributes and assigns the chosen
+   * animal to the customer as an OwnedAnimal object..
    *
    * @param customer               the customer making the purchase
    * @param animal                 the animal being purchased

@@ -47,39 +47,11 @@ public interface PetShopModel extends Serializable {
 
   void removeCustomer(Customer customer);
 
-  /*
-  Se kommentar til tilsvarende metoder i ModelManager
-  public void setName();
-
-  void setEmail();
-
-  void setPhoneNumber();
-
-  LocalDate getDate();
-
-   */
-
   AnimalForSale removeAnimal(AnimalForSale animal);
 
-  /*
-  void setSalesStatus(boolean isForSale);
-
-  double getPrice();
-
-  //Administer kunde
-
-  Email getEmail();
-
-  Name getName();
-
-  Person getPhoneNumber();
-  */
   OwnedAnimalsList getAnimalsByCustomer(Customer customer);
-  /*
-  //Administrer dyr
 
-  double setPrice();
-   */
+  //Administrer dyr
 
   OwnedAnimalsList getAnimalsByName(String name);
 
@@ -96,19 +68,6 @@ public interface PetShopModel extends Serializable {
   OwnedAnimal removeAnimal(OwnedAnimal ownedAnimal);
 
   int getAmountOfAnimals();
-
-  /*
-  void putInCare();
-
-  AnimalInfo getAnimalInfo();
-
-  void addComment(String comment);
-
-  void removeFromCare();
-
-  String getType();
-
-   */
 
   Customer getCustomerByIndex(int index);
 

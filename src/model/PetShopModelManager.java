@@ -194,29 +194,6 @@ public class PetShopModelManager implements PetShopModel, Serializable
     customerList.removeCustomer(customer);
   }
 
-  /*
-  Ret sikker på at de fire nedenstående metoder er overflødige
-  @Override public void setName()
-  {
-    setName();
-  }
-
-  @Override public void setEmail()
-  {
-    setEmail();
-  }
-
-  @Override public void setPhoneNumber()
-  {
-    setPhoneNumber();
-  }
-
-  @Override public LocalDate getDate()
-  {
-    return getDate();
-  }
-   */
-
   @Override public AnimalForSale removeAnimal(AnimalForSale animal)
   {
     animalsForSaleList.removeAnimal(animal);
@@ -224,44 +201,10 @@ public class PetShopModelManager implements PetShopModel, Serializable
     return animal;
   }
 
-  /*
-  @Override public void setSalesStatus(boolean isForSale)
-  {
-    setSalesStatus(isForSale);
-  }
-
-  @Override public double getPrice()
-  {
-    return getPrice();
-  }
-
-  @Override public Email getEmail()
-  {
-    return getEmail();
-  }
-
-  @Override public Name getName()
-  {
-    return getName();
-  }
-
-  @Override public Person getPhoneNumber()
-  {
-    return getPhoneNumber();
-  }
-  */
   public OwnedAnimalsList getAnimalsByCustomer(Customer customer)
   {
     return ownedAnimalsList.getAnimalsByCustomer(customer);
   }
-  /*
-
-  @Override public double setPrice()
-  {
-    return setPrice();
-  }
-
-   */
 
   // Name her er navnet på dyret
   @Override public OwnedAnimalsList getAnimalsByName(String name)
@@ -306,34 +249,6 @@ public class PetShopModelManager implements PetShopModel, Serializable
   {
     return ownedAnimalsList.getAmountOfAnimals();
   }
-
-  /*
-  @Override public void putInCare()
-  {
-    putInCare();
-  }
-
-  @Override public AnimalInfo getAnimalInfo()
-  {
-    return getAnimalInfo();
-  }
-
-  @Override public void addComment(String comment)
-  {
-    addComment(comment);
-  }
-
-  @Override public void removeFromCare()
-  {
-    removeFromCare();
-  }
-
-  @Override public String getType()
-  {
-    return getType();
-  }
-
-   */
 
   @Override public Customer getCustomerByIndex(int index)
   {

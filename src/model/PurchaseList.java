@@ -37,7 +37,7 @@ public class PurchaseList implements Serializable
   }
 
   /**
-   * Creates a new purchase and adds it to the list.
+   * Creates a new purchase, adds it to the list and assigns the purchased animal to the customer.
    *
    * @param customer               the customer making the purchase
    * @param animal                 the animal being purchased
