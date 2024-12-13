@@ -15,6 +15,8 @@ public class AnimalListViewController
   @FXML TableColumn<AnimalViewModel,Number > animalAgeColumn;
   @FXML TableColumn<AnimalViewModel,String > animalExtraInfoColumn;
   @FXML TableColumn<AnimalViewModel,String > animalExtraInfo2Column;
+  @FXML TableColumn<AnimalViewModel,String> animalSpeciesColumn;
+  @FXML TableColumn<AnimalViewModel,Number> animalPriceColumn;
 
   private Region root;
   private ViewHandler viewHandler;
@@ -40,6 +42,8 @@ public class AnimalListViewController
     animalGenderColumn.setCellValueFactory(cellData -> cellData.getValue().getGenderProperty());
     animalExtraInfoColumn.setCellValueFactory(cellData -> cellData.getValue().getExtraInfoProperty());
     animalExtraInfo2Column.setCellValueFactory(cellData -> cellData.getValue().getExtraInfo2Property());
+    animalSpeciesColumn.setCellValueFactory(cellData -> cellData.getValue().getSpeciesProperty());
+    animalPriceColumn.setCellValueFactory(cellData -> cellData.getValue().getPriceProperty());
 
     animalListTable.setItems(viewModel.getList());
   }
