@@ -53,7 +53,11 @@ public interface PetShopModel extends Serializable {
 
   OwnedAnimalsList getAnimalsByName(String name);
 
-  void addAnimal(AnimalForSale animal);
+  void addAnimalForSale(AnimalForSale animal);
+
+  void addNewAnimalForSale(String animalType, double price,
+      char gender, int age, String species, boolean extraInfo,
+      boolean extraInfo2);
 
   AnimalsForSaleList getAnimalsByType(String type);
 
@@ -88,6 +92,6 @@ public interface PetShopModel extends Serializable {
 
   Purchase getPurchaseByCustomer(Customer customer);
 
-  void addAnimal(String text, String text1, String text2, String text3, String value, String value1);
+  void addNewAnimalForSaleWithStrings(String text, String text1, String text2, String text3, String text4, String value, String value1);
 }
 
