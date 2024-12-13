@@ -24,7 +24,8 @@ public class PetShopModelManager implements PetShopModel, Serializable
     this.modelManagerToBinary = new PetShopPersistenceManager();
     this.animalsForSaleListToXML = new AnimalsForSaleListPersistenceManager();
     PetShopModelManager loaded = modelManagerToBinary.loadState();
-    if (loaded != null) {
+    if (loaded != null)
+    {
       this.customerList = loaded.customerList;
       this.animalsForSaleList = loaded.animalsForSaleList;
       this.ownedAnimalsList = loaded.ownedAnimalsList;
@@ -32,7 +33,9 @@ public class PetShopModelManager implements PetShopModel, Serializable
       this.purchaseList = loaded.purchaseList;
       this.purgeGDPR = loaded.purgeGDPR;
       this.animalsForSaleListToXML = loaded.animalsForSaleListToXML;
-    } else {
+    }
+    else
+    {
       this.customerList = new CustomerList();
       this.animalsForSaleList = new AnimalsForSaleList();
       this.ownedAnimalsList = new OwnedAnimalsList();
@@ -44,10 +47,10 @@ public class PetShopModelManager implements PetShopModel, Serializable
     }
   }
 
-  @Override public void saveState() {
+  @Override public void saveState()
+  {
     modelManagerToBinary.saveState(this);
   }
-
 
   @Override public void saveAnimalsForSaleList()
   {
@@ -134,7 +137,8 @@ public class PetShopModelManager implements PetShopModel, Serializable
   }
 
   @Override public void addCustomer(String firstName, String lastName,
-      String email, String phoneNumber) throws IOException {
+      String email, String phoneNumber) throws IOException
+  {
     System.out.println(email);
     String[] split = email.split("@");
     String user = split[0];
@@ -146,7 +150,9 @@ public class PetShopModelManager implements PetShopModel, Serializable
     saveState();
   }
 
-  @Override public void addCustomer(Name name, int phoneNumber, Email email) throws IOException {
+  @Override public void addCustomer(Name name, int phoneNumber, Email email)
+      throws IOException
+  {
     customerList.addCustomer(name, email, phoneNumber);
   }
 
@@ -173,9 +179,19 @@ public class PetShopModelManager implements PetShopModel, Serializable
     return ownedAnimalsList.getAnimalsByName(name);
   }
 
-  @Override public void addAnimal(AnimalForSale animal)
+  @Override public void addAnimalForSale(AnimalForSale animal)
   {
     animalsForSaleList.addAnimal(animal);
+    saveAnimalsForSaleList();
+  }
+
+  @Override public void addNewAnimalForSale(String animalType, double price,
+      char gender, int age, String species, boolean extraInfo,
+      boolean extraInfo2)
+  {
+    animalsForSaleList.addAnimal(
+        new AnimalForSale(animalType, price, gender, age, species, extraInfo,
+            extraInfo2));
     saveAnimalsForSaleList();
   }
 
@@ -260,10 +276,18 @@ public class PetShopModelManager implements PetShopModel, Serializable
     return purchaseList.getPurchaseByCustomer(customer);
   }
 
-  @Override public void addAnimal(String text, String text1, String text2,
-      String text3, String value, String value1)
+  @Override public void addNewAnimalForSaleWithStrings(String text, String text1, String text2,
+      String text3, String text4, String value, String value1)
   {
-
+    String animalType = text;
+    double price = Double.parseDouble(text1);
+    char gender = text2.charAt(0);
+    int age = Integer.parseInt(text3);
+    String species = text4;
+    boolean extraInfo = Boolean.parseBoolean(value);
+    boolean extraInfo2 = Boolean.parseBoolean(value1);
+    animalsForSaleList.addAnimal(new AnimalForSale(animalType, price, gender, age, species, extraInfo, extraInfo2));
+    saveAnimalsForSaleList();
   }
 
 }
