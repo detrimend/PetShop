@@ -44,6 +44,11 @@ public class AnimalsForSaleList implements Serializable
     return result;
   }
 
+  public int getNumberOfAnimalsForSale()
+  {
+    return animals.size();
+  }
+
   /**
    * Returns a list of animals for sale filtered by species.
    *
@@ -75,6 +80,7 @@ public class AnimalsForSaleList implements Serializable
 
   /**
    * Returns a list of all animals for sale.
+   *
    * @return a list of all animals for sale
    */
   public AnimalsForSaleList getAllAnimalsForSale()
@@ -86,17 +92,17 @@ public class AnimalsForSaleList implements Serializable
    * Adds an animal to the list of animals for sale.
    *
    * @param animalForSale the animal to add
-   * //@throws IllegalArgumentException if the animal is already on the list
+   *                      //@throws IllegalArgumentException if the animal is already on the list
    */
   public void addAnimal(AnimalForSale animalForSale)
-  {/*
+  {
     for (AnimalForSale animal : animals)
     {
       if (animal.equals(animalForSale))
       {
         throw new IllegalArgumentException("Animal is already on the list");
       }
-    }*/
+    }
     animals.add(animalForSale);
   }
 
@@ -135,6 +141,16 @@ public class AnimalsForSaleList implements Serializable
    */
   @Override public String toString()
   {
-    return "AnimalsForSaleList{" + "animals=" + animals + '}';
+    StringBuilder sb = new StringBuilder("AnimalsForSaleList{");
+    for (AnimalForSale animal : animals)
+    {
+      sb.append(animal.toString()).append(", ");
+    }
+    if (!animals.isEmpty())
+    {
+      sb.setLength(sb.length() - 2); // Remove the trailing comma and space
+    }
+    sb.append('}');
+    return sb.toString();
   }
 }

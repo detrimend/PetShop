@@ -31,8 +31,11 @@ public class ViewHandler
   {
     this.currentScene= new Scene(new Region());
     this.petShopModel = petShopModel;
-    this.customerListViewModel = new CustomerListViewModel(petShopModel);
+    // To nedenstående statements populater lister før de klikkes på, ikke nødvendigt
+    //this.customerListViewModel = new CustomerListViewModel(petShopModel);
+    //this.animalListViewModel = new AnimalListViewModel(petShopModel);
   }
+
   public void start(Stage primaryStage)
   {
     this.primaryStage= primaryStage;

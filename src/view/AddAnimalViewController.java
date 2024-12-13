@@ -57,6 +57,7 @@ public class AddAnimalViewController
           ,priceField.getText(),genderBox.getValue()
           ,ageField.getText(),speciesField.getText()
           ,extraInfoBox.getValue(),extraInfo2Box.getValue());
+
       viewHandler.openView("AnimalList");
     }
     catch (Exception e)
