@@ -12,24 +12,21 @@
    <children>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
          <children>
-            <TextField layoutX="75.0" layoutY="234.0" promptText="Age" />
+            <TextField fx:id="ageField" layoutX="75.0" layoutY="234.0" promptText="Age" />
             <Text layoutX="25.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add animal for sale">
                <font>
                   <Font size="38.0" />
                </font>
             </Text>
-            <TextField layoutX="75.0" layoutY="154.0" promptText="Species" />
-            <ComboBox layoutX="75.0" layoutY="114.0" prefWidth="150.0" promptText="Type" visibleRowCount="3" />
-            <ComboBox layoutX="75.0" layoutY="194.0" prefWidth="150.0" promptText="Gender" />
-            <ComboBox disable="true" layoutX="75.0" layoutY="274.0" opacity="0.0" prefWidth="150.0" promptText=" Infor1 Fish" />
-            <ComboBox disable="true" layoutX="75.0" layoutY="274.0" opacity="0.0" prefWidth="150.0" promptText=" Infor1 Bird" />
-            <ComboBox disable="true" layoutX="75.0" layoutY="274.0" opacity="0.0" prefWidth="150.0" promptText=" Infor1 mammel" />
-            <ComboBox layoutX="75.0" layoutY="274.0" prefWidth="150.0" promptText="Infor1 Reptile" />
-            <ComboBox layoutX="75.0" layoutY="314.0" prefWidth="150.0" promptText="Infor2 Bird" />
+            <TextField fx:id="speciesField" layoutX="75.0" layoutY="154.0" promptText="Species" />
+            <TextField fx:id="extraInfoField" layoutX="75.0" layoutY="274.0" promptText="Extra Info" />
+            <TextField fx:id="extraInfo2Field" layoutX="75.0" layoutY="314.0" promptText="Extra Info 2" />
+            <ComboBox fx:id="typeBox" layoutX="75.0" layoutY="114.0" prefWidth="150.0" promptText="Type" visibleRowCount="2" />
+            <ComboBox fx:id="genderBox" layoutX="75.0" layoutY="194.0" prefWidth="150.0" promptText="Gender" />
          </children>
       </AnchorPane>
       <TextField alignment="TOP_LEFT" layoutX="257.0" layoutY="200.0" prefHeight="133.0" prefWidth="207.0" promptText="Fx. Missing Arm" />
-      <TextField layoutX="76.0" layoutY="74.0" promptText="Price" />
+      <TextField fx:id="priceField" layoutX="76.0" layoutY="74.0" promptText="Price" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Text fill="#ff4646" layoutX="76.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price have to be in numbers" />
       <Text fill="#e03131" layoutX="525.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Missing info" />

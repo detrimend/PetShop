@@ -1,11 +1,10 @@
 package model;
 
 import parser.ParserException;
-import persistence.FilePersistenceManager;
+import persistence.AnimalsForSaleListPersistenceManager;
 import persistence.PetShopPersistenceManager;
 
 import java.io.*;
-import java.time.LocalDate;
 
 public class PetShopModelManager implements PetShopModel, Serializable
 {
@@ -17,14 +16,14 @@ public class PetShopModelManager implements PetShopModel, Serializable
   private ReservationList reservationList;
   private PurchaseList purchaseList;
   private PurgeGDPR purgeGDPR;
-  private FilePersistenceManager filePersistenceManager;
-
-  private transient PetShopPersistenceManager persistenceManager;
+  private transient AnimalsForSaleListPersistenceManager animalsForSaleListToXML;
+  private transient PetShopPersistenceManager modelManagerToBinary;
 
   public PetShopModelManager()
   {
-    this.persistenceManager = new PetShopPersistenceManager();
-    PetShopModelManager loaded = persistenceManager.loadState();
+    this.modelManagerToBinary = new PetShopPersistenceManager();
+    this.animalsForSaleListToXML = new AnimalsForSaleListPersistenceManager();
+    PetShopModelManager loaded = modelManagerToBinary.loadState();
     if (loaded != null) {
       this.customerList = loaded.customerList;
       this.animalsForSaleList = loaded.animalsForSaleList;
@@ -32,7 +31,7 @@ public class PetShopModelManager implements PetShopModel, Serializable
       this.reservationList = loaded.reservationList;
       this.purchaseList = loaded.purchaseList;
       this.purgeGDPR = loaded.purgeGDPR;
-      this.filePersistenceManager = loaded.filePersistenceManager;
+      this.animalsForSaleListToXML = loaded.animalsForSaleListToXML;
     } else {
       this.customerList = new CustomerList();
       this.animalsForSaleList = new AnimalsForSaleList();
@@ -41,12 +40,12 @@ public class PetShopModelManager implements PetShopModel, Serializable
       this.purchaseList = new PurchaseList();
       this.purgeGDPR = new PurgeGDPR(this.reservationList, this.purchaseList,
           this.customerList);
-      this.filePersistenceManager = new FilePersistenceManager();
+      this.animalsForSaleListToXML = new AnimalsForSaleListPersistenceManager();
     }
   }
 
   @Override public void saveState() {
-    persistenceManager.saveState(this);
+    modelManagerToBinary.saveState(this);
   }
 
 
@@ -54,7 +53,7 @@ public class PetShopModelManager implements PetShopModel, Serializable
   {
     try
     {
-      filePersistenceManager.saveAnimalsForSaleList(animalsForSaleList,
+      animalsForSaleListToXML.saveAnimalsForSaleList(animalsForSaleList,
           "AnimalsForSaleList.xml");
     }
     catch (IOException | ParserException e)
@@ -62,62 +61,6 @@ public class PetShopModelManager implements PetShopModel, Serializable
       e.printStackTrace();
     }
   }
-
-  /*
-  @Override
-  public void saveCustomerList() throws IOException {
-
-    filePersistenceManager.saveCustomerList(customerList, "CustomerList.bin");
-  }
-
-  @Override
-  public void loadCustomerList() {
-    filePersistenceManager.loadCustomerList("CustomerList.bin");
-  }
-
-  public void saveCustomerList(CustomerList customerList, String filePath) {
-    try (FileOutputStream fileOutputStream = new FileOutputStream("Customerlist.bin");
-         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
-      objectOutputStream.writeObject(customerList);
-      System.out.println("Customer list saved in binary format to " + filePath);
-    }
-    catch (IOException e) {
-      e.printStackTrace();
-      System.err.println("Failed to save the customer list.");
-    }
-  }
-
-  public static void loadCustomerList(String filePath) {
-    try (FileInputStream fileInputStream = new FileInputStream("Customerlist.bin");
-         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
-
-
-      CustomerList customerList = (CustomerList) objectInputStream.readObject();
-
-
-      System.out.println("Loaded customer list:");
-      System.out.println(customerList);
-
-    } catch (IOException | ClassNotFoundException e) {
-      System.err.println("Failed to load customer list: " + e.getMessage());
-      e.printStackTrace();
-    }
-  }
-
-
-
-  public void saveCustomerList()
-  {
-    try
-    {
-      filePersistenceManager.saveCustomerList(customerList,
-          "AnimalsForSaleList.xml");
-    }
-    catch (IOException | ParserException e)
-    {
-      e.printStackTrace();
-    }
-  }*/
 
   @Override public void removeOldCustomerData()
   {
@@ -200,15 +143,11 @@ public class PetShopModelManager implements PetShopModel, Serializable
     String host = split[1];
     customerList.addCustomer(firstName, lastName, new Email(user, domain, host),
         Integer.parseInt(phoneNumber));
-    //loadCustomerList("Customerlist.bin");
-    //saveCustomerList();
     saveState();
   }
 
   @Override public void addCustomer(Name name, int phoneNumber, Email email) throws IOException {
     customerList.addCustomer(name, email, phoneNumber);
-    //loadCustomerList("Customerlist.bin");
-    //saveCustomerList();
   }
 
   @Override public void removeCustomer(Customer customer)
@@ -238,7 +177,6 @@ public class PetShopModelManager implements PetShopModel, Serializable
   {
     animalsForSaleList.addAnimal(animal);
     saveAnimalsForSaleList();
-    //loadCustomerList("Customerlist.bin");
   }
 
   @Override public AnimalsForSaleList getAnimalsByType(String type)
@@ -304,6 +242,7 @@ public class PetShopModelManager implements PetShopModel, Serializable
   {
     purchaseList.addNewPurchase(customer, animal, nameForPurchasedAnimal);
     animalsForSaleList.removeAnimal(animal);
+    saveAnimalsForSaleList();
   }
 
   @Override public Purchase getPurchase(int index)
@@ -319,6 +258,12 @@ public class PetShopModelManager implements PetShopModel, Serializable
   @Override public Purchase getPurchaseByCustomer(Customer customer)
   {
     return purchaseList.getPurchaseByCustomer(customer);
+  }
+
+  @Override public void addAnimal(String text, String text1, String text2,
+      String text3, String value, String value1)
+  {
+
   }
 
 }

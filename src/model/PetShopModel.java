@@ -11,13 +11,6 @@ public interface PetShopModel extends Serializable {
 
   void saveState();
 
-  /*
-  void saveCustomerList() throws IOException;
-
-  void loadCustomerList();
-
-   */
-
   // Administrer reservation til dyrepension.
 
   boolean addReservation(DateInterval dateInterval, Customer customer,
@@ -95,5 +88,6 @@ public interface PetShopModel extends Serializable {
 
   Purchase getPurchaseByCustomer(Customer customer);
 
+  void addAnimal(String text, String text1, String text2, String text3, String value, String value1);
 }
 
