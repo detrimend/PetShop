@@ -32,7 +32,7 @@
       <Text fill="#e03131" layoutX="525.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Missing info" />
       <Text layoutX="257.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Comment" />
       <Button layoutX="14.0" layoutY="367.0" mnemonicParsing="false" onAction="#BackButton" prefHeight="33.0" prefWidth="87.0" text="Back" />
-      <Button layoutX="514.0" layoutY="367.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="87.0" text="Add">
+      <Button onAction="#addButton" layoutX="514.0" layoutY="367.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="87.0" text="Add">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
