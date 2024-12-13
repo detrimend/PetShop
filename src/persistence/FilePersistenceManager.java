@@ -7,7 +7,7 @@ import java.io.*;
 import parser.ParserException;
 import parser.XmlJsonParser;
 
-public class FilePersistenceManager {
+public class FilePersistenceManager implements Serializable {
 
   // Klasse skal måske renames til noget som "XMLPersistenceManager"
   private XmlJsonParser parser;

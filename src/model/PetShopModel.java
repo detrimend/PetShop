@@ -9,9 +9,14 @@ public interface PetShopModel extends Serializable {
 
   void saveAnimalsForSaleList();
 
+  void saveState();
+
+  /*
   void saveCustomerList() throws IOException;
 
   void loadCustomerList();
+
+   */
 
   // Administrer reservation til dyrepension.
 
@@ -60,6 +65,10 @@ public interface PetShopModel extends Serializable {
   AnimalsForSaleList getAnimalsByType(String type);
 
   AnimalsForSaleList getAnimalsBySpecies(String species);
+
+  AnimalsForSaleList getAllAnimalsForSale();
+
+  AnimalForSale getAnimalForSaleByIndex(int index);
 
   OwnedAnimal getAnimalByIndex(int index);
 

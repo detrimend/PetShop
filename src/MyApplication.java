@@ -10,7 +10,6 @@ public class MyApplication extends Application
 {
   public void start(Stage primaryStage)
   {
-
     PetShopModel petShopModel = new PetShopModelManager();
     ViewHandler view = new ViewHandler(petShopModel);
     view.start(primaryStage);
