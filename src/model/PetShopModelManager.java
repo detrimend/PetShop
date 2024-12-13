@@ -3,10 +3,7 @@ package model;
 import parser.ParserException;
 import persistence.FilePersistenceManager;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.time.LocalDate;
 
 public class PetShopModelManager implements PetShopModel, Serializable
@@ -46,9 +43,16 @@ public class PetShopModelManager implements PetShopModel, Serializable
     }
   }
   @Override
-  public void saveCustomerList() {
-    saveCustomerList(this.customerList, "CustomerList.bin");
+  public void saveCustomerList() throws IOException {
+
+    filePersistenceManager.saveCustomerList(customerList, "CustomerList.bin");
   }
+
+  @Override
+  public void loadCustomerList() {
+    filePersistenceManager.loadCustomerList("CustomerList.bin");
+  }
+
   public void saveCustomerList(CustomerList customerList, String filePath) {
     try (FileOutputStream fileOutputStream = new FileOutputStream("Customerlist.bin");
          ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
@@ -61,7 +65,22 @@ public class PetShopModelManager implements PetShopModel, Serializable
     }
   }
 
+  public static void loadCustomerList(String filePath) {
+    try (FileInputStream fileInputStream = new FileInputStream("Customerlist.bin");
+         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
 
+
+      CustomerList customerList = (CustomerList) objectInputStream.readObject();
+
+
+      System.out.println("Loaded customer list:");
+      System.out.println(customerList);
+
+    } catch (IOException | ClassNotFoundException e) {
+      System.err.println("Failed to load customer list: " + e.getMessage());
+      e.printStackTrace();
+    }
+  }
 
 
 
@@ -150,9 +169,7 @@ public class PetShopModelManager implements PetShopModel, Serializable
   }
 
   @Override public void addCustomer(String firstName, String lastName,
-      String email, String phoneNumber)
-
-  {
+      String email, String phoneNumber) throws IOException {
     System.out.println(email);
     String[] split = email.split("@");
     String user = split[0];
@@ -161,13 +178,15 @@ public class PetShopModelManager implements PetShopModel, Serializable
     String host = split[1];
     customerList.addCustomer(firstName, lastName, new Email(user, domain, host),
         Integer.parseInt(phoneNumber));
+    loadCustomerList("Customerlist.bin");
     saveCustomerList();
   }
 
-  @Override public void addCustomer(Name name, int phoneNumber, Email email)
-  {
+  @Override public void addCustomer(Name name, int phoneNumber, Email email) throws IOException {
     customerList.addCustomer(name, email, phoneNumber);
+    loadCustomerList("Customerlist.bin");
     saveCustomerList();
+
   }
 
   @Override public void removeCustomer(Customer customer)
@@ -254,6 +273,7 @@ public class PetShopModelManager implements PetShopModel, Serializable
   {
     animalsForSaleList.addAnimal(animal);
     saveAnimalsForSaleList();
+    loadCustomerList("Customerlist.bin");
   }
 
   @Override public AnimalsForSaleList getAnimalsByType(String type)

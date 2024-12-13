@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -8,7 +9,9 @@ public interface PetShopModel extends Serializable {
 
   void saveAnimalsForSaleList();
 
-  void saveCustomerList();
+  void saveCustomerList() throws IOException;
+
+  void loadCustomerList();
 
   // Administrer reservation til dyrepension.
 
@@ -38,9 +41,9 @@ public interface PetShopModel extends Serializable {
   // Salg af dyr
 
   void addCustomer(String firstName, String lastName, String phoneNumber,
-      String email);
+      String email) throws IOException;
 
-  void addCustomer(Name name, int phoneNumber, Email email);
+  void addCustomer(Name name, int phoneNumber, Email email) throws IOException;
 
   void removeCustomer(Customer customer);
 
