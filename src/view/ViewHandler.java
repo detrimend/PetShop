@@ -14,6 +14,8 @@ public class ViewHandler
   private PetShopModel petShopModel;
   private Scene currentScene;
   private Stage primaryStage;
+  private AnimalViewModel animalViewModel;
+  private AnimalListViewModel animalListViewModel;
   private CustomerListViewModel customerListViewModel;
   private AddAnimalViewController addAnimalViewController;
   private AnimalListViewController animalListViewController;

@@ -52,7 +52,7 @@ public class AddAnimalViewController
     {
 
       petShopModel.addAnimal(priceField.getText(),speciesField.getText(),extraInfoField.getText(),extraInfo2Field.getText(),typeBox.getValue(),typeBox.getValue());
-      viewHandler.openView("animalList");
+      viewHandler.openView("AnimalList");
     }
     catch (Exception e)
     {

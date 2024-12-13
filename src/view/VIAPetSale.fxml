@@ -43,11 +43,11 @@
             </Text>
             <Text fill="#dd3737" layoutX="523.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Missing info" />
              <Button layoutX="14.0" layoutY="367.0" mnemonicParsing="false" onAction="#BackButton" prefHeight="33.0" prefWidth="87.0" text="Back" />
-            <Button layoutX="126.0" layoutY="367.0" mnemonicParsing="false" onAction="#RefreshButton" prefHeight="33.0" prefWidth="87.0" text="Refresh" />
+            <Button onAction="#refreshButton" layoutX="126.0" layoutY="367.0" mnemonicParsing="false"  prefHeight="33.0" prefWidth="87.0" text="Refresh" />
             <SplitMenuButton layoutX="452.0" layoutY="26.0" mnemonicParsing="false" text="Menu">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#addCustomerButton" text="Add Customer" />
-                <MenuItem mnemonicParsing="false" onAction="#LoadVIACareFromSale" text="VIACare" />
+                <MenuItem mnemonicParsing="false"  text="VIACare" />
               </items>
             </SplitMenuButton>
          </children>

@@ -43,6 +43,16 @@ public class VIAPetSaleViewController
         }
     }
 
+  @FXML private void refreshButton()
+  {
+    try
+    {
+      viewHandler.openView("Sale");
+    }
+    catch (Exception e)
+    {
+    }
+  }
 
   @FXML
    private void BackButton() {
