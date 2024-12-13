@@ -32,7 +32,6 @@ public class PetShopModelManager implements PetShopModel, Serializable
       this.reservationList = loaded.reservationList;
       this.purchaseList = loaded.purchaseList;
       this.purgeGDPR = loaded.purgeGDPR;
-      this.animalsForSaleListToXML = loaded.animalsForSaleListToXML;
     }
     else
     {
@@ -43,7 +42,6 @@ public class PetShopModelManager implements PetShopModel, Serializable
       this.purchaseList = new PurchaseList();
       this.purgeGDPR = new PurgeGDPR(this.reservationList, this.purchaseList,
           this.customerList);
-      this.animalsForSaleListToXML = new AnimalsForSaleListPersistenceManager();
     }
   }
 
