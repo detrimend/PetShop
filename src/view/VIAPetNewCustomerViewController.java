@@ -5,6 +5,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 import model.*;
 import model.PetShopModel;
+import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 public class VIAPetNewCustomerViewController
 {
@@ -12,6 +15,7 @@ public class VIAPetNewCustomerViewController
   @FXML TextField lastNameField;
   @FXML TextField emailField;
   @FXML TextField phoneNumberField;
+
   private Region root;
   private ViewHandler viewHandler;
   private PetShopModel petShopModel;

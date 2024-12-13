@@ -10,11 +10,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="440" maxWidth="620" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="620.0" style="-fx-border-color: lightgrey;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VIAPetForsideViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="620.0" style="-fx-border-color: lightgrey;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VIAPetForsideViewController">
    <children>
       <HBox prefHeight="400.0" prefWidth="145.0">
          <children>
-            <VBox prefHeight="400.0" prefWidth="145.0" style="-fx-border-color: lightgrey;">
+            <VBox prefHeight="448.0" prefWidth="145.0" style="-fx-border-color: lightgrey;">
                <children>
                   <ImageView>
                      <image>
@@ -36,11 +36,11 @@
             </VBox>
          </children>
       </HBox>
-      <Button onAction="#SaleButton" layoutX="197.0" layoutY="51.0" mnemonicParsing="false"  prefHeight="81.0" prefWidth="166.0" text="Sale" />
-      <Button onAction="#CareButton" layoutX="394.0" layoutY="51.0" mnemonicParsing="false"  prefHeight="81.0" prefWidth="166.0" text="ViaCare" />
-      <Button onAction="#NewCustomerButton" layoutX="394.0" layoutY="170.0" mnemonicParsing="false"  prefHeight="81.0" prefWidth="166.0" text="New Costumer" />
-      <Button onAction="#CustomerListButton" layoutX="197.0" layoutY="170.0" mnemonicParsing="false"  prefHeight="81.0" prefWidth="166.0" text="Customer list" />
-      <Button onAction="#AnimalListButton" layoutX="197.0" layoutY="291.0" mnemonicParsing="false"  prefHeight="81.0" prefWidth="166.0" text="Animal list" />
-      <Button onAction="#AnimalForSaleButton" layoutX="394.0" layoutY="291.0" mnemonicParsing="false"  prefHeight="81.0" prefWidth="166.0" text="Add Animal for sale" />
+      <Button layoutX="197.0" layoutY="51.0" mnemonicParsing="false" onAction="#SaleButton" prefHeight="81.0" prefWidth="166.0" text="Sale" />
+      <Button layoutX="394.0" layoutY="51.0" mnemonicParsing="false" onAction="#CareButton" prefHeight="81.0" prefWidth="166.0" text="ViaCare" />
+      <Button layoutX="394.0" layoutY="170.0" mnemonicParsing="false" onAction="#NewCustomerButton" prefHeight="81.0" prefWidth="166.0" text="New Costumer" />
+      <Button layoutX="197.0" layoutY="170.0" mnemonicParsing="false" onAction="#CustomerListButton" prefHeight="81.0" prefWidth="166.0" text="Customer list" />
+      <Button layoutX="197.0" layoutY="291.0" mnemonicParsing="false" onAction="#AnimalListButton" prefHeight="81.0" prefWidth="166.0" text="Animal list" />
+      <Button layoutX="394.0" layoutY="291.0" mnemonicParsing="false" onAction="#AnimalForSaleButton" prefHeight="81.0" prefWidth="166.0" text="Add Animal for sale" />
    </children>
 </AnchorPane>

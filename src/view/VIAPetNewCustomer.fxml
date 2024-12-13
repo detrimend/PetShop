@@ -9,10 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VIAPetNewCustomerViewController">
    <children>
-      <Button layoutX="496.0" layoutY="356.0" mnemonicParsing="false" onAction="#CreateButton" text="Create">
-         <font>
-            <Font size="26.0" />
-         </font>
+      <Button layoutX="518.0" layoutY="367.0" mnemonicParsing="false" onAction="#CreateButton" prefHeight="33.0" prefWidth="87.0" text="Create">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
