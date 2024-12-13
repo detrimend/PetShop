@@ -9,6 +9,7 @@ import model.PetShopModel;
 public class AnimalListViewController
 {
   @FXML TableView<AnimalViewModel> animalListTable;
+  @FXML TableColumn<AnimalViewModel, String> animalNameColumn;
   @FXML TableColumn<AnimalViewModel, String> animalTypeColumn;
   @FXML TableColumn<AnimalViewModel,String > animalGenderColumn;
   @FXML TableColumn<AnimalViewModel,Number > animalAgeColumn;
@@ -33,6 +34,7 @@ public class AnimalListViewController
     this.root = root;
     this.viewModel = new AnimalListViewModel(petShopModel);
 
+    animalNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
     animalTypeColumn.setCellValueFactory(cellData -> cellData.getValue().getTypeProperty());
     animalAgeColumn.setCellValueFactory(cellData -> cellData.getValue().getAgeProperty());
     animalGenderColumn.setCellValueFactory(cellData -> cellData.getValue().getGenderProperty());
