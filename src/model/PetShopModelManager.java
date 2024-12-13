@@ -2,12 +2,15 @@ package model;
 
 import parser.ParserException;
 import persistence.FilePersistenceManager;
+import persistence.PetShopPersistenceManager;
 
 import java.io.*;
 import java.time.LocalDate;
 
 public class PetShopModelManager implements PetShopModel, Serializable
 {
+  private static final long serialVersionUID = 1L;
+
   private CustomerList customerList;
   private AnimalsForSaleList animalsForSaleList;
   private OwnedAnimalsList ownedAnimalsList;
@@ -16,19 +19,36 @@ public class PetShopModelManager implements PetShopModel, Serializable
   private PurgeGDPR purgeGDPR;
   private FilePersistenceManager filePersistenceManager;
 
+  private transient PetShopPersistenceManager persistenceManager;
+
   public PetShopModelManager()
   {
-    this.customerList = new CustomerList();
-    this.animalsForSaleList = new AnimalsForSaleList();
-    this.ownedAnimalsList = new OwnedAnimalsList();
-    this.reservationList = new ReservationList();
-    this.purchaseList = new PurchaseList();
-    this.purgeGDPR = new PurgeGDPR(this.reservationList, this.purchaseList,
-        this.customerList);
-    this.filePersistenceManager = new FilePersistenceManager();
-    animalsForSaleList.addAnimal(
-        new AnimalForSale("mammal", 25.5, 'm', 2, "bunny", false, false));
+    this.persistenceManager = new PetShopPersistenceManager();
+    PetShopModelManager loaded = persistenceManager.loadState();
+    if (loaded != null) {
+      this.customerList = loaded.customerList;
+      this.animalsForSaleList = loaded.animalsForSaleList;
+      this.ownedAnimalsList = loaded.ownedAnimalsList;
+      this.reservationList = loaded.reservationList;
+      this.purchaseList = loaded.purchaseList;
+      this.purgeGDPR = loaded.purgeGDPR;
+      this.filePersistenceManager = loaded.filePersistenceManager;
+    } else {
+      this.customerList = new CustomerList();
+      this.animalsForSaleList = new AnimalsForSaleList();
+      this.ownedAnimalsList = new OwnedAnimalsList();
+      this.reservationList = new ReservationList();
+      this.purchaseList = new PurchaseList();
+      this.purgeGDPR = new PurgeGDPR(this.reservationList, this.purchaseList,
+          this.customerList);
+      this.filePersistenceManager = new FilePersistenceManager();
+    }
   }
+
+  @Override public void saveState() {
+    persistenceManager.saveState(this);
+  }
+
 
   @Override public void saveAnimalsForSaleList()
   {
@@ -42,6 +62,8 @@ public class PetShopModelManager implements PetShopModel, Serializable
       e.printStackTrace();
     }
   }
+
+  /*
   @Override
   public void saveCustomerList() throws IOException {
 
@@ -84,7 +106,7 @@ public class PetShopModelManager implements PetShopModel, Serializable
 
 
 
-  /*public void saveCustomerList()
+  public void saveCustomerList()
   {
     try
     {
@@ -178,44 +200,21 @@ public class PetShopModelManager implements PetShopModel, Serializable
     String host = split[1];
     customerList.addCustomer(firstName, lastName, new Email(user, domain, host),
         Integer.parseInt(phoneNumber));
-    loadCustomerList("Customerlist.bin");
-    saveCustomerList();
+    //loadCustomerList("Customerlist.bin");
+    //saveCustomerList();
+    saveState();
   }
 
   @Override public void addCustomer(Name name, int phoneNumber, Email email) throws IOException {
     customerList.addCustomer(name, email, phoneNumber);
-    loadCustomerList("Customerlist.bin");
-    saveCustomerList();
-
+    //loadCustomerList("Customerlist.bin");
+    //saveCustomerList();
   }
 
   @Override public void removeCustomer(Customer customer)
   {
     customerList.removeCustomer(customer);
   }
-
-  /*
-  Ret sikker på at de fire nedenstående metoder er overflødige
-  @Override public void setName()
-  {
-    setName();
-  }
-
-  @Override public void setEmail()
-  {
-    setEmail();
-  }
-
-  @Override public void setPhoneNumber()
-  {
-    setPhoneNumber();
-  }
-
-  @Override public LocalDate getDate()
-  {
-    return getDate();
-  }
-   */
 
   @Override public AnimalForSale removeAnimal(AnimalForSale animal)
   {
@@ -224,44 +223,10 @@ public class PetShopModelManager implements PetShopModel, Serializable
     return animal;
   }
 
-  /*
-  @Override public void setSalesStatus(boolean isForSale)
-  {
-    setSalesStatus(isForSale);
-  }
-
-  @Override public double getPrice()
-  {
-    return getPrice();
-  }
-
-  @Override public Email getEmail()
-  {
-    return getEmail();
-  }
-
-  @Override public Name getName()
-  {
-    return getName();
-  }
-
-  @Override public Person getPhoneNumber()
-  {
-    return getPhoneNumber();
-  }
-  */
-  public OwnedAnimalsList getAnimalsByCustomer(Customer customer)
+  @Override public OwnedAnimalsList getAnimalsByCustomer(Customer customer)
   {
     return ownedAnimalsList.getAnimalsByCustomer(customer);
   }
-  /*
-
-  @Override public double setPrice()
-  {
-    return setPrice();
-  }
-
-   */
 
   // Name her er navnet på dyret
   @Override public OwnedAnimalsList getAnimalsByName(String name)
@@ -273,7 +238,7 @@ public class PetShopModelManager implements PetShopModel, Serializable
   {
     animalsForSaleList.addAnimal(animal);
     saveAnimalsForSaleList();
-    loadCustomerList("Customerlist.bin");
+    //loadCustomerList("Customerlist.bin");
   }
 
   @Override public AnimalsForSaleList getAnimalsByType(String type)
@@ -286,54 +251,36 @@ public class PetShopModelManager implements PetShopModel, Serializable
     return animalsForSaleList.getAnimalsBySpecies(species);
   }
 
-  public OwnedAnimal getAnimalByIndex(int index)
+  @Override public AnimalForSale getAnimalForSaleByIndex(int index)
+  {
+    return animalsForSaleList.getAnimalForSaleByIndex(index);
+  }
+
+  @Override public AnimalsForSaleList getAllAnimalsForSale()
+  {
+    return animalsForSaleList;
+  }
+
+  @Override public OwnedAnimal getAnimalByIndex(int index)
   {
     return ownedAnimalsList.getAnimalByIndex(index);
   }
 
-  public void addAnimal(OwnedAnimal ownedAnimal)
+  @Override public void addAnimal(OwnedAnimal ownedAnimal)
   {
     ownedAnimalsList.addAnimal(ownedAnimal);
   }
 
-  public OwnedAnimal removeAnimal(OwnedAnimal ownedAnimal)
+  @Override public OwnedAnimal removeAnimal(OwnedAnimal ownedAnimal)
   {
     ownedAnimalsList.removeAnimal(ownedAnimal);
     return ownedAnimal;
   }
 
-  public int getAmountOfAnimals()
+  @Override public int getAmountOfAnimals()
   {
     return ownedAnimalsList.getAmountOfAnimals();
   }
-
-  /*
-  @Override public void putInCare()
-  {
-    putInCare();
-  }
-
-  @Override public AnimalInfo getAnimalInfo()
-  {
-    return getAnimalInfo();
-  }
-
-  @Override public void addComment(String comment)
-  {
-    addComment(comment);
-  }
-
-  @Override public void removeFromCare()
-  {
-    removeFromCare();
-  }
-
-  @Override public String getType()
-  {
-    return getType();
-  }
-
-   */
 
   @Override public Customer getCustomerByIndex(int index)
   {
