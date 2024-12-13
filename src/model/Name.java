@@ -1,5 +1,7 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Class representing a name with first name, last name, and full name.
  *
@@ -9,7 +11,7 @@ package model;
  * @author Victor Sander Marx Hoelgaard
  * @version 1.0 - December 2024
  */
-public class Name
+public class Name implements Serializable
 {
   private String firstName;
   private String lastName;

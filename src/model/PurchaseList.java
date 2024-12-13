@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -13,7 +14,7 @@ import java.util.Objects;
  * @author Victor Sander Marx Hoelgaard
  * @version 1.0 - December 2024
  */
-public class PurchaseList
+public class PurchaseList implements Serializable
 {
   private ArrayList<Purchase> purchases;
 
@@ -26,11 +27,11 @@ public class PurchaseList
   }
 
   /**
-   * Adds a purchase to the list.
+   * Adds an existing purchase to the list.
    *
    * @param purchase the purchase to be added
    */
-  public void addPurchase(Purchase purchase)
+  public void addExistingPurchase(Purchase purchase)
   {
     purchases.add(purchase);
   }
@@ -38,16 +39,14 @@ public class PurchaseList
   /**
    * Creates a new purchase and adds it to the list.
    *
-   * @param customer the customer making the purchase
-   * @param date the date of the purchase
-   * @param animal the animal being purchased
-   * @param animalsForSaleList the list of animals for sale
+   * @param customer               the customer making the purchase
+   * @param animal                 the animal being purchased
+   * @param nameForPurchasedAnimal the name to assign to the purchased animal
    */
-  public void addNewPurchase(Customer customer, LocalDate date,
-      AnimalForSale animal, AnimalsForSaleList animalsForSaleList)
+  public void addNewPurchase(Customer customer, AnimalForSale animal,
+      String nameForPurchasedAnimal)
   {
-    Purchase purchase = new Purchase(customer, date, animal,
-        animalsForSaleList);
+    Purchase purchase = new Purchase(customer, animal, nameForPurchasedAnimal);
     purchases.add(purchase);
   }
 

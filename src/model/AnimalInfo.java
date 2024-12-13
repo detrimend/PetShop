@@ -1,5 +1,7 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Abstract class representing general information about an animal.
  *
@@ -9,7 +11,7 @@ package model;
  * @author Victor Sander Marx Hoelgaard
  * @version 1.0 - December 2024
  */
-public abstract class AnimalInfo
+public abstract class AnimalInfo implements Serializable
 {
   private char gender;
   private int age;

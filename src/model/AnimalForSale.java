@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Objects;
  * @author Victor Sander Marx Hoelgaard
  * @version 1.0 - December 2024
  */
-public class AnimalForSale
+public class AnimalForSale implements Serializable
 {
   private double price;
   private boolean isForSale;
@@ -22,7 +23,6 @@ public class AnimalForSale
    *
    * @param animalType the type of the animal (e.g., mammal, fish, reptile, bird)
    * @param price the price of the animal
-   * @param isForSale the sale status of the animal
    * @param gender the gender of the animal
    * @param age the age of the animal
    * @param species the species of the animal
@@ -30,7 +30,7 @@ public class AnimalForSale
    * @param extraInfo2 additional information specific to the animal type (used for birds)
    * @throws IllegalArgumentException if the price is negative or the animal type is unknown
    */
-  public AnimalForSale(String animalType, double price, boolean isForSale,
+  public AnimalForSale(String animalType, double price,
       char gender, int age, String species, boolean extraInfo,
       boolean extraInfo2)
   {

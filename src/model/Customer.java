@@ -1,5 +1,7 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Class representing a customer with a phone number and a list of owned animals.
  *
@@ -9,7 +11,7 @@ package model;
  * @author Victor Sander Marx Hoelgaard
  * @version 1.0 - December 2024
  */
-public class Customer extends Person
+public class Customer extends Person implements Serializable
 {
   private int phoneNumber;
   private OwnedAnimalsList animals;

@@ -1,5 +1,7 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Class representing a reptile with specific attributes such as gender, age, species, and whether it is venomous.
  *
@@ -9,7 +11,7 @@ package model;
  * @author Victor Sander Marx Hoelgaard
  * @version 1.0 - December 2024
  */
-public class Reptile extends AnimalInfo
+public class Reptile extends AnimalInfo implements Serializable
 {
   private boolean venomous;
 

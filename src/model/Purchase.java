@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -12,59 +13,55 @@ import java.util.Objects;
  * @author Victor Sander Marx Hoelgaard
  * @version 1.0 - December 2024
  */
-public class Purchase
+public class Purchase implements Serializable
 {
   private LocalDate date;
   private Customer customer;
   private AnimalForSale animal;
-  private AnimalsForSaleList animalsForSaleList;
 
   /**
    * Constructs a Purchase with the specified attributes.
    *
-   * @param customer the customer making the purchase
-   * @param date the date of the purchase
-   * @param animal the animal being purchased
-   * @param animalsForSaleList the list of animals for sale
+   * @param customer               the customer making the purchase
+   * @param animal                 the animal being purchased
+   * @param nameForPurchasedAnimal the name to assign to the purchased animal
    * @throws IllegalArgumentException if any of the parameters are null
    */
-  public Purchase(Customer customer, LocalDate date, AnimalForSale animal,
-      AnimalsForSaleList animalsForSaleList)
+  public Purchase(Customer customer, AnimalForSale animal,
+      String nameForPurchasedAnimal)
   {
     if (customer == null)
     {
       throw new IllegalArgumentException("Customer cannot be null");
     }
-    if (date == null)
-    {
-      throw new IllegalArgumentException("Date cannot be null");
-    }
     if (animal == null)
     {
       throw new IllegalArgumentException("Animal cannot be null");
     }
-    this.date = date;
+    if (nameForPurchasedAnimal == null)
+    {
+      throw new IllegalArgumentException("Name cannot be null");
+    }
+    this.date = LocalDate.now(); //Måske ikke korrekt?
     this.customer = customer;
     this.animal = animal;
-    this.animalsForSaleList = animalsForSaleList;
+    assignAnimalToCustomer(animal, customer, nameForPurchasedAnimal);
   }
 
   /**
-   * Assigns an animal to a customer and removes it from the animals for sale list.
+   * Assigns an animal for sale to a customer by copying it's information to an owned animal.
    *
-   * @param animal the animal to be assigned
-   * @param customer the customer to whom the animal is assigned
-   * @param name the name of the animal
-   * @return the owned animal
+   * @param animal                 the animal to be assigned
+   * @param customer               the customer to whom the animal is assigned
+   * @param nameForPurchasedAnimal the name to assign to the purchased animal
    */
-  public OwnedAnimal assignAnimalToCustomer(AnimalForSale animal,
-      Customer customer, String name)
+  public void assignAnimalToCustomer(AnimalForSale animal, Customer customer,
+      String nameForPurchasedAnimal)
   {
     AnimalInfo type = animal.getAnimalInfo();
-    OwnedAnimal ownedAnimal = new OwnedAnimal(name, customer, type);
+    OwnedAnimal ownedAnimal = new OwnedAnimal(nameForPurchasedAnimal, customer,
+        type);
     customer.addOwnedAnimal(ownedAnimal);
-    animalsForSaleList.removeAnimal(animal);
-    return ownedAnimal;
   }
 
   /**

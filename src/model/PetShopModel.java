@@ -1,43 +1,54 @@
 package model;
 
+import java.io.IOException;
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public interface PetShopModel
-{
-  public void removeOldCustomerData();
+public interface PetShopModel extends Serializable {
+  void removeOldCustomerData();
 
+  void saveAnimalsForSaleList();
+
+  void saveCustomerList() throws IOException;
+
+  void loadCustomerList();
 
   // Administrer reservation til dyrepension.
 
-  public boolean addReservation(DateInterval dateInterval, Customer customer);
+  boolean addReservation(DateInterval dateInterval, Customer customer,
+      OwnedAnimalsList animalsToPutInCare);
 
   void registerAnimalHandover(Reservation reservation);
 
-  public void removeReservation(int index);
+  void removeReservation(int index);
 
-  public Customer getCustomer(int phoneNumber); //By phonenumber
+  Customer getCustomer(int phoneNumber); //By phonenumber
 
-  public OwnedAnimalsList getAnimals();
+  int getNumberOfReservations();
 
-  public int getNumberOfReservations();
+  Reservation getReservationByPhoneNumber(int phoneNumber);
 
-  public Reservation getReservationByPhoneNumber(int phoneNumber);
+  Reservation getReservationByName(String name);
 
-  public Reservation getReservationByName(String name);
+  Reservation cancelReservation(Reservation reservation);
 
-  public Reservation CancelReservation(Reservation reservation);
+  Reservation endReservation(Reservation reservation);
 
-  public Reservation endReservation(Reservation reservation);
+  Customer getCustomerByAnimal(OwnedAnimal animal);
 
-  public Customer getCustomerByAnimal(Customer customer);
+  void addExistingReservation(Reservation reservation);
 
   // Salg af dyr
 
-  public void addCustomer(String firstName,String lastName, String phoneNumber, String email);
+  void addCustomer(String firstName, String lastName, String phoneNumber,
+      String email) throws IOException;
 
-  void addCustomer(Name name, int phoneNumber, Email email);
-  public void removeCustomer(Customer customer);
+  void addCustomer(Name name, int phoneNumber, Email email) throws IOException;
 
+  void removeCustomer(Customer customer);
+
+  /*
+  Se kommentar til tilsvarende metoder i ModelManager
   public void setName();
 
   void setEmail();
@@ -46,11 +57,11 @@ public interface PetShopModel
 
   LocalDate getDate();
 
-  OwnedAnimal assignAnimalToCustomer(AnimalForSale animal, Customer customer,
-      String name);
+   */
 
-  AnimalForSale removeAnimal();
+  AnimalForSale removeAnimal(AnimalForSale animal);
 
+  /*
   void setSalesStatus(boolean isForSale);
 
   double getPrice();
@@ -62,17 +73,31 @@ public interface PetShopModel
   Name getName();
 
   Person getPhoneNumber();
-
+  */
+  OwnedAnimalsList getAnimalsByCustomer(Customer customer);
+  /*
   //Administrer dyr
 
   double setPrice();
+   */
+
+  OwnedAnimalsList getAnimalsByName(String name);
 
   void addAnimal(AnimalForSale animal);
 
-  AnimalsForSaleList getAnimalsByType();
+  AnimalsForSaleList getAnimalsByType(String type);
 
-  AnimalsForSaleList getAnimalsBySpecies();
+  AnimalsForSaleList getAnimalsBySpecies(String species);
 
+  OwnedAnimal getAnimalByIndex(int index);
+
+  void addAnimal(OwnedAnimal ownedAnimal);
+
+  OwnedAnimal removeAnimal(OwnedAnimal ownedAnimal);
+
+  int getAmountOfAnimals();
+
+  /*
   void putInCare();
 
   AnimalInfo getAnimalInfo();
@@ -83,10 +108,24 @@ public interface PetShopModel
 
   String getType();
 
-Customer getCustomerByIndex(int index);
+   */
 
-int getNumberOfCustomers();
+  Customer getCustomerByIndex(int index);
 
+  int getNumberOfCustomers();
+
+  // Purchase ting
+
+  void addExistingPurchase(Purchase purchase);
+
+  void addNewPurchase(Customer customer, AnimalForSale animal,
+      String nameForPurchasedAnimal);
+
+  Purchase getPurchase(int index);
+
+  int getNumberOfPurchases();
+
+  Purchase getPurchaseByCustomer(Customer customer);
 
 }
 
