@@ -214,7 +214,7 @@ public class ViewHandler
       loader.setLocation(getClass().getResource(fxmlFile));
       root = loader.load();
       VIAPetSaleViewController controller = loader.getController();
-      controller.init(this, petShopModel, root);
+      controller.init(this, petShopModel, root,customerListViewModel);
     }
     catch (IOException e)
     {

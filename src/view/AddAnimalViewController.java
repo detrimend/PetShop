@@ -44,7 +44,8 @@ public class AddAnimalViewController
     extraInfo2Box.getItems().clear();
     speciesField.setText("");
     typeBox.getItems().clear();
-    typeBox.getItems().addAll();
+    genderBox.getItems().clear();
+    ageField.setText("");
   }
 
   @FXML private void addButton()

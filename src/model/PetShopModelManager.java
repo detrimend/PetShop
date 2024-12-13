@@ -43,6 +43,7 @@ public class PetShopModelManager implements PetShopModel, Serializable
       this.purgeGDPR = new PurgeGDPR(this.reservationList, this.purchaseList,
           this.customerList);
     }
+
   }
 
   @Override public void saveState()
