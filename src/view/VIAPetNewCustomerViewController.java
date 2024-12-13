@@ -41,7 +41,7 @@ public class VIAPetNewCustomerViewController
 
   }
 
- /* @FXML
+  @FXML
   private void CreateButton() {
     boolean OpenNewTab = true;
 
@@ -54,7 +54,7 @@ public class VIAPetNewCustomerViewController
       );
 
       if (OpenNewTab) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("VIAPetNewCustomer.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViaPetNewCustomer.fxml"));
         Region root = fxmlLoader.load();
         VIAPetNewCustomerViewController controller = fxmlLoader.getController();
         controller.init(viewHandler, petShopModel, root);
@@ -70,14 +70,9 @@ public class VIAPetNewCustomerViewController
       }
     }
   catch (IOException e){
-    e.printStackTrace();
-    throw new RuntimeException("kunne ikke indlæse FXML-filen",e);}
 
-  catch (Exception e){
-      e.printStackTrace();
-      throw new RuntimeException("En fejl opstod under behandling af kunden");
   }
-  }*/
+  }
 
 
 
@@ -91,7 +86,7 @@ public class VIAPetNewCustomerViewController
 
 
 
- @FXML private void CreateButton()
+/*  @FXML private void CreateButton()
   {
     try
     {
@@ -105,7 +100,7 @@ public class VIAPetNewCustomerViewController
       e.printStackTrace();
       throw new RuntimeException(e);
     }
-  }
+  }*/
 
   @FXML
   private void BackButton() {

@@ -51,7 +51,7 @@ public class AddAnimalViewController
     try
     {
 
-      petShopModel.addAnimal(priceField.getText(),speciesField.getText(),extraInfoField.getText(),extraInfo2Field.getText(),typeBox.getValue(),typeBox.getValue());
+      petShopModel.addNewAnimalForSaleWithStrings(typeBox.getValue(),priceField.getText(),genderBox.getValue(),ageField.getText(),speciesField.getText(),extraInfoField.getText(),extraInfo2Field.getText());
       viewHandler.openView("AnimalList");
     }
     catch (Exception e)
