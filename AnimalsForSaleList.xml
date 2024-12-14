@@ -3,26 +3,13 @@
   <animals>
     <isForSale>true</isForSale>
     <animalInfo>
+      <venomous>true</venomous>
       <gender>M</gender>
-      <species>Neon</species>
+      <species>Salamander</species>
       <comment/>
-      <saltWater>false</saltWater>
-      <age>2</age>
+      <age>54</age>
     </animalInfo>
-    <price>23.0</price>
-    <animalType>Fish</animalType>
-  </animals>
-  <animals>
-    <isForSale>true</isForSale>
-    <animalInfo>
-      <isTameable>true</isTameable>
-      <tame>true</tame>
-      <gender>F</gender>
-      <species>Bigbird</species>
-      <comment/>
-      <age>4</age>
-    </animalInfo>
-    <price>200.0</price>
-    <animalType>Bird</animalType>
+    <price>500.0</price>
+    <animalType>Reptile</animalType>
   </animals>
 </AnimalsForSaleList>

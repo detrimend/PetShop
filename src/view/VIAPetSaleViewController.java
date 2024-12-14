@@ -8,9 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
@@ -41,6 +39,10 @@ public class VIAPetSaleViewController
   @FXML private TableColumn<AnimalViewModel, Number> priceColumn;
   @FXML private TableColumn<AnimalViewModel, String> extraInfoColumn;
   @FXML private TableColumn<AnimalViewModel, String> extraInfo2Column;
+  @FXML private Button assignButton;
+  private CustomerViewModel selectedCustomer;
+
+
 
   public void init(ViewHandler viewHandler, PetShopModel petShopModel,
       Region root)
@@ -82,6 +84,24 @@ public class VIAPetSaleViewController
     typeSearchField.setOnAction(event -> searchByType());
     speciesSearchField.setOnAction(event -> searchBySpecies());
     numberSearchField.setOnAction(event -> searchByPhoneNumber());
+    {
+      // Kald din eksisterende kode for at initialisere kundetabellen...
+
+      // Tilføj Single Selection Mode
+      customerTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
+      // Lyt til valg af kunde
+      customerTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+        selectedCustomer = newSelection;
+      });
+    }
+
+    {
+      // Kald din eksisterende kode for at initialisere dyretabellen...
+
+      // Tilføj Multi Selection Mode
+      animalSaleTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    }
   }
 
   @FXML
@@ -145,6 +165,61 @@ public class VIAPetSaleViewController
             e.printStackTrace();
         }
     }
+
+  @FXML
+  private void assignButton() {
+    // 1. Kontroller, at en kunde er valgt
+    if (selectedCustomer == null) {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("No Customer Selected");
+      alert.setHeaderText(null);
+      alert.setContentText("Please select a customer from the customer list before assigning animals.");
+      alert.showAndWait();
+      return;
+    }
+
+    // 2. Hent valgte dyr fra dyretabellen
+    ObservableList<AnimalViewModel> selectedAnimals = animalSaleTable.getSelectionModel().getSelectedItems();
+
+    if (selectedAnimals.isEmpty()) {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("No Animals Selected");
+      alert.setHeaderText(null);
+      alert.setContentText("Please select one or more animals from the animal list.");
+      alert.showAndWait();
+      return;
+    }
+    // 3. Loop gennem de valgte dyr og tilføj dem til kunden
+    for (AnimalViewModel animals : selectedAnimals) {
+      // Her antager vi, at animalsViewModel har et indeks eller en reference
+      int index = animalSaleTable.getItems().indexOf(animals);
+      AnimalForSale animal = petShopModel.getAnimalForSaleByIndex(index);
+      // Pop-up eller dialog for at spørge om dyrenavn
+      TextInputDialog dialog = new TextInputDialog("Animal Name");
+      dialog.setTitle("Name the Animal");
+      dialog.setHeaderText("Naming the Animal");
+      dialog.setContentText("Please enter a name for the selected animal:");
+
+      // Vent på input
+      String nameForPurchasedAnimal = dialog.showAndWait().orElse("Unnamed Animal");
+
+      int customerIndex = customerTable.getSelectionModel().getSelectedIndex();
+      Customer customer = petShopModel.getCustomerByIndex(customerIndex);
+
+      // Brug kunden som normalt
+      petShopModel.addNewPurchase(customer, animal, nameForPurchasedAnimal);
+    }
+
+    // 4. Giv brugeren besked om, at handlingen er gennemført
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setTitle("Success");
+    alert.setHeaderText(null);
+    alert.setContentText("The selected animals have been successfully assigned to the customer.");
+    alert.showAndWait();
+
+    // OPTIONAL: Ryd valget i dyrelisten
+    animalSaleTable.getSelectionModel().clearSelection();
+  }
 
   @FXML private void refreshButton()
   {

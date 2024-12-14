@@ -35,7 +35,7 @@
             </TableView>
             <TextField fx:id="numberSearchField" onAction="#searchByPhoneNumber" layoutX="9.0" layoutY="81.0" promptText="Phone Nr." />
             <Button onAction="#searchByPhoneNumber" layoutX="158.0" layoutY="81.0" mnemonicParsing="false" text="Søg" />
-            <Button layoutX="532.0" layoutY="26.0" mnemonicParsing="false" text="Assign" />
+            <Button onAction="#assignButton" layoutX="532.0" layoutY="26.0" mnemonicParsing="false" text="Assign" />
             <Text layoutX="25.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sale">
                <font>
                   <Font size="38.0" />
