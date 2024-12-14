@@ -32,7 +32,7 @@ public class ViewHandler
     this.currentScene= new Scene(new Region());
     this.petShopModel = petShopModel;
     // To nedenstående statements populater lister før de klikkes på, ikke nødvendigt
-    //this.customerListViewModel = new CustomerListViewModel(petShopModel);
+    this.customerListViewModel = new CustomerListViewModel(petShopModel);
     //this.animalListViewModel = new AnimalListViewModel(petShopModel);
   }
 
@@ -217,7 +217,7 @@ public class ViewHandler
       loader.setLocation(getClass().getResource(fxmlFile));
       root = loader.load();
       VIAPetSaleViewController controller = loader.getController();
-      controller.init(this, petShopModel, root,customerListViewModel);
+      controller.init(this, petShopModel, root);
     }
     catch (IOException e)
     {

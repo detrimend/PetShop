@@ -14,7 +14,7 @@
    <children>
   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="390.0" prefWidth="626.0">
          <children>
-            <TableView layoutX="228.0" layoutY="106.0" prefHeight="247.0" prefWidth="374.0">
+            <TableView  layoutX="228.0" layoutY="106.0" prefHeight="247.0" prefWidth="374.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="Type" />
                 <TableColumn prefWidth="75.0" text="Species" />
@@ -27,14 +27,14 @@
             <Button layoutX="379.0" layoutY="80.0" mnemonicParsing="false" text="Søg" />
             <TextField layoutX="228.0" layoutY="50.0" promptText="Type" />
             <Button layoutX="379.0" layoutY="51.0" mnemonicParsing="false" text="Søg" />
-            <TableView fx:id="phoneNumbersTable" layoutX="9.0" layoutY="106.0" prefHeight="247.0" prefWidth="205.0">
+            <TableView fx:id="customerTable" layoutX="9.0" layoutY="106.0" prefHeight="247.0" prefWidth="205.0">
                <columns>
                   <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
-                  <TableColumn fx:id="phoneColumn" prefWidth="128.6666692097982" text="Phone Nr." />
+                  <TableColumn fx:id="numberColumn" prefWidth="128.6666692097982" text="Phone Nr." />
                </columns>
             </TableView>
             <TextField fx:id="numberSearchField" layoutX="9.0" layoutY="81.0" promptText="Phone Nr." />
-            <Button layoutX="158.0" layoutY="81.0" mnemonicParsing="false" text="Søg" />
+            <Button onAction="#searchByPhoneNumber" layoutX="158.0" layoutY="81.0" mnemonicParsing="false" text="Søg" />
             <Button layoutX="532.0" layoutY="26.0" mnemonicParsing="false" text="Assign" />
             <Text layoutX="25.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sale">
                <font>
