@@ -15,6 +15,7 @@ public class AnimalViewModel
   private DoubleProperty priceProperty;
   private StringProperty forSaleProperty;
 
+
   public AnimalViewModel(AnimalForSale animalforsale)
 
   {
@@ -102,5 +103,6 @@ public class AnimalViewModel
   {
     return forSaleProperty;
   }
+
 
 }

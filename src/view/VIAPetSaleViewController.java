@@ -39,7 +39,6 @@ public class VIAPetSaleViewController
   @FXML private TableColumn<AnimalViewModel, Number> priceColumn;
   @FXML private TableColumn<AnimalViewModel, String> extraInfoColumn;
   @FXML private TableColumn<AnimalViewModel, String> extraInfo2Column;
-  @FXML private Button assignButton;
   private CustomerViewModel selectedCustomer;
 
 
@@ -97,8 +96,6 @@ public class VIAPetSaleViewController
     }
 
     {
-      // Kald din eksisterende kode for at initialisere dyretabellen...
-
       // Tilføj Multi Selection Mode
       animalSaleTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
