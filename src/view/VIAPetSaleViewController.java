@@ -61,7 +61,6 @@ public class VIAPetSaleViewController
       filteredCustomers = new FilteredList<>(customers, p -> true);
       customerTable.setItems(filteredCustomers);
 
-      // Bind data til tabel
       customerTable.setItems(filteredCustomers);
       nameColumn.setCellValueFactory(cellData ->
           cellData.getValue().getNameProperty());
@@ -84,19 +83,18 @@ public class VIAPetSaleViewController
     speciesSearchField.setOnAction(event -> searchBySpecies());
     numberSearchField.setOnAction(event -> searchByPhoneNumber());
     {
-      // Kald din eksisterende kode for at initialisere kundetabellen...
 
-      // Tilføj Single Selection Mode
+
       customerTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
-      // Lyt til valg af kunde
+
       customerTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
         selectedCustomer = newSelection;
       });
     }
 
     {
-      // Tilføj Multi Selection Mode
+
       animalSaleTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
   }
@@ -140,7 +138,7 @@ public class VIAPetSaleViewController
       filteredAnimals.setPredicate(animal -> true); // Vis alle dyr
     } else {
       filteredAnimals.setPredicate(animal -> {
-        // Filtrer baseret på art (species)
+
         return animal.getSpeciesProperty().getValue().toLowerCase().contains(searchText.toLowerCase());
       });
     }
@@ -152,7 +150,7 @@ public class VIAPetSaleViewController
       FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("VIAPetNewCustomer.fxml"));
       Parent root = fxmlLoader.load();
       VIAPetNewCustomerViewController controller = fxmlLoader.getController();
-      controller.init(viewHandler, petShopModel, null); // Bemærk at "Region root" kan sættes til null eller noget relevant
+      controller.init(viewHandler, petShopModel, null);
 
       Stage newStage = new Stage();
       newStage.setTitle("Add Customer");//set titlen
@@ -175,7 +173,7 @@ public class VIAPetSaleViewController
       return;
     }
 
-    // 2. Hent valgte dyr fra dyretabellen
+
     ObservableList<AnimalViewModel> selectedAnimals = animalSaleTable.getSelectionModel().getSelectedItems();
 
     if (selectedAnimals.isEmpty()) {
@@ -186,35 +184,35 @@ public class VIAPetSaleViewController
       alert.showAndWait();
       return;
     }
-    // 3. Loop gennem de valgte dyr og tilføj dem til kunden
+
     for (AnimalViewModel animals : selectedAnimals) {
-      // Her antager vi, at animalsViewModel har et indeks eller en reference
+
       int index = animalSaleTable.getItems().indexOf(animals);
       AnimalForSale animal = petShopModel.getAnimalForSaleByIndex(index);
-      // Pop-up eller dialog for at spørge om dyrenavn
+
       TextInputDialog dialog = new TextInputDialog("Animal Name");
       dialog.setTitle("Name the Animal");
       dialog.setHeaderText("Naming the Animal");
       dialog.setContentText("Please enter a name for the selected animal:");
 
-      // Vent på input
+
       String nameForPurchasedAnimal = dialog.showAndWait().orElse("Unnamed Animal");
 
       int customerIndex = customerTable.getSelectionModel().getSelectedIndex();
       Customer customer = petShopModel.getCustomerByIndex(customerIndex);
 
-      // Brug kunden som normalt
+
       petShopModel.addNewPurchase(customer, animal, nameForPurchasedAnimal);
     }
 
-    // 4. Giv brugeren besked om, at handlingen er gennemført
+
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
     alert.setTitle("Success");
     alert.setHeaderText(null);
     alert.setContentText("The selected animals have been successfully assigned to the customer.");
     alert.showAndWait();
 
-    // OPTIONAL: Ryd valget i dyrelisten
+
     animalSaleTable.getSelectionModel().clearSelection();
   }
 
