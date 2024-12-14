@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
+import model.AnimalForSale;
 import model.Customer;
 import model.PetShopModel;
 
@@ -31,6 +32,15 @@ public class VIAPetSaleViewController
   @FXML private TableColumn<CustomerViewModel, String> nameColumn;
   @FXML private TableColumn<CustomerViewModel, Number> numberColumn;
   private FilteredList<CustomerViewModel> filteredCustomers;
+  private FilteredList<AnimalViewModel> filteredAnimals;
+  @FXML private TextField speciesSearchField;
+  @FXML private TextField typeSearchField;
+  @FXML private TableView<AnimalViewModel> animalSaleTable;
+  @FXML private TableColumn<AnimalViewModel, String> typeColumn;
+  @FXML private TableColumn<AnimalViewModel, String> speciesColumn;
+  @FXML private TableColumn<AnimalViewModel, Number> priceColumn;
+  @FXML private TableColumn<AnimalViewModel, String> extraInfoColumn;
+  @FXML private TableColumn<AnimalViewModel, String> extraInfo2Column;
 
   public void init(ViewHandler viewHandler, PetShopModel petShopModel,
       Region root)
@@ -56,18 +66,65 @@ public class VIAPetSaleViewController
           cellData.getValue().getNameProperty());
       numberColumn.setCellValueFactory(cellData -> cellData.getValue().getPhoneNumberProperty());
     }
+    ObservableList<AnimalViewModel> animals = FXCollections.observableArrayList();
+    for (int i = 0; i < petShopModel.getNumberOfAnimalsForSale(); i++) {
+      AnimalForSale animal = petShopModel.getAnimalForSaleByIndex(i);
+      animals.add(new AnimalViewModel(animal));
+    }
+    filteredAnimals = new FilteredList<>(animals, p -> true);
+    animalSaleTable.setItems(filteredAnimals);
+    typeColumn.setCellValueFactory(cellData -> cellData.getValue().getTypeProperty());
+    speciesColumn.setCellValueFactory(cellData -> cellData.getValue().getSpeciesProperty());
+    priceColumn.setCellValueFactory(cellData -> cellData.getValue().getPriceProperty());
+    extraInfoColumn.setCellValueFactory(cellData -> cellData.getValue().getExtraInfoProperty());
+    extraInfo2Column.setCellValueFactory(cellData -> cellData.getValue().getExtraInfo2Property());
 
+    typeSearchField.setOnAction(event -> searchByType());
+    speciesSearchField.setOnAction(event -> searchBySpecies());
+    numberSearchField.setOnAction(event -> searchByPhoneNumber());
   }
 
   @FXML
-  private void searchByPhoneNumber() {
+  private void searchByPhoneNumber()
+  {
     String searchText = numberSearchField.getText();
-    if (searchText == null || searchText.isEmpty()) {
+    if (searchText == null || searchText.isEmpty())
+    {
       filteredCustomers.setPredicate(customer -> true); // Vis alt
-    } else {
+    }
+    else
+    {
       filteredCustomers.setPredicate(customer -> {
         // Filtrer efter telefonnummer
-        return customer.getPhoneNumberProperty().getValue().toString().contains(searchText);
+        return customer.getPhoneNumberProperty().getValue().toString()
+            .contains(searchText);
+      });
+    }
+  }
+
+
+  @FXML
+  private void searchByType() {
+    String searchText = typeSearchField.getText();
+    if (searchText == null || searchText.isEmpty()) {
+      filteredAnimals.setPredicate(animal -> true); // Vis alt
+    } else {
+      filteredAnimals.setPredicate(animal -> {
+        // Filtrer efter telefonnummer
+        return animal.getTypeProperty().getValue().toString().contains(searchText);
+      });
+    }
+  }
+
+  @FXML
+  private void searchBySpecies() {
+    String searchText = speciesSearchField.getText();
+    if (searchText == null || searchText.isEmpty()) {
+      filteredAnimals.setPredicate(animal -> true); // Vis alle dyr
+    } else {
+      filteredAnimals.setPredicate(animal -> {
+        // Filtrer baseret på art (species)
+        return animal.getSpeciesProperty().getValue().toLowerCase().contains(searchText.toLowerCase());
       });
     }
   }

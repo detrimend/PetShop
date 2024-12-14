@@ -12,4 +12,17 @@
     <price>23.0</price>
     <animalType>Fish</animalType>
   </animals>
+  <animals>
+    <isForSale>true</isForSale>
+    <animalInfo>
+      <isTameable>true</isTameable>
+      <tame>true</tame>
+      <gender>F</gender>
+      <species>Bigbird</species>
+      <comment/>
+      <age>4</age>
+    </animalInfo>
+    <price>200.0</price>
+    <animalType>Bird</animalType>
+  </animals>
 </AnimalsForSaleList>
