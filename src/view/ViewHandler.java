@@ -26,6 +26,7 @@ public class ViewHandler
   private VIAPetNewCustomerViewController viaPetNewCustomerViewController;
   private VIAPetSaleViewController viaPetSaleViewController;
   private VIAPetForsideViewController viaPetForsideViewController;
+  private AnimalInCareViewController inCareViewController;
 
   public ViewHandler(PetShopModel petShopModel)
   {
@@ -69,6 +70,9 @@ public class ViewHandler
         break;
       case  "Sale":
         root = loadSaleView("VIAPetSale.fxml");
+        break;
+      case "CareList":
+        root = loadInCareView("AnimalInCare.fxml");
         break;
       default:
         throw new IllegalStateException("Unexpected value: " + id);
@@ -225,6 +229,24 @@ public class ViewHandler
     }
     return root;
     }
+
+  private Region loadInCareView(String fxmlFile)
+  {
+    Region root = null;
+    try
+    {
+      FXMLLoader loader = new FXMLLoader();
+      loader.setLocation(getClass().getResource(fxmlFile));
+      root = loader.load();
+      AnimalInCareViewController controller = loader.getController();
+      controller.init(this, petShopModel, root);
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+    return root;
+  }
   }
 
 
