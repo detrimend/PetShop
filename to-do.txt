@@ -9,3 +9,4 @@ To do:
 - Alle klasser i model/manager som ikke ender med at blive brugt.
 - Lav dummydata
 - Til sidst skal klassediagram opdateres (bruger import i Astah)
+- fiks Search i AnimalList

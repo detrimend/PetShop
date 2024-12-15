@@ -3,13 +3,13 @@
   <animals>
     <isForSale>true</isForSale>
     <animalInfo>
+      <outdoorOnly>false</outdoorOnly>
       <gender>M</gender>
-      <species>hej</species>
+      <species>Kanin</species>
       <comment/>
-      <saltWater>true</saltWater>
-      <age>22</age>
+      <age>5</age>
     </animalInfo>
-    <price>22.0</price>
-    <animalType>Fish</animalType>
+    <price>200.0</price>
+    <animalType>Mammal</animalType>
   </animals>
 </AnimalsForSaleList>
