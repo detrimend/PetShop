@@ -64,7 +64,7 @@ public class AnimalInCareViewController
   @FXML
   private void BackButton() {
     try {
-      viewHandler.openView("VIACare");
+      viewHandler.openView("Care");
     } catch (Exception e) {
       e.printStackTrace();
     }

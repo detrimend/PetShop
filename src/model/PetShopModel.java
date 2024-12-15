@@ -36,6 +36,8 @@ public interface PetShopModel extends Serializable {
 
   void addExistingReservation(Reservation reservation);
 
+  OwnedAnimalsList getAnimalsInCare();
+
   // Salg af dyr
 
   void addCustomer(String firstName, String lastName, String phoneNumber,

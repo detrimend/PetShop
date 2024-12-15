@@ -145,6 +145,19 @@ public class PetShopModelManager implements PetShopModel, Serializable
     saveState();
   }
 
+  @Override public OwnedAnimalsList getAnimalsInCare()
+  {
+    OwnedAnimalsList animalsInCare = new OwnedAnimalsList();
+    for(int i = 0; i < ownedAnimalsList.getAmountOfAnimals(); i++)
+    {
+      if(ownedAnimalsList.getAnimalByIndex(i).isInCare())
+      {
+        animalsInCare.addAnimal(ownedAnimalsList.getAnimalByIndex(i));
+      }
+    }
+    return animalsInCare;
+  }
+
   @Override public void addCustomer(String firstName, String lastName,
       String email, String phoneNumber) throws IOException
   {

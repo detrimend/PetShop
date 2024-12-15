@@ -1,2 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<AnimalsForSaleList/>
+<AnimalsForSaleList>
+  <animals>
+    <isForSale>true</isForSale>
+    <animalInfo>
+      <gender>M</gender>
+      <species>hej</species>
+      <comment/>
+      <saltWater>true</saltWater>
+      <age>22</age>
+    </animalInfo>
+    <price>22.0</price>
+    <animalType>Fish</animalType>
+  </animals>
+</AnimalsForSaleList>
