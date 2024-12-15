@@ -1,16 +1,8 @@
 package view;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.Region;
-import javafx.stage.Stage;
 import model.PetShopModel;
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.io.IOException;
 
 /**
  * Controller class for the VIAPetForside view.

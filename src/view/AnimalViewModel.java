@@ -133,46 +133,91 @@ public class AnimalViewModel
     nameProperty = new SimpleStringProperty(ownedAnimal.getName());
   }
 
+  /**
+   * Returns the gender property.
+   *
+   * @return the gender property
+   */
   public StringProperty getGenderProperty()
   {
     return genderProperty;
   }
 
+  /**
+   * Returns the name property.
+   *
+   * @return the name property
+   */
   public StringProperty getNameProperty()
   {
     return nameProperty;
   }
 
+  /**
+   * Returns the type property.
+   *
+   * @return the type property
+   */
   public StringProperty getTypeProperty()
   {
     return typeProperty;
   }
 
+  /**
+   * Returns the species property.
+   *
+   * @return the species property
+   */
   public StringProperty getSpeciesProperty()
   {
     return speciesProperty;
   }
 
+  /**
+   * Returns the age property.
+   *
+   * @return the age property
+   */
   public IntegerProperty getAgeProperty()
   {
     return ageProperty;
   }
 
+  /**
+   * Returns the extra info property.
+   *
+   * @return the extra info property
+   */
   public StringProperty getExtraInfoProperty()
   {
     return extraInfoProperty;
   }
 
+  /**
+   * Returns the extra info2 property.
+   *
+   * @return the extra info2 property
+   */
   public StringProperty getExtraInfo2Property()
   {
     return extraInfo2Property;
   }
 
+  /**
+   * Returns the price property.
+   *
+   * @return the price property
+   */
   public DoubleProperty getPriceProperty()
   {
     return priceProperty;
   }
 
+  /**
+   * Returns the for sale property.
+   *
+   * @return the for sale property
+   */
   public StringProperty getForSaleProperty()
   {
     return forSaleProperty;

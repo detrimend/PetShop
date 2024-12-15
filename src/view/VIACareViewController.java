@@ -12,6 +12,17 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Controller class for the VIACare view.
+ * It handles the user interactions and updates the view accordingly.
+ * This class is responsible for managing the care of animals.
+ *
+ * @author Martin Skovby Andersen
+ * @author Rasmus Duus Kristensen
+ * @author Victor Grud Oksen
+ * @author Victor Sander Marx Hoelgaard
+ * @version 1.0 - December 2024
+ */
 public class VIACareViewController
 {
   private Region root;
@@ -31,6 +42,13 @@ public class VIACareViewController
   private FilteredList<CustomerViewModel> filteredCustomers;
   private CustomerViewModel selectedCustomer;
 
+  /**
+   * Initializes the controller with the specified view handler, model, and root region.
+   *
+   * @param viewHandler the view handler to manage view transitions
+   * @param petShopModel the model to interact with the data
+   * @param root the root region of the view
+   */
   public void init(ViewHandler viewHandler, PetShopModel petShopModel,
       Region root)
   {
@@ -58,7 +76,6 @@ public class VIACareViewController
     numberColumn.setCellValueFactory(
         cellData -> cellData.getValue().getPhoneNumberProperty());
 
-    // Lyt til valg af kunde
     customerTable.getSelectionModel().selectedItemProperty()
         .addListener((obs, oldVal, newVal) -> {
           selectedCustomer = newVal;
@@ -153,7 +170,7 @@ public class VIACareViewController
 
       for (int i = 0; i < selectedAnimals.size(); i++)
       {
-        selectedAnimals.get(i).putInCare(); // Tilføjet her da vi ikke har implementeret handover i GUI
+        selectedAnimals.get(i).putInCare();
         animalList.addAnimal(selectedAnimals.get(i));
       }
 
@@ -199,17 +216,19 @@ public class VIACareViewController
       e.printStackTrace();
     }
   }
-@FXML private void AnimalsInCareButton()
-{
-  try
+
+  @FXML private void AnimalsInCareButton()
   {
-    viewHandler.openView("CareList");
+    try
+    {
+      viewHandler.openView("CareList");
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
+    }
   }
-  catch (Exception e)
-  {
-    e.printStackTrace();
-  }
-}
+
   public Region getRoot()
   {
     return root;

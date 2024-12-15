@@ -6,30 +6,48 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.Region;
 import model.PetShopModel;
 
+/**
+ * Controller class for the Animals in Care view.
+ * It handles the user interactions and updates the view accordingly.
+ * This class is responsible for displaying the list of animals currently in care.
+ *
+ * @author Martin Skovby Andersen
+ * @author Rasmus Duus Kristensen
+ * @author Victor Grud Oksen
+ * @author Victor Sander Marx Hoelgaard
+ * @version 1.0 - December 2024
+ */
 public class AnimalInCareViewController
 {
   @FXML TableView<AnimalViewModel> animalListTable;
   @FXML TableColumn<AnimalViewModel, String> animalNameColumn;
   @FXML TableColumn<AnimalViewModel, String> animalTypeColumn;
-  @FXML TableColumn<AnimalViewModel,String > animalGenderColumn;
-  @FXML TableColumn<AnimalViewModel,Number > animalAgeColumn;
-  @FXML TableColumn<AnimalViewModel,String > animalExtraInfoColumn;
-  @FXML TableColumn<AnimalViewModel,String > animalExtraInfo2Column;
-  @FXML TableColumn<AnimalViewModel,String> animalSpeciesColumn;
-
+  @FXML TableColumn<AnimalViewModel, String> animalGenderColumn;
+  @FXML TableColumn<AnimalViewModel, Number> animalAgeColumn;
+  @FXML TableColumn<AnimalViewModel, String> animalExtraInfoColumn;
+  @FXML TableColumn<AnimalViewModel, String> animalExtraInfo2Column;
+  @FXML TableColumn<AnimalViewModel, String> animalSpeciesColumn;
 
   private Region root;
   private ViewHandler viewHandler;
   private PetShopModel petShopModel;
   private AnimalInCareViewModel viewModel;
 
+  /**
+   * Constructs an AnimalInCareViewController.
+   */
   public AnimalInCareViewController()
   {
-
   }
 
-  @FXML void init(ViewHandler viewHandler, PetShopModel petShopModel,
-      Region root)
+  /**
+   * Initializes the controller with the specified view handler, model, and root region.
+   *
+   * @param viewHandler the view handler to manage view transitions
+   * @param petShopModel the model to interact with the data
+   * @param root the root region of the view
+   */
+  @FXML void init(ViewHandler viewHandler, PetShopModel petShopModel, Region root)
   {
     this.petShopModel = petShopModel;
     this.viewHandler = viewHandler;
@@ -49,21 +67,37 @@ public class AnimalInCareViewController
     reset();
   }
 
+  /**
+   * Resets the view model and updates the table with the latest data.
+   */
   public void reset()
   {
     viewModel.update();
     animalListTable.setItems(viewModel.getList());
   }
 
+  /**
+   * Returns the root region of the view.
+   *
+   * @return the root region of the view
+   */
   public Region getRoot()
   {
     return root;
   }
-  @FXML
-  private void BackButton() {
-    try {
+
+  /**
+   * Handles the action of the back button.
+   * It navigates back to the previous view.
+   */
+  @FXML private void BackButton()
+  {
+    try
+    {
       viewHandler.openView("Care");
-    } catch (Exception e) {
+    }
+    catch (Exception e)
+    {
       e.printStackTrace();
     }
   }

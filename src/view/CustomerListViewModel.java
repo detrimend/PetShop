@@ -1,9 +1,7 @@
 package view;
 
 import javafx.collections.*;
-import javafx.collections.transformation.FilteredList;
 import model.Customer;
-import model.CustomerList;
 import model.PetShopModel;
 
 /**

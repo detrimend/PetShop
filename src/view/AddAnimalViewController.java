@@ -6,11 +6,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 import model.PetShopModel;
 
-import javax.annotation.processing.Generated;
-import java.awt.*;
-
-import javax.swing.*;
-
 /**
  * Controller class for the Add Animal view.
  * It handles the user interactions and updates the view accordingly.

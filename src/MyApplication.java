@@ -1,4 +1,3 @@
-import javafx.scene.Scene;
 import view.ViewHandler;
 import javafx.application.Application;
 import javafx.stage.Stage;

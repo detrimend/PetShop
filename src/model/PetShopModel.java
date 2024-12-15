@@ -2,7 +2,6 @@ package model;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.time.LocalDate;
 
 public interface PetShopModel extends Serializable {
   void removeOldCustomerData();
