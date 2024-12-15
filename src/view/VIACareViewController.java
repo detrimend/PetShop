@@ -198,7 +198,17 @@ public class VIACareViewController
       e.printStackTrace();
     }
   }
-
+@FXML private void AnimalsInCareButton()
+{
+  try
+  {
+    viewHandler.openView("CareList");
+  }
+  catch (Exception e)
+  {
+    e.printStackTrace();
+  }
+}
   public Region getRoot()
   {
     return root;
