@@ -159,7 +159,7 @@ public class PetShopModelManager implements PetShopModel, Serializable
   }
 
   @Override public void addCustomer(String firstName, String lastName,
-      String email, String phoneNumber) throws IOException
+      String email, String phoneNumber)
   {
     System.out.println(email);
     String[] split = email.split("@");
@@ -173,7 +173,6 @@ public class PetShopModelManager implements PetShopModel, Serializable
   }
 
   @Override public void addCustomer(Name name, int phoneNumber, Email email)
-      throws IOException
   {
     customerList.addCustomer(name, email, phoneNumber);
     saveState();

@@ -153,6 +153,7 @@ public class VIACareViewController
 
       for (int i = 0; i < selectedAnimals.size(); i++)
       {
+        selectedAnimals.get(i).putInCare(); // Tilføjet her da vi ikke har implementeret handover i GUI
         animalList.addAnimal(selectedAnimals.get(i));
       }
 

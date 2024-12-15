@@ -21,7 +21,7 @@ public class AnimalInCareViewController
   private Region root;
   private ViewHandler viewHandler;
   private PetShopModel petShopModel;
-  private AnimalListViewModel viewModel;
+  private AnimalInCareViewModel viewModel;
 
   public AnimalInCareViewController()
   {
@@ -34,7 +34,7 @@ public class AnimalInCareViewController
     this.petShopModel = petShopModel;
     this.viewHandler = viewHandler;
     this.root = root;
-    this.viewModel = new AnimalListViewModel(petShopModel);
+    this.viewModel = new AnimalInCareViewModel(petShopModel);
 
     animalNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
     animalTypeColumn.setCellValueFactory(cellData -> cellData.getValue().getTypeProperty());
@@ -47,8 +47,6 @@ public class AnimalInCareViewController
     animalListTable.setItems(viewModel.getList());
 
     reset();
-
-    // til debug: System.out.println("AnimalListViewController initialized");
   }
 
   public void reset()

@@ -33,14 +33,6 @@ public class AnimalListViewModel
     {
       list.add(new AnimalViewModel(petShopModel.getAnimalByIndex(i)));
     }
-
-    for (int i = 0;
-         i < petShopModel.getAnimalsInCare().getAmountOfAnimals(); i++)
-    {
-      list.add(new AnimalViewModel(
-          petShopModel.getAnimalsInCare().getAnimalByIndex(i)));
-    }
-
   }
 
   public ObservableList<AnimalViewModel> getList()
