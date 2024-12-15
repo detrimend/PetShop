@@ -1,6 +1,6 @@
 To do:
 
-- GDPR implementeret, crasher dog hver gang lmao
+- GDPR implementeret
 
 - Javadoc rettelser og tilføjelser
 - Under VIACare bør vi kunne trykke på en knap for at se en liste over dyr i pensionen

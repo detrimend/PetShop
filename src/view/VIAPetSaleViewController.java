@@ -1,6 +1,5 @@
 package view;
 
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -11,14 +10,22 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-
 import model.AnimalForSale;
 import model.Customer;
 import model.PetShopModel;
 
 import java.io.IOException;
 
-
+/**
+ * Controller class for the VIAPetSale view.
+ * It handles the interaction between the view and the model for pet sales.
+ *
+ * @author Martin Skovby Andersen
+ * @author Rasmus Duus Kristensen
+ * @author Victor Grud Oksen
+ * @author Victor Sander Marx Hoelgaard
+ * @version 1.0 - December 2024
+ */
 public class VIAPetSaleViewController
 {
   private Region root;
@@ -41,154 +48,177 @@ public class VIAPetSaleViewController
   @FXML private TableColumn<AnimalViewModel, String> extraInfo2Column;
   private CustomerViewModel selectedCustomer;
 
-
-
+  /**
+   * Initializes the controller with the specified view handler, model, and root region.
+   *
+   * @param viewHandler  the view handler
+   * @param petShopModel the pet shop model
+   * @param root         the root region
+   */
   public void init(ViewHandler viewHandler, PetShopModel petShopModel,
       Region root)
   {
-
     this.petShopModel = petShopModel;
     this.viewHandler = viewHandler;
     this.root = root;
 
+    ObservableList<CustomerViewModel> customers = FXCollections.observableArrayList();
+    for (int i = 0; i < petShopModel.getNumberOfCustomers(); i++)
     {
-      // Hent listen af kunder fra modellen og lav en FilteredList
-      ObservableList<CustomerViewModel> customers = FXCollections.observableArrayList();
-      for (int i = 0; i < petShopModel.getNumberOfCustomers(); i++) {
-        Customer customer = petShopModel.getCustomerByIndex(i);
-        customers.add(new CustomerViewModel(customer));
-      }
-      filteredCustomers = new FilteredList<>(customers, p -> true);
-      customerTable.setItems(filteredCustomers);
-
-      customerTable.setItems(filteredCustomers);
-      nameColumn.setCellValueFactory(cellData ->
-          cellData.getValue().getNameProperty());
-      numberColumn.setCellValueFactory(cellData -> cellData.getValue().getPhoneNumberProperty());
+      Customer customer = petShopModel.getCustomerByIndex(i);
+      customers.add(new CustomerViewModel(customer));
     }
+    filteredCustomers = new FilteredList<>(customers, p -> true);
+    customerTable.setItems(filteredCustomers);
+
+    nameColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getNameProperty());
+    numberColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getPhoneNumberProperty());
+
     ObservableList<AnimalViewModel> animals = FXCollections.observableArrayList();
-    for (int i = 0; i < petShopModel.getNumberOfAnimalsForSale(); i++) {
+    for (int i = 0; i < petShopModel.getNumberOfAnimalsForSale(); i++)
+    {
       AnimalForSale animal = petShopModel.getAnimalForSaleByIndex(i);
       animals.add(new AnimalViewModel(animal));
     }
     filteredAnimals = new FilteredList<>(animals, p -> true);
     animalSaleTable.setItems(filteredAnimals);
-    typeColumn.setCellValueFactory(cellData -> cellData.getValue().getTypeProperty());
-    speciesColumn.setCellValueFactory(cellData -> cellData.getValue().getSpeciesProperty());
-    priceColumn.setCellValueFactory(cellData -> cellData.getValue().getPriceProperty());
-    extraInfoColumn.setCellValueFactory(cellData -> cellData.getValue().getExtraInfoProperty());
-    extraInfo2Column.setCellValueFactory(cellData -> cellData.getValue().getExtraInfo2Property());
+    typeColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getTypeProperty());
+    speciesColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getSpeciesProperty());
+    priceColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getPriceProperty());
+    extraInfoColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getExtraInfoProperty());
+    extraInfo2Column.setCellValueFactory(
+        cellData -> cellData.getValue().getExtraInfo2Property());
 
     typeSearchField.setOnAction(event -> searchByType());
     speciesSearchField.setOnAction(event -> searchBySpecies());
     numberSearchField.setOnAction(event -> searchByPhoneNumber());
-    {
 
+    customerTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    customerTable.getSelectionModel().selectedItemProperty()
+        .addListener((obs, oldSelection, newSelection) -> {
+          selectedCustomer = newSelection;
+        });
 
-      customerTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-
-
-      customerTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-        selectedCustomer = newSelection;
-      });
-    }
-
-    {
-
-      animalSaleTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-    }
+    animalSaleTable.getSelectionModel()
+        .setSelectionMode(SelectionMode.MULTIPLE);
   }
 
-  @FXML
-  private void searchByPhoneNumber()
+  /**
+   * Searches customers by phone number.
+   */
+  @FXML private void searchByPhoneNumber()
   {
     String searchText = numberSearchField.getText();
     if (searchText == null || searchText.isEmpty())
     {
-      filteredCustomers.setPredicate(customer -> true); // Vis alt
+      filteredCustomers.setPredicate(customer -> true);
     }
     else
     {
-      filteredCustomers.setPredicate(customer -> {
-        // Filtrer efter telefonnummer
-        return customer.getPhoneNumberProperty().getValue().toString()
-            .contains(searchText);
-      });
+      filteredCustomers.setPredicate(
+          customer -> customer.getPhoneNumberProperty().getValue().toString()
+              .contains(searchText));
     }
   }
 
-
-  @FXML
-  private void searchByType() {
+  /**
+   * Searches animals by type.
+   */
+  @FXML private void searchByType()
+  {
     String searchText = typeSearchField.getText();
-    if (searchText == null || searchText.isEmpty()) {
-      filteredAnimals.setPredicate(animal -> true); // Vis alt
-    } else {
-      filteredAnimals.setPredicate(animal ->
-      {
-        // Filtrer efter telefonnummer
-        return animal.getTypeProperty().getValue().toString().contains(searchText);
-      });
+    if (searchText == null || searchText.isEmpty())
+    {
+      filteredAnimals.setPredicate(animal -> true);
+    }
+    else
+    {
+      filteredAnimals.setPredicate(
+          animal -> animal.getTypeProperty().getValue().toString()
+              .contains(searchText));
     }
   }
 
-  @FXML
-  private void searchBySpecies() {
+  /**
+   * Searches animals by species.
+   */
+  @FXML private void searchBySpecies()
+  {
     String searchText = speciesSearchField.getText();
-    if (searchText == null || searchText.isEmpty()) {
-      filteredAnimals.setPredicate(animal -> true); // Vis alle dyr
-    } else {
-      filteredAnimals.setPredicate(animal ->
-      {
-
-        return animal.getSpeciesProperty().getValue().toString().contains(searchText.toLowerCase());
-      });
+    if (searchText == null || searchText.isEmpty())
+    {
+      filteredAnimals.setPredicate(animal -> true);
+    }
+    else
+    {
+      filteredAnimals.setPredicate(
+          animal -> animal.getSpeciesProperty().getValue().toString()
+              .contains(searchText.toLowerCase()));
     }
   }
 
-  @FXML
-  private void addCustomerButton() {
-    try {
-      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("VIAPetNewCustomer.fxml"));
+  /**
+   * Opens the view to add a new customer.
+   */
+  @FXML private void addCustomerButton()
+  {
+    try
+    {
+      FXMLLoader fxmlLoader = new FXMLLoader(
+          getClass().getResource("VIAPetNewCustomer.fxml"));
       Parent root = fxmlLoader.load();
       VIAPetNewCustomerViewController controller = fxmlLoader.getController();
       controller.init(viewHandler, petShopModel, null);
 
       Stage newStage = new Stage();
-      newStage.setTitle("Add Customer");//set titlen
-            newStage.setScene(new Scene(root));
-            newStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+      newStage.setTitle("Add Customer");
+      newStage.setScene(new Scene(root));
+      newStage.show();
     }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+  }
 
-  @FXML
-  private void assignButton() {
-    // 1. Kontroller, at en kunde er valgt
-    if (selectedCustomer == null) {
+  /**
+   * Assigns selected animals to the selected customer.
+   */
+  @FXML private void assignButton()
+  {
+    if (selectedCustomer == null)
+    {
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("No Customer Selected");
       alert.setHeaderText(null);
-      alert.setContentText("Please select a customer from the customer list before assigning animals.");
+      alert.setContentText(
+          "Please select a customer from the customer list before assigning animals.");
       alert.showAndWait();
       return;
     }
 
+    ObservableList<AnimalViewModel> selectedAnimals = animalSaleTable.getSelectionModel()
+        .getSelectedItems();
 
-    ObservableList<AnimalViewModel> selectedAnimals = animalSaleTable.getSelectionModel().getSelectedItems();
-
-    if (selectedAnimals.isEmpty()) {
+    if (selectedAnimals.isEmpty())
+    {
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("No Animals Selected");
       alert.setHeaderText(null);
-      alert.setContentText("Please select one or more animals from the animal list.");
+      alert.setContentText(
+          "Please select one or more animals from the animal list.");
       alert.showAndWait();
       return;
     }
 
-    for (AnimalViewModel animals : selectedAnimals) {
-
+    for (AnimalViewModel animals : selectedAnimals)
+    {
       int index = animalSaleTable.getItems().indexOf(animals);
       AnimalForSale animal = petShopModel.getAnimalForSaleByIndex(index);
 
@@ -197,27 +227,28 @@ public class VIAPetSaleViewController
       dialog.setHeaderText("Naming the Animal");
       dialog.setContentText("Please enter a name for the selected animal:");
 
-
-      String nameForPurchasedAnimal = dialog.showAndWait().orElse("Unnamed Animal");
+      String nameForPurchasedAnimal = dialog.showAndWait()
+          .orElse("Unnamed Animal");
 
       int customerIndex = customerTable.getSelectionModel().getSelectedIndex();
       Customer customer = petShopModel.getCustomerByIndex(customerIndex);
 
-
       petShopModel.addNewPurchase(customer, animal, nameForPurchasedAnimal);
     }
-
 
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
     alert.setTitle("Success");
     alert.setHeaderText(null);
-    alert.setContentText("The selected animals have been successfully assigned to the customer.");
+    alert.setContentText(
+        "The selected animals have been successfully assigned to the customer.");
     alert.showAndWait();
-
 
     animalSaleTable.getSelectionModel().clearSelection();
   }
 
+  /**
+   * Refreshes the view.
+   */
   @FXML private void refreshButton()
   {
     try
@@ -229,11 +260,17 @@ public class VIAPetSaleViewController
     }
   }
 
-  @FXML
-   private void BackButton() {
-   try {
-     viewHandler.openView("forside");
-    } catch (Exception e) {
+  /**
+   * Navigates back to the previous view.
+   */
+  @FXML private void BackButton()
+  {
+    try
+    {
+      viewHandler.openView("forside");
+    }
+    catch (Exception e)
+    {
       e.printStackTrace();
     }
   }

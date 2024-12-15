@@ -11,6 +11,17 @@ import java.awt.*;
 
 import javax.swing.*;
 
+/**
+ * Controller class for the Add Animal view.
+ * It handles the user interactions and updates the view accordingly.
+ * This class is responsible for adding a new animal to the system.
+ *
+ * @author Martin Skovby Andersen
+ * @author Rasmus Duus Kristensen
+ * @author Victor Grud Oksen
+ * @author Victor Sander Marx Hoelgaard
+ * @version 1.0 - December 2024
+ */
 public class AddAnimalViewController
 {
   @FXML TextField priceField;
@@ -24,19 +35,28 @@ public class AddAnimalViewController
   private ViewHandler viewHandler;
   private PetShopModel petShopModel;
 
-  public void init(ViewHandler viewHandler, PetShopModel petShopModel, Region root)
+  /**
+   * Initializes the controller with the specified view handler, model, and root region.
+   *
+   * @param viewHandler the view handler to manage view transitions
+   * @param petShopModel the model to interact with the data
+   * @param root the root region of the view
+   */
+  public void init(ViewHandler viewHandler, PetShopModel petShopModel,
+      Region root)
   {
     this.petShopModel = petShopModel;
     this.viewHandler = viewHandler;
     this.root = root;
-    genderBox.getItems().addAll("Male","Female");
-    typeBox.getItems().addAll("Fish","Mammal","Bird","Reptile");
-    extraInfoBox.getItems().addAll("true","false");
-    extraInfo2Box.getItems().addAll("true","false");
+    genderBox.getItems().addAll("Male", "Female");
+    typeBox.getItems().addAll("Fish", "Mammal", "Bird", "Reptile");
+    extraInfoBox.getItems().addAll("true", "false");
+    extraInfo2Box.getItems().addAll("true", "false");
   }
 
-
-
+  /**
+   * Resets the input fields to their default state.
+   */
   public void reset()
   {
     priceField.setText("");
@@ -48,15 +68,18 @@ public class AddAnimalViewController
     ageField.setText("");
   }
 
+  /**
+   * Handles the action of the add button.
+   * It adds a new animal to the system and navigates to the animal list view.
+   */
   @FXML private void addButton()
   {
     try
     {
-
-      petShopModel.addNewAnimalForSaleWithStrings(typeBox.getValue()
-          ,priceField.getText(),genderBox.getValue()
-          ,ageField.getText(),speciesField.getText()
-          ,extraInfoBox.getValue(),extraInfo2Box.getValue());
+      petShopModel.addNewAnimalForSaleWithStrings(typeBox.getValue(),
+          priceField.getText(), genderBox.getValue(), ageField.getText(),
+          speciesField.getText(), extraInfoBox.getValue(),
+          extraInfo2Box.getValue());
 
       viewHandler.openView("AnimalList");
     }
@@ -67,6 +90,10 @@ public class AddAnimalViewController
     }
   }
 
+  /**
+   * Handles the action of the back button.
+   * It navigates back to the previous view.
+   */
   @FXML private void BackButton()
   {
     try
@@ -79,6 +106,3 @@ public class AddAnimalViewController
     }
   }
 }
-
-
-
