@@ -10,13 +10,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="443.0" prefWidth="502.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AnimalInCareViewController">
     <children>
-        <TextField layoutX="14.0" layoutY="83.0" promptText="Søg" />
+        <TextField fx:id="typeSearchField" onAction="#searchByType" layoutX="14.0" layoutY="83.0" promptText="Søg" />
         <Text layoutX="14.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Animal In Care">
             <font>
                 <Font size="38.0" />
             </font>
         </Text>
-        <Button layoutX="164.0" layoutY="83.0" mnemonicParsing="false" text="Søg" />
+        <Button onAction="#searchByType" layoutX="164.0" layoutY="83.0" mnemonicParsing="false" text="Søg" />
         <TableView fx:id="animalListTable" layoutX="14.0" layoutY="108.0" prefHeight="259.0" prefWidth="459.0">
             <columns>
                 <TableColumn fx:id="animalNameColumn" prefWidth="75.0" text="Name" />

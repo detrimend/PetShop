@@ -1,9 +1,14 @@
 package view;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
+import model.OwnedAnimal;
 import model.PetShopModel;
 
 /**
@@ -27,7 +32,8 @@ public class AnimalInCareViewController
   @FXML TableColumn<AnimalViewModel, String> animalExtraInfoColumn;
   @FXML TableColumn<AnimalViewModel, String> animalExtraInfo2Column;
   @FXML TableColumn<AnimalViewModel, String> animalSpeciesColumn;
-
+  @FXML private TextField typeSearchField;
+  private FilteredList<AnimalViewModel> filteredAnimals;
   private Region root;
   private ViewHandler viewHandler;
   private PetShopModel petShopModel;
@@ -61,9 +67,18 @@ public class AnimalInCareViewController
     animalAgeColumn.setCellValueFactory(cellData -> cellData.getValue().getAgeProperty());
     animalExtraInfoColumn.setCellValueFactory(cellData -> cellData.getValue().getExtraInfoProperty());
     animalExtraInfo2Column.setCellValueFactory(cellData -> cellData.getValue().getExtraInfo2Property());
+  // tjek i morgen, forhåbenligt det sidste der skal fikses
+   /** ObservableList<AnimalViewModel> animals = FXCollections.observableArrayList();
+    for (OwnedAnimal animal : petShopModel.getAnimalsInCare())
+    {
+      animals.add(new AnimalViewModel(animal));
+    }
 
-    animalListTable.setItems(viewModel.getList());
+    filteredAnimals = new FilteredList<>(animals, p -> true);
+    animalListTable.setItems(filteredAnimals);
 
+    typeSearchField.setOnAction(event -> searchByType());
+*/
     reset();
   }
 
@@ -99,6 +114,21 @@ public class AnimalInCareViewController
     catch (Exception e)
     {
       e.printStackTrace();
+    }
+  }
+
+  @FXML private void searchByType()
+  {
+    String searchText = typeSearchField.getText();
+    if (searchText == null || searchText.isEmpty())
+    {
+      filteredAnimals.setPredicate(animal -> true);
+    }
+    else
+    {
+      filteredAnimals.setPredicate(
+          animal -> animal.getTypeProperty().getValue()
+              .contains(searchText));
     }
   }
 }

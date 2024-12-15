@@ -1,9 +1,14 @@
 package view;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
+import model.AnimalForSale;
 import model.PetShopModel;
 
 /**
@@ -29,6 +34,8 @@ public class AnimalListViewController
   @FXML TableColumn<AnimalViewModel, String> animalSpeciesColumn;
   @FXML TableColumn<AnimalViewModel, Number> animalPriceColumn;
   @FXML TableColumn<AnimalViewModel, String> animalForSaleColumn;
+  private FilteredList<AnimalViewModel> filteredAnimals;
+  @FXML private TextField typeSearchField;
 
   private Region root;
   private ViewHandler viewHandler;
@@ -67,6 +74,15 @@ public class AnimalListViewController
     animalPriceColumn.setCellValueFactory(cellData -> cellData.getValue().getPriceProperty());
 
     animalListTable.setItems(viewModel.getList());
+
+    ObservableList<AnimalViewModel> animals = FXCollections.observableArrayList();
+    for (int i = 0; i < petShopModel.getNumberOfAnimalsForSale(); i++)
+    {
+      AnimalForSale animal = petShopModel.getAnimalForSaleByIndex(i);
+      animals.add(new AnimalViewModel(animal));
+    }
+    filteredAnimals = new FilteredList<>(animals, p -> true);
+    animalListTable.setItems(filteredAnimals);
   }
 
   /**
@@ -101,6 +117,20 @@ public class AnimalListViewController
     catch (Exception e)
     {
       e.printStackTrace();
+    }
+  }
+  @FXML private void searchByType()
+  {
+    String searchText = typeSearchField.getText();
+    if (searchText == null || searchText.isEmpty())
+    {
+      filteredAnimals.setPredicate(animal -> true);
+    }
+    else
+    {
+      filteredAnimals.setPredicate(
+          animal -> animal.getTypeProperty().getValue().toString()
+              .contains(searchText));
     }
   }
 }

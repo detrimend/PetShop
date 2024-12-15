@@ -56,12 +56,6 @@ public class VIACareViewController
     this.petShopModel = petShopModel;
     this.root = root;
 
-    initializeCustomerTable();
-    initializeAnimalTable();
-  }
-
-  private void initializeCustomerTable()
-  {
     ObservableList<CustomerViewModel> customers = FXCollections.observableArrayList();
     for (int i = 0; i < petShopModel.getNumberOfCustomers(); i++)
     {
@@ -81,16 +75,17 @@ public class VIACareViewController
           selectedCustomer = newVal;
           loadAnimalsForCustomer(newVal);
         });
-  }
 
-  private void initializeAnimalTable()
-  {
+
     nameAnimalColumn.setCellValueFactory(
         cellData -> cellData.getValue().getNameProperty());
     speciesColumn.setCellValueFactory(
         cellData -> cellData.getValue().getSpeciesProperty());
     animalTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+
   }
+
 
   private void loadAnimalsForCustomer(CustomerViewModel customerViewModel)
   {
