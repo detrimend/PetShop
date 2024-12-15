@@ -29,7 +29,7 @@ public class AnimalListViewController
 
   }
 
-  @FXML public void init(ViewHandler viewHandler, PetShopModel petShopModel,
+  @FXML void init(ViewHandler viewHandler, PetShopModel petShopModel,
       Region root)
   {
     this.petShopModel = petShopModel;
@@ -39,15 +39,17 @@ public class AnimalListViewController
 
     animalNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
     animalTypeColumn.setCellValueFactory(cellData -> cellData.getValue().getTypeProperty());
-    animalAgeColumn.setCellValueFactory(cellData -> cellData.getValue().getAgeProperty());
+    animalSpeciesColumn.setCellValueFactory(cellData -> cellData.getValue().getSpeciesProperty());
     animalGenderColumn.setCellValueFactory(cellData -> cellData.getValue().getGenderProperty());
+    animalAgeColumn.setCellValueFactory(cellData -> cellData.getValue().getAgeProperty());
     animalExtraInfoColumn.setCellValueFactory(cellData -> cellData.getValue().getExtraInfoProperty());
     animalExtraInfo2Column.setCellValueFactory(cellData -> cellData.getValue().getExtraInfo2Property());
-    animalSpeciesColumn.setCellValueFactory(cellData -> cellData.getValue().getSpeciesProperty());
-    animalPriceColumn.setCellValueFactory(cellData -> cellData.getValue().getPriceProperty());
     animalForSaleColumn.setCellValueFactory(cellData -> cellData.getValue().getForSaleProperty());
+    animalPriceColumn.setCellValueFactory(cellData -> cellData.getValue().getPriceProperty());
 
     animalListTable.setItems(viewModel.getList());
+
+    // til debug: System.out.println("AnimalListViewController initialized");
   }
 
   public void reset()

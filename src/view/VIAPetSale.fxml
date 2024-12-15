@@ -14,28 +14,28 @@
    <children>
   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="390.0" prefWidth="626.0">
          <children>
-            <TableView layoutX="228.0" layoutY="106.0" prefHeight="247.0" prefWidth="374.0">
-              <columns>
-                <TableColumn prefWidth="75.0" text="Type" />
-                <TableColumn prefWidth="75.0" text="Species" />
-                  <TableColumn prefWidth="75.0" text="ExtraInfo" />
-                  <TableColumn prefWidth="75.0" text="ExtraInfo2" />
-                  <TableColumn prefWidth="75.0" text="Price" />
+             <TableView fx:id="animalSaleTable" layoutX="228.0" layoutY="106.0" prefHeight="247.0" prefWidth="374.0">
+                 <columns>
+                     <TableColumn fx:id="typeColumn" prefWidth="75.0" text="Type" />
+                     <TableColumn fx:id="speciesColumn" prefWidth="75.0" text="Species" />
+                     <TableColumn fx:id="extraInfoColumn" prefWidth="75.0" text="ExtraInfo" />
+                     <TableColumn fx:id="extraInfo2Column" prefWidth="75.0" text="ExtraInfo2" />
+                     <TableColumn fx:id="priceColumn" prefWidth="75.0" text="Price" />
               </columns>
             </TableView>
-            <TextField layoutX="228.0" layoutY="80.0" promptText="Species" />
-            <Button layoutX="379.0" layoutY="80.0" mnemonicParsing="false" text="Søg" />
-            <TextField layoutX="228.0" layoutY="50.0" promptText="Type" />
-            <Button layoutX="379.0" layoutY="51.0" mnemonicParsing="false" text="Søg" />
-            <TableView layoutX="9.0" layoutY="106.0" prefHeight="247.0" prefWidth="205.0">
+            <TextField fx:id="speciesSearchField" onAction="#searchBySpecies" layoutX="228.0" layoutY="80.0" promptText="Species" />
+            <Button onAction="#searchBySpecies"  layoutX="379.0" layoutY="80.0" mnemonicParsing="false" text="Søg" />
+            <TextField fx:id="typeSearchField" onAction="#searchByType" layoutX="228.0" layoutY="50.0" promptText="Type" />
+            <Button onAction="#searchByType" layoutX="379.0" layoutY="51.0" mnemonicParsing="false" text="Søg" />
+            <TableView fx:id="customerTable" layoutX="9.0" layoutY="106.0" prefHeight="247.0" prefWidth="205.0">
                <columns>
-                  <TableColumn prefWidth="75.0" text="Name" />
-                  <TableColumn prefWidth="128.6666692097982" text="Phone Nr." />
+                  <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+                  <TableColumn fx:id="numberColumn" prefWidth="128.6666692097982" text="Phone Nr." />
                </columns>
             </TableView>
-            <TextField layoutX="9.0" layoutY="81.0" promptText="Phone Nr." />
-            <Button layoutX="158.0" layoutY="81.0" mnemonicParsing="false" text="Søg" />
-            <Button layoutX="532.0" layoutY="26.0" mnemonicParsing="false" text="Assign" />
+            <TextField fx:id="numberSearchField" onAction="#searchByPhoneNumber" layoutX="9.0" layoutY="81.0" promptText="Phone Nr." />
+            <Button onAction="#searchByPhoneNumber" layoutX="158.0" layoutY="81.0" mnemonicParsing="false" text="Søg" />
+            <Button onAction="#assignButton" layoutX="532.0" layoutY="26.0" mnemonicParsing="false" text="Assign" />
             <Text layoutX="25.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sale">
                <font>
                   <Font size="38.0" />

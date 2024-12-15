@@ -2,31 +2,35 @@ package view;
 
 
 import javafx.collections.*;
+import javafx.collections.transformation.FilteredList;
 import model.Customer;
 import model.CustomerList;
 import model.PetShopModel;
 
 public class CustomerListViewModel
 {
+
   private ObservableList<CustomerViewModel> list;
   private PetShopModel model;
 
   public CustomerListViewModel(PetShopModel model)
   {
+
     this.model = model;
     this.list = FXCollections.observableArrayList();
+
     update();
   }
 
   public void update()
   {
     list.clear();
+    // til debug: System.out.println("CustomerList update() called");
     for (int i = 0; i < model.getNumberOfCustomers(); i++)
     {
+      // til debug: System.out.println("Adding customer of index: " + i);
       list.add(new CustomerViewModel(model.getCustomerByIndex(i)));
     }
-
-
   }
   public ObservableList<CustomerViewModel> getList()
   {

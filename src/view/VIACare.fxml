@@ -18,14 +18,14 @@
                   <TableColumn prefWidth="75.0" text="Name" />
                </columns>
             </TableView>
-            <TableView layoutX="14.0" layoutY="118.0" prefHeight="247.0" prefWidth="205.0">
+            <TableView fx:id="customerTable" layoutX="14.0" layoutY="118.0" prefHeight="247.0" prefWidth="205.0">
                <columns>
-                  <TableColumn prefWidth="75.0" text="Name" />
-                  <TableColumn prefWidth="128.6666692097982" text="Phone Nr." />
+                  <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+                  <TableColumn fx:id="numberColumn" prefWidth="128.6666692097982" text="Phone Nr." />
                </columns>
             </TableView>
-            <TextField layoutX="14.0" layoutY="93.0" promptText="Phone Nr." />
-            <Button layoutX="163.0" layoutY="93.0" mnemonicParsing="false" text="Søg" />
+            <TextField fx:id="numberSearchField" onAction="#searchByPhoneNumber" layoutX="14.0" layoutY="93.0" promptText="Phone Nr." />
+            <Button onAction="#searchByPhoneNumber" layoutX="163.0" layoutY="93.0" mnemonicParsing="false" text="Søg" />
             <Button layoutX="538.0" layoutY="26.0" mnemonicParsing="false" text="Assign" />
             <Text layoutX="21.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ViaCare">
                <font>

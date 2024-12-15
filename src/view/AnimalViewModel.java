@@ -15,6 +15,7 @@ public class AnimalViewModel
   private DoubleProperty priceProperty;
   private StringProperty forSaleProperty;
 
+
   public AnimalViewModel(AnimalForSale animalforsale)
 
   {
@@ -28,16 +29,19 @@ public class AnimalViewModel
         Mammal mammal = (Mammal) animalforsale.getAnimalInfo();
         extraInfoProperty = new SimpleStringProperty(
             String.valueOf(mammal.isOutDoorOnly()));
+        extraInfo2Property = new SimpleStringProperty("false");
         break;
       case "fish":
         Fish fish = (Fish) animalforsale.getAnimalInfo();
         extraInfoProperty = new SimpleStringProperty(
             String.valueOf(fish.isSaltWater()));
+        extraInfo2Property = new SimpleStringProperty("false");
         break;
       case "reptile":
         Reptile reptile = (Reptile) animalforsale.getAnimalInfo();
         extraInfoProperty = new SimpleStringProperty(
             String.valueOf(reptile.isVenomous()));
+        extraInfo2Property = new SimpleStringProperty("false");
         break;
       case "bird":
         Bird bird = (Bird) animalforsale.getAnimalInfo();
@@ -51,8 +55,8 @@ public class AnimalViewModel
         extraInfo2Property = new SimpleStringProperty("false");
     }
     priceProperty = new SimpleDoubleProperty(animalforsale.getPrice());
-    nameProperty = new SimpleStringProperty();
-    forSaleProperty = new SimpleStringProperty();
+    nameProperty = new SimpleStringProperty("Martin");
+    forSaleProperty = new SimpleStringProperty(String.valueOf(animalforsale.isForSale()));
   }
 
   public StringProperty getGenderProperty()
@@ -99,5 +103,6 @@ public class AnimalViewModel
   {
     return forSaleProperty;
   }
+
 
 }
