@@ -93,7 +93,7 @@ public class AnimalViewModel
         extraInfo2Property = new SimpleStringProperty("false");
     }
 
-    priceProperty = new SimpleDoubleProperty(-1.0); // Ejede dyr har som regel ingen pris
+    priceProperty = new SimpleDoubleProperty(); // Ejede dyr har som regel ingen pris
     forSaleProperty = new SimpleStringProperty("Owned"); // Status som "Owned"
 
     // Ejede dyr burde have et navn

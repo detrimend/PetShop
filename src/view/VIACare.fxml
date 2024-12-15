@@ -13,7 +13,7 @@
    <children>
       <AnchorPane layoutX="6.0" minHeight="0.0" minWidth="0.0" prefHeight="390.0" prefWidth="626.0">
          <children>
-            <TableView fx:id="AnimalTable" layoutX="234.0" layoutY="117.0" prefHeight="247.0" prefWidth="150.0">
+            <TableView fx:id="animalTable" layoutX="234.0" layoutY="117.0" prefHeight="247.0" prefWidth="150.0">
                <columns>
                   <TableColumn fx:id="nameAnimalColumn" prefWidth="75.0" text="Name" />
                   <TableColumn fx:id="speciesColumn" prefWidth="75.0" text="Species" />
@@ -27,14 +27,14 @@
             </TableView>
             <TextField fx:id="numberSearchField" layoutX="14.0" layoutY="93.0" onAction="#searchByPhoneNumber" promptText="Phone Nr." />
             <Button layoutX="163.0" layoutY="93.0" mnemonicParsing="false" onAction="#searchByPhoneNumber" text="Søg" />
-            <Button layoutX="538.0" layoutY="26.0" mnemonicParsing="false" text="Assign" />
+            <Button fx:id="assignButton" onAction="#handleAssign" layoutX="538.0" layoutY="26.0" mnemonicParsing="false" text="Assign" />
             <Text layoutX="21.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ViaCare">
                <font>
                   <Font size="38.0" />
                </font>
             </Text>
-            <DatePicker layoutX="386.0" layoutY="118.0" promptText="Start Date" />
-            <TextField accessibleRole="DATE_PICKER" layoutX="386.0" layoutY="180.0" promptText="fx. 4" />
+            <DatePicker fx:id="startDatePicker" layoutX="386.0" layoutY="118.0" promptText="Start Date" />
+            <TextField fx:id="daysField" accessibleRole="DATE_PICKER" layoutX="386.0" layoutY="180.0" promptText="fx. 4" />
             <Text layoutX="386.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date:" />
             <Text layoutX="386.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How many days:" />
             <Button layoutX="14.0" layoutY="367.0" mnemonicParsing="false" onAction="#BackButton" prefHeight="33.0" prefWidth="87.0" text="Back" />
