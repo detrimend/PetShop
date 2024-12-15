@@ -1,16 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<AnimalsForSaleList>
-  <animals>
-    <isForSale>true</isForSale>
-    <animalInfo>
-      <isTameable>true</isTameable>
-      <tame>true</tame>
-      <gender>F</gender>
-      <species>Bigbird</species>
-      <comment/>
-      <age>4</age>
-    </animalInfo>
-    <price>200.0</price>
-    <animalType>Bird</animalType>
-  </animals>
-</AnimalsForSaleList>
+<AnimalsForSaleList/>
