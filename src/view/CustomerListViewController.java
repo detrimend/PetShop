@@ -58,4 +58,18 @@ public class CustomerListViewController
       e.printStackTrace();
     }
   }
+
+  @FXML private void removeOldCustomerData()
+  {
+    try
+    {
+      petShopModel.removeOldCustomerData();
+      viewModel.update();
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
+      throw new RuntimeException(e);
+    }
+  }
 }

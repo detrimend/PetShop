@@ -2,15 +2,10 @@ package model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Iterator;
 
 /**
  * Class responsible for purging old customer data in compliance with GDPR regulations.
- *
- * @author Martin Skovby Andersen
- * @author Rasmus Duus Kristensen
- * @author Victor Grud Oksen
- * @author Victor Sander Marx Hoelgaard
- * @version 1.0 - December 2024
  */
 public class PurgeGDPR implements Serializable
 {
@@ -38,9 +33,14 @@ public class PurgeGDPR implements Serializable
    */
   public void removeOldCustomerData()
   {
-    for (int i = 0; i < customerList.getNumberOfCustomers(); i++)
+    if (reservationList == null || purchaseList == null || customerList == null) {
+      throw new IllegalArgumentException("Lists cannot be null");
+    }
+
+    Iterator<Customer> iterator = customerList.iterator();
+    while (iterator.hasNext())
     {
-      Customer customer = customerList.getCustomerByIndex(i);
+      Customer customer = iterator.next();
       boolean hasRecentReservation = false;
       boolean hasRecentPurchase = false;
 
@@ -71,8 +71,7 @@ public class PurgeGDPR implements Serializable
       // Remove customer if no recent reservations or purchases
       if (!hasRecentReservation && !hasRecentPurchase)
       {
-        customerList.removeCustomer(customer);
-        i--; // Adjust index after removal
+        iterator.remove();
       }
     }
   }
