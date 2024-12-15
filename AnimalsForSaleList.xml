@@ -3,13 +3,14 @@
   <animals>
     <isForSale>true</isForSale>
     <animalInfo>
-      <venomous>true</venomous>
-      <gender>M</gender>
-      <species>Salamander</species>
+      <isTameable>true</isTameable>
+      <tame>true</tame>
+      <gender>F</gender>
+      <species>Papegøje</species>
       <comment/>
-      <age>54</age>
+      <age>6</age>
     </animalInfo>
-    <price>500.0</price>
-    <animalType>Reptile</animalType>
+    <price>250.0</price>
+    <animalType>Bird</animalType>
   </animals>
 </AnimalsForSaleList>

@@ -20,10 +20,13 @@ public class VIACareViewController
 
   @FXML private TextField numberSearchField;
   @FXML private TableView<CustomerViewModel> customerTable;
-  @FXML private TableColumn<CustomerViewModel, String> nameColumn;
+  @FXML private TableColumn<CustomerViewModel, String> nameCustomerColumn;
   @FXML private TableColumn<CustomerViewModel, Number> numberColumn;
   private FilteredList<CustomerViewModel> filteredCustomers;
   private CustomerViewModel selectedCustomer;
+  @FXML private TableView<AnimalViewModel> animalTable;
+  @FXML private TableColumn<AnimalViewModel,String> nameAnimalColumn;
+  @FXML private TableColumn<AnimalViewModel, String> speciesColumn;
 
   public void init(ViewHandler viewHandler, PetShopModel petShopModel, Region root)
   {
@@ -42,7 +45,7 @@ public class VIACareViewController
 
     // Bind data til tabel
     customerTable.setItems(filteredCustomers);
-    nameColumn.setCellValueFactory(
+    nameCustomerColumn.setCellValueFactory(
         cellData -> cellData.getValue().getNameProperty());
     numberColumn.setCellValueFactory(
         cellData -> cellData.getValue().getPhoneNumberProperty());

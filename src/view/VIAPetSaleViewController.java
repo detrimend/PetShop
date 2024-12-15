@@ -124,7 +124,8 @@ public class VIAPetSaleViewController
     if (searchText == null || searchText.isEmpty()) {
       filteredAnimals.setPredicate(animal -> true); // Vis alt
     } else {
-      filteredAnimals.setPredicate(animal -> {
+      filteredAnimals.setPredicate(animal ->
+      {
         // Filtrer efter telefonnummer
         return animal.getTypeProperty().getValue().toString().contains(searchText);
       });
@@ -137,9 +138,10 @@ public class VIAPetSaleViewController
     if (searchText == null || searchText.isEmpty()) {
       filteredAnimals.setPredicate(animal -> true); // Vis alle dyr
     } else {
-      filteredAnimals.setPredicate(animal -> {
+      filteredAnimals.setPredicate(animal ->
+      {
 
-        return animal.getSpeciesProperty().getValue().toLowerCase().contains(searchText.toLowerCase());
+        return animal.getSpeciesProperty().getValue().toString().contains(searchText.toLowerCase());
       });
     }
   }

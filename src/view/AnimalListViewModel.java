@@ -4,6 +4,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.*;
 
+import static jdk.jfr.internal.consumer.EventLog.update;
+
 public class AnimalListViewModel
 {
   private ObservableList<AnimalViewModel> list;
@@ -27,6 +29,12 @@ public class AnimalListViewModel
       list.add(new AnimalViewModel(petShopModel.getAnimalForSaleByIndex(i)));
     }
 
+    for (int i = 0; i < petShopModel.getAmountOfAnimals(); i++)
+    {
+      list.add(new AnimalViewModel(petShopModel.getAnimalByIndex(i)));
+    }
+
+
   }
 
 
@@ -35,8 +43,10 @@ public class AnimalListViewModel
     return list;
   }
 
-  public void add(AnimalForSale animalForSale)
+  public void add(AnimalForSale animalForSale, OwnedAnimal ownedAnimal)
   {
     list.add(new AnimalViewModel(animalForSale));
+    list.add(new AnimalViewModel(ownedAnimal));
+
   }
 }
