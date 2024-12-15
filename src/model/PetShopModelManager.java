@@ -46,7 +46,7 @@ public class PetShopModelManager implements PetShopModel, Serializable
           this.customerList);
       System.out.println("PetShopModelManager file created");
     }
-
+    // til debug: ownedAnimalsList.addAnimal(new OwnedAnimal("mammal", "Rasmus", customerList.getCustomerByIndex(0), 'M', 2, "Funnyguy", true, false));
   }
 
   @Override public void saveState()
@@ -260,6 +260,14 @@ public class PetShopModelManager implements PetShopModel, Serializable
   {
     purchaseList.addNewPurchase(customer, animal, nameForPurchasedAnimal);
     animalsForSaleList.removeAnimal(animal);
+    for(int i = 0; i < customer.getOwnedAnimals().getAmountOfAnimals(); i++)
+    {
+      if(customer.getOwnedAnimals().getAnimalByIndex(i).getName().equals(nameForPurchasedAnimal))
+      {
+        ownedAnimalsList.addAnimal(customer.getOwnedAnimals().getAnimalByIndex(i));
+      }
+    }
+    saveState();
     saveAnimalsForSaleList();
   }
 

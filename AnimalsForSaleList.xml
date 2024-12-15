@@ -6,11 +6,11 @@
       <isTameable>true</isTameable>
       <tame>true</tame>
       <gender>F</gender>
-      <species>Papegøje</species>
+      <species>Bigbird</species>
       <comment/>
-      <age>6</age>
+      <age>4</age>
     </animalInfo>
-    <price>250.0</price>
+    <price>200.0</price>
     <animalType>Bird</animalType>
   </animals>
 </AnimalsForSaleList>
