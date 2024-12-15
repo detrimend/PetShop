@@ -55,9 +55,52 @@ public class AnimalViewModel
         extraInfo2Property = new SimpleStringProperty("false");
     }
     priceProperty = new SimpleDoubleProperty(animalforsale.getPrice());
-    nameProperty = new SimpleStringProperty("Martin");
     forSaleProperty = new SimpleStringProperty(String.valueOf(animalforsale.isForSale()));
   }
+
+  public AnimalViewModel(OwnedAnimal ownedAnimal)
+  {
+    genderProperty = new SimpleStringProperty(String.valueOf(ownedAnimal.getAnimalInfo().getGender()));
+    typeProperty = new SimpleStringProperty(ownedAnimal.getAnimalInfo().getType());
+    speciesProperty = new SimpleStringProperty(ownedAnimal.getAnimalInfo().getSpecies());
+    ageProperty = new SimpleIntegerProperty(ownedAnimal.getAnimalInfo().getAge());
+
+    // Tjekker typen af dyret og sætter "extraInfoProperty" baseret på typen
+    switch (ownedAnimal.getAnimalInfo().getType().toLowerCase())
+    {
+      case "mammal":
+        Mammal mammal = (Mammal) ownedAnimal.getAnimalInfo();
+        extraInfoProperty = new SimpleStringProperty(String.valueOf(mammal.isOutDoorOnly()));
+        extraInfo2Property = new SimpleStringProperty("false");
+        break;
+      case "fish":
+        Fish fish = (Fish) ownedAnimal.getAnimalInfo();
+        extraInfoProperty = new SimpleStringProperty(String.valueOf(fish.isSaltWater()));
+        extraInfo2Property = new SimpleStringProperty("false");
+        break;
+      case "reptile":
+        Reptile reptile = (Reptile) ownedAnimal.getAnimalInfo();
+        extraInfoProperty = new SimpleStringProperty(String.valueOf(reptile.isVenomous()));
+        extraInfo2Property = new SimpleStringProperty("false");
+        break;
+      case "bird":
+        Bird bird = (Bird) ownedAnimal.getAnimalInfo();
+        extraInfoProperty = new SimpleStringProperty(String.valueOf(bird.isTame()));
+        extraInfo2Property = new SimpleStringProperty(String.valueOf(bird.isTameable()));
+        break;
+      default:
+        extraInfoProperty = new SimpleStringProperty("false");
+        extraInfo2Property = new SimpleStringProperty("false");
+    }
+
+    priceProperty = new SimpleDoubleProperty(); // Ejede dyr har som regel ingen pris
+    forSaleProperty = new SimpleStringProperty("Owned"); // Status som "Owned"
+
+    // Ejede dyr burde have et navn
+    nameProperty = new SimpleStringProperty(ownedAnimal.getName());
+  }
+
+
 
   public StringProperty getGenderProperty()
   {
