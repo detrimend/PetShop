@@ -1,12 +1,4 @@
 To do:
-
-- GDPR implementeret
-
-- Javadoc rettelser og tilføjelser
-- Under VIACare bør vi kunne trykke på en knap for at se en liste over dyr i pensionen
-(forslag: returner en tabel hvor hele OwnedAnimalsList'en bliver filtreret efter "isInCare" boolean)
-- Alle klasser skal tjekkes igennem for imports som ikke bruges
-- Alle klasser i model/manager som ikke ender med at blive brugt.
 - Lav dummydata
 - Til sidst skal klassediagram opdateres (bruger import i Astah)
 - fiks Search i AnimalList
