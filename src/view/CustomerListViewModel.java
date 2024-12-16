@@ -45,7 +45,6 @@ public class CustomerListViewModel
       // til debug: System.out.println("Adding customer of index: " + i);
       list.add(new CustomerViewModel(model.getCustomerByIndex(i)));
 
-
     }
   }
 

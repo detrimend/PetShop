@@ -19,7 +19,7 @@ public class FishTank implements Serializable
   /**
    * Constructs a FishTank with the specified food type and number of fish.
    *
-   * @param foodType the type of food the fish eat
+   * @param foodType     the type of food the fish eat
    * @param numberOfFish the number of fish in the tank
    */
   public FishTank(String foodType, int numberOfFish)
@@ -72,7 +72,7 @@ public class FishTank implements Serializable
    */
   @Override public String toString()
   {
-    return "Fiskene spiser: " + foodType + "\n" + "Mængden af fisk til pasning: "
-        + numberOfFish;
+    return "Fiskene spiser: " + foodType + "\n"
+        + "Mængden af fisk til pasning: " + numberOfFish;
   }
 }

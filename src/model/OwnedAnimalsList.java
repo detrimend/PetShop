@@ -103,7 +103,8 @@ public class OwnedAnimalsList implements Serializable
   {
     if (ownedAnimal.isInCare())
     {
-      throw new IllegalArgumentException("Animal is in care and cannot be removed");
+      throw new IllegalArgumentException(
+          "Animal is in care and cannot be removed");
     }
     animals.remove(ownedAnimal);
     return ownedAnimal;

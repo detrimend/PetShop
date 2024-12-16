@@ -18,9 +18,9 @@ public class Reptile extends AnimalInfo implements Serializable
   /**
    * Constructs a Reptile with the specified attributes.
    *
-   * @param gender the gender of the reptile ('M' or 'F')
-   * @param age the age of the reptile
-   * @param species the species of the reptile
+   * @param gender   the gender of the reptile ('M' or 'F')
+   * @param age      the age of the reptile
+   * @param species  the species of the reptile
    * @param venomous whether the reptile is venomous
    */
   public Reptile(char gender, int age, String species, boolean venomous)

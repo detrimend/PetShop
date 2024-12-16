@@ -41,7 +41,8 @@ public class AnimalInCareViewModel
   public void update()
   {
     list.clear();
-    for (int i = 0; i < petShopModel.getAnimalsInCare().getAmountOfAnimals(); i++)
+    for (int i = 0;
+         i < petShopModel.getAnimalsInCare().getAmountOfAnimals(); i++)
     {
       list.add(new AnimalViewModel(
           petShopModel.getAnimalsInCare().getAnimalByIndex(i)));

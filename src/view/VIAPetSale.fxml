@@ -23,19 +23,19 @@
                      <TableColumn fx:id="priceColumn" prefWidth="75.0" text="Price" />
               </columns>
             </TableView>
-            <TextField fx:id="speciesSearchField" onAction="#searchBySpecies" layoutX="228.0" layoutY="80.0" promptText="Species" />
-            <Button onAction="#searchBySpecies"  layoutX="379.0" layoutY="80.0" mnemonicParsing="false" text="Søg" />
-            <TextField fx:id="typeSearchField" onAction="#searchByType" layoutX="228.0" layoutY="50.0" promptText="Type" />
-            <Button onAction="#searchByType" layoutX="379.0" layoutY="51.0" mnemonicParsing="false" text="Søg" />
+            <TextField fx:id="speciesSearchField" layoutX="228.0" layoutY="80.0" onAction="#searchBySpecies" promptText="Species" />
+            <Button layoutX="379.0" layoutY="80.0" mnemonicParsing="false" onAction="#searchBySpecies" text="Søg" />
+            <TextField fx:id="typeSearchField" layoutX="228.0" layoutY="50.0" onAction="#searchByType" promptText="Type" />
+            <Button layoutX="379.0" layoutY="51.0" mnemonicParsing="false" onAction="#searchByType" text="Søg" />
             <TableView fx:id="customerTable" layoutX="9.0" layoutY="106.0" prefHeight="247.0" prefWidth="205.0">
                <columns>
                   <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
                   <TableColumn fx:id="numberColumn" prefWidth="128.6666692097982" text="Phone Nr." />
                </columns>
             </TableView>
-            <TextField fx:id="numberSearchField" onAction="#searchByPhoneNumber" layoutX="9.0" layoutY="81.0" promptText="Phone Nr." />
-            <Button onAction="#searchByPhoneNumber" layoutX="158.0" layoutY="81.0" mnemonicParsing="false" text="Søg" />
-            <Button onAction="#assignButton" layoutX="532.0" layoutY="26.0" mnemonicParsing="false" text="Assign" />
+            <TextField fx:id="numberSearchField" layoutX="9.0" layoutY="81.0" onAction="#searchByPhoneNumber" promptText="Phone Nr." />
+            <Button layoutX="158.0" layoutY="81.0" mnemonicParsing="false" onAction="#searchByPhoneNumber" text="Søg" />
+            <Button layoutX="532.0" layoutY="26.0" mnemonicParsing="false" onAction="#assignButton" text="Assign" />
             <Text layoutX="25.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sale">
                <font>
                   <Font size="38.0" />
@@ -43,11 +43,11 @@
             </Text>
             <Text fill="#dd3737" layoutX="523.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Missing info" />
              <Button layoutX="14.0" layoutY="367.0" mnemonicParsing="false" onAction="#BackButton" prefHeight="33.0" prefWidth="87.0" text="Back" />
-            <Button onAction="#refreshButton" layoutX="126.0" layoutY="367.0" mnemonicParsing="false"  prefHeight="33.0" prefWidth="87.0" text="Refresh" />
-            <SplitMenuButton layoutX="452.0" layoutY="26.0" mnemonicParsing="false" text="Menu">
+            <Button layoutX="126.0" layoutY="367.0" mnemonicParsing="false" onAction="#refreshButton" prefHeight="33.0" prefWidth="87.0" text="Refresh" />
+            <SplitMenuButton layoutX="406.0" layoutY="25.0" mnemonicParsing="false" onAction="#addCustomerButton" text="Add Customer">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#addCustomerButton" text="Add Customer" />
-                <MenuItem mnemonicParsing="false"  text="VIACare" />
+                <MenuItem mnemonicParsing="false" text="VIACare" />
               </items>
             </SplitMenuButton>
          </children>

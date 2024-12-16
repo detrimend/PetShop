@@ -19,8 +19,8 @@ public class Customer extends Person implements Serializable
   /**
    * Constructs a Customer with the specified name, email, and phone number.
    *
-   * @param name the name of the customer
-   * @param email the email of the customer
+   * @param name        the name of the customer
+   * @param email       the email of the customer
    * @param phoneNumber the phone number of the customer
    */
   public Customer(Name name, Email email, int phoneNumber)
@@ -33,12 +33,13 @@ public class Customer extends Person implements Serializable
   /**
    * Constructs a Customer with the specified first name, last name, email, and phone number.
    *
-   * @param firstName the first name of the customer
-   * @param lastName the last name of the customer
-   * @param email the email of the customer
+   * @param firstName   the first name of the customer
+   * @param lastName    the last name of the customer
+   * @param email       the email of the customer
    * @param phoneNumber the phone number of the customer
    */
-  public Customer(String firstName, String lastName, Email email, int phoneNumber)
+  public Customer(String firstName, String lastName, Email email,
+      int phoneNumber)
   {
     super(firstName, lastName, email);
     setPhoneNumber(phoneNumber);
@@ -118,3 +119,6 @@ public class Customer extends Person implements Serializable
     return super.equals(customer) && phoneNumber == customer.phoneNumber;
   }
 }
+
+
+

@@ -45,7 +45,7 @@ public class ViewHandler
    */
   public ViewHandler(PetShopModel petShopModel)
   {
-    this.currentScene= new Scene(new Region());
+    this.currentScene = new Scene(new Region());
     this.petShopModel = petShopModel;
     this.customerListViewModel = new CustomerListViewModel(petShopModel);
   }
@@ -57,7 +57,7 @@ public class ViewHandler
    */
   public void start(Stage primaryStage)
   {
-    this.primaryStage= primaryStage;
+    this.primaryStage = primaryStage;
     openView("forside");
   }
 
@@ -74,25 +74,25 @@ public class ViewHandler
       case "forside":
         root = loadForsideView("VIAPetForside.fxml");
         break;
-      case  "AddAnimal":
+      case "AddAnimal":
         root = loadAddAnimalView("AddAnimal.fxml");
         break;
       case "AnimalList":
-        root= loadAnimalListView("AnimalList.fxml");
+        root = loadAnimalListView("AnimalList.fxml");
         break;
       case "AnimalSale":
-        root= loadAnimalSaleView("AnimalSaleConfirm.fxml");
+        root = loadAnimalSaleView("AnimalSaleConfirm.fxml");
         break;
       case "CustomerList":
-        root= loadCustomerListView("CustomerList.fxml");
+        root = loadCustomerListView("CustomerList.fxml");
         break;
       case "Care":
-        root= loadViaCareView("VIACare.fxml");
+        root = loadViaCareView("VIACare.fxml");
         break;
       case "NewCustomer":
-        root= loadNewCustomerView("VIAPetNewCustomer.fxml");
+        root = loadNewCustomerView("VIAPetNewCustomer.fxml");
         break;
-      case  "Sale":
+      case "Sale":
         root = loadSaleView("VIAPetSale.fxml");
         break;
       case "CareList":

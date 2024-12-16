@@ -21,7 +21,7 @@ public class DateInterval implements Serializable
    * Constructs a DateInterval with the specified start date and number of days.
    *
    * @param startDate the start date of the interval
-   * @param days the number of days in the interval
+   * @param days      the number of days in the interval
    */
   public DateInterval(LocalDate startDate, int days)
   {
@@ -63,7 +63,7 @@ public class DateInterval implements Serializable
    * Sets the start date and number of days of the interval.
    *
    * @param startDate the new start date of the interval
-   * @param days the new number of days in the interval
+   * @param days      the new number of days in the interval
    */
   public void set(LocalDate startDate, int days)
   {

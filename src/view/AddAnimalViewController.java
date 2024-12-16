@@ -33,9 +33,9 @@ public class AddAnimalViewController
   /**
    * Initializes the controller with the specified view handler, model, and root region.
    *
-   * @param viewHandler the view handler to manage view transitions
+   * @param viewHandler  the view handler to manage view transitions
    * @param petShopModel the model to interact with the data
-   * @param root the root region of the view
+   * @param root         the root region of the view
    */
   public void init(ViewHandler viewHandler, PetShopModel petShopModel,
       Region root)
