@@ -24,4 +24,42 @@
     <price>4.0</price>
     <animalType>Reptile</animalType>
   </animals>
+  <animals>
+    <isForSale>true</isForSale>
+    <animalInfo>
+      <isTameable>true</isTameable>
+      <tame>true</tame>
+      <gender>M</gender>
+      <species>måge</species>
+      <comment/>
+      <age>2</age>
+    </animalInfo>
+    <price>25.0</price>
+    <animalType>Bird</animalType>
+  </animals>
+  <animals>
+    <isForSale>true</isForSale>
+    <animalInfo>
+      <outdoorOnly>false</outdoorOnly>
+      <gender>F</gender>
+      <species>Marsvin</species>
+      <comment/>
+      <age>1</age>
+    </animalInfo>
+    <price>232.0</price>
+    <animalType>Mammal</animalType>
+  </animals>
+  <animals>
+    <isForSale>true</isForSale>
+    <animalInfo>
+      <isTameable>true</isTameable>
+      <tame>true</tame>
+      <gender>F</gender>
+      <species>Due</species>
+      <comment/>
+      <age>2</age>
+    </animalInfo>
+    <price>123.0</price>
+    <animalType>Bird</animalType>
+  </animals>
 </AnimalsForSaleList>
