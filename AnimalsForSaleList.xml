@@ -24,4 +24,16 @@
     <price>4.0</price>
     <animalType>Reptile</animalType>
   </animals>
+  <animals>
+    <isForSale>true</isForSale>
+    <animalInfo>
+      <outdoorOnly>false</outdoorOnly>
+      <gender>M</gender>
+      <species>Kanin</species>
+      <comment/>
+      <age>2</age>
+    </animalInfo>
+    <price>250.0</price>
+    <animalType>Mammal</animalType>
+  </animals>
 </AnimalsForSaleList>
