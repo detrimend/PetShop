@@ -15,25 +15,37 @@
   <animals>
     <isForSale>true</isForSale>
     <animalInfo>
-      <venomous>true</venomous>
       <gender>M</gender>
-      <species>Gekko</species>
+      <species>Pirat</species>
       <comment/>
-      <age>4</age>
+      <saltWater>false</saltWater>
+      <age>1</age>
     </animalInfo>
-    <price>4.0</price>
-    <animalType>Reptile</animalType>
+    <price>0.0</price>
+    <animalType>Fish</animalType>
   </animals>
   <animals>
     <isForSale>true</isForSale>
     <animalInfo>
-      <outdoorOnly>false</outdoorOnly>
       <gender>M</gender>
-      <species>Kanin</species>
+      <species/>
       <comment/>
+      <saltWater>false</saltWater>
       <age>2</age>
     </animalInfo>
-    <price>250.0</price>
+    <price>50.0</price>
+    <animalType>Fish</animalType>
+  </animals>
+  <animals>
+    <isForSale>true</isForSale>
+    <animalInfo>
+      <outdoorOnly>true</outdoorOnly>
+      <gender>M</gender>
+      <species>Hamster</species>
+      <comment/>
+      <age>3</age>
+    </animalInfo>
+    <price>40.0</price>
     <animalType>Mammal</animalType>
   </animals>
 </AnimalsForSaleList>
