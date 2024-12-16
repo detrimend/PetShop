@@ -1,0 +1,4 @@
+To do:
+- Lav dummydata
+- Til sidst skal klassediagram opdateres (bruger import i Astah)
+- fiks Search i AnimalList

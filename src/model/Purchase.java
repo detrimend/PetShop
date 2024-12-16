@@ -15,6 +15,8 @@ import java.util.Objects;
  */
 public class Purchase implements Serializable
 {
+  private static final long serialVersionUID = 1L;
+
   private LocalDate date;
   private Customer customer;
   private AnimalForSale animal;

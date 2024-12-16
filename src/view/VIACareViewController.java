@@ -8,11 +8,21 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import model.*;
 
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Controller class for the VIACare view.
+ * It handles the user interactions and updates the view accordingly.
+ * This class is responsible for managing the care of animals.
+ *
+ * @author Martin Skovby Andersen
+ * @author Rasmus Duus Kristensen
+ * @author Victor Grud Oksen
+ * @author Victor Sander Marx Hoelgaard
+ * @version 1.0 - December 2024
+ */
 public class VIACareViewController
 {
   private Region root;
@@ -29,22 +39,23 @@ public class VIACareViewController
   @FXML private DatePicker startDatePicker;
   @FXML private TextField daysField;
 
-
   private FilteredList<CustomerViewModel> filteredCustomers;
   private CustomerViewModel selectedCustomer;
 
-  public void init(ViewHandler viewHandler, PetShopModel petShopModel, Region root)
+  /**
+   * Initializes the controller with the specified view handler, model, and root region.
+   *
+   * @param viewHandler the view handler to manage view transitions
+   * @param petShopModel the model to interact with the data
+   * @param root the root region of the view
+   */
+  public void init(ViewHandler viewHandler, PetShopModel petShopModel,
+      Region root)
   {
     this.viewHandler = viewHandler;
     this.petShopModel = petShopModel;
     this.root = root;
 
-    initializeCustomerTable();
-    initializeAnimalTable();
-  }
-
-  private void initializeCustomerTable()
-  {
     ObservableList<CustomerViewModel> customers = FXCollections.observableArrayList();
     for (int i = 0; i < petShopModel.getNumberOfCustomers(); i++)
     {
@@ -54,28 +65,34 @@ public class VIACareViewController
 
     filteredCustomers = new FilteredList<>(customers, p -> true);
     customerTable.setItems(filteredCustomers);
-    nameCustomerColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
-    numberColumn.setCellValueFactory(cellData -> cellData.getValue().getPhoneNumberProperty());
+    nameCustomerColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getNameProperty());
+    numberColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getPhoneNumberProperty());
 
-    // Lyt til valg af kunde
-    customerTable.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
-      selectedCustomer = newVal;
-      loadAnimalsForCustomer(newVal);
-    });
-  }
+    customerTable.getSelectionModel().selectedItemProperty()
+        .addListener((obs, oldVal, newVal) -> {
+          selectedCustomer = newVal;
+          loadAnimalsForCustomer(newVal);
+        });
 
-  private void initializeAnimalTable()
-  {
-    nameAnimalColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
-    speciesColumn.setCellValueFactory(cellData -> cellData.getValue().getTypeProperty());
+
+    nameAnimalColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getNameProperty());
+    speciesColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getSpeciesProperty());
     animalTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+
   }
+
 
   private void loadAnimalsForCustomer(CustomerViewModel customerViewModel)
   {
     if (customerViewModel != null)
     {
-      Customer customer = petShopModel.getCustomer(customerViewModel.getPhoneNumberProperty().get());
+      Customer customer = petShopModel.getCustomer(
+          customerViewModel.getPhoneNumberProperty().get());
       OwnedAnimalsList animals = petShopModel.getAnimalsByCustomer(customer);
 
       ObservableList<AnimalViewModel> animalList = FXCollections.observableArrayList();
@@ -87,8 +104,7 @@ public class VIACareViewController
     }
   }
 
-  @FXML
-  private void searchByPhoneNumber()
+  @FXML private void searchByPhoneNumber()
   {
     String searchText = numberSearchField.getText();
     if (searchText == null || searchText.isEmpty())
@@ -97,24 +113,25 @@ public class VIACareViewController
     }
     else
     {
-      filteredCustomers.setPredicate(customer ->
-          customer.getPhoneNumberProperty().getValue().toString().contains(searchText)
-      );
+      filteredCustomers.setPredicate(
+          customer -> customer.getPhoneNumberProperty().getValue().toString()
+              .contains(searchText));
     }
   }
 
-  @FXML
-  private void handleAssign()
+  @FXML private void handleAssign()
   {
     if (selectedCustomer == null)
     {
-      showAlert(Alert.AlertType.ERROR, "No Customer Selected", "Please select a customer.");
+      showAlert(Alert.AlertType.ERROR, "No Customer Selected",
+          "Please select a customer.");
       return;
     }
 
     if (startDatePicker.getValue() == null || daysField.getText().isEmpty())
     {
-      showAlert(Alert.AlertType.ERROR, "Invalid Input", "Please select a start date and enter a valid number of days.");
+      showAlert(Alert.AlertType.ERROR, "Invalid Input",
+          "Please select a start date and enter a valid number of days.");
       return;
     }
 
@@ -123,41 +140,55 @@ public class VIACareViewController
       LocalDate startDate = startDatePicker.getValue();
       int days = Integer.parseInt(daysField.getText());
 
-
       List<OwnedAnimal> selectedAnimals = new ArrayList<>();
-      for (AnimalViewModel animalViewModel : animalTable.getSelectionModel().getSelectedItems())
+      for (int i = 0; i < petShopModel.getAmountOfAnimals(); i++)
       {
-        selectedAnimals.add(petShopModel.getAnimalByIndex(animalViewModel.getAgeProperty().get()));
+        OwnedAnimal selectedAnimal = petShopModel.getAnimalByIndex(i);
+        if (selectedAnimal.getName().equals(
+            animalTable.getSelectionModel().getSelectedItem().getNameProperty())
+            || selectedAnimal.getOwner().getPhoneNumber()
+            == (selectedCustomer.getPhoneNumberProperty().get()))
+        {
+          selectedAnimals.add(petShopModel.getAnimalByIndex(i));
+        }
       }
 
       if (selectedAnimals.isEmpty())
       {
-        showAlert(Alert.AlertType.ERROR, "No Animal Selected", "Please select one or more animals.");
+        showAlert(Alert.AlertType.ERROR, "No Animal Selected",
+            "Please select one or more animals.");
         return;
       }
 
       DateInterval interval = new DateInterval(startDate, days);
       OwnedAnimalsList animalList = new OwnedAnimalsList();
 
-      for(int i = 0; i < selectedAnimals.size(); i++) {
+      for (int i = 0; i < selectedAnimals.size(); i++)
+      {
+        selectedAnimals.get(i).putInCare();
         animalList.addAnimal(selectedAnimals.get(i));
       }
 
-      Customer customer = petShopModel.getCustomer(selectedCustomer.getPhoneNumberProperty().get());
+      Customer customer = petShopModel.getCustomer(
+          selectedCustomer.getPhoneNumberProperty().get());
 
-      boolean success = petShopModel.addReservation(interval, customer, animalList);
+      boolean success = petShopModel.addReservation(interval, customer,
+          animalList);
       if (success)
       {
-        showAlert(Alert.AlertType.INFORMATION, "Reservation Created", "The reservation was successfully created!");
+        showAlert(Alert.AlertType.INFORMATION, "Reservation Created",
+            "The reservation was successfully created!");
       }
       else
       {
-        showAlert(Alert.AlertType.ERROR, "Error", "Failed to create reservation.");
+        showAlert(Alert.AlertType.ERROR, "Error",
+            "Failed to create reservation.");
       }
     }
     catch (Exception e)
     {
-      showAlert(Alert.AlertType.ERROR, "Error", "An error occurred: " + e.getMessage());
+      showAlert(Alert.AlertType.ERROR, "Error",
+          "An error occurred: " + e.getMessage());
     }
   }
 
@@ -169,12 +200,23 @@ public class VIACareViewController
     alert.showAndWait();
   }
 
-  @FXML
-  private void BackButton()
+  @FXML private void BackButton()
   {
     try
     {
       viewHandler.openView("forside");
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
+    }
+  }
+
+  @FXML private void AnimalsInCareButton()
+  {
+    try
+    {
+      viewHandler.openView("CareList");
     }
     catch (Exception e)
     {

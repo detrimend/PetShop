@@ -8,13 +8,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
-import model.AnimalForSale;
+import model.OwnedAnimal;
 import model.PetShopModel;
 
 /**
- * Controller class for the Animal List view.
+ * Controller class for the Animals in Care view.
  * It handles the user interactions and updates the view accordingly.
- * This class is responsible for displaying the list of animals.
+ * This class is responsible for displaying the list of animals currently in care.
  *
  * @author Martin Skovby Andersen
  * @author Rasmus Duus Kristensen
@@ -22,7 +22,7 @@ import model.PetShopModel;
  * @author Victor Sander Marx Hoelgaard
  * @version 1.0 - December 2024
  */
-public class AnimalListViewController
+public class AnimalInCareViewController
 {
   @FXML TableView<AnimalViewModel> animalListTable;
   @FXML TableColumn<AnimalViewModel, String> animalNameColumn;
@@ -32,20 +32,17 @@ public class AnimalListViewController
   @FXML TableColumn<AnimalViewModel, String> animalExtraInfoColumn;
   @FXML TableColumn<AnimalViewModel, String> animalExtraInfo2Column;
   @FXML TableColumn<AnimalViewModel, String> animalSpeciesColumn;
-  @FXML TableColumn<AnimalViewModel, Number> animalPriceColumn;
-  @FXML TableColumn<AnimalViewModel, String> animalForSaleColumn;
-  private FilteredList<AnimalViewModel> filteredAnimals;
   @FXML private TextField typeSearchField;
-
+  private FilteredList<AnimalViewModel> filteredAnimals;
   private Region root;
   private ViewHandler viewHandler;
   private PetShopModel petShopModel;
-  private AnimalListViewModel viewModel;
+  private AnimalInCareViewModel viewModel;
 
   /**
-   * Constructs an AnimalListViewController.
+   * Constructs an AnimalInCareViewController.
    */
-  public AnimalListViewController()
+  public AnimalInCareViewController()
   {
   }
 
@@ -61,7 +58,7 @@ public class AnimalListViewController
     this.petShopModel = petShopModel;
     this.viewHandler = viewHandler;
     this.root = root;
-    this.viewModel = new AnimalListViewModel(petShopModel);
+    this.viewModel = new AnimalInCareViewModel(petShopModel);
 
     animalNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
     animalTypeColumn.setCellValueFactory(cellData -> cellData.getValue().getTypeProperty());
@@ -70,19 +67,19 @@ public class AnimalListViewController
     animalAgeColumn.setCellValueFactory(cellData -> cellData.getValue().getAgeProperty());
     animalExtraInfoColumn.setCellValueFactory(cellData -> cellData.getValue().getExtraInfoProperty());
     animalExtraInfo2Column.setCellValueFactory(cellData -> cellData.getValue().getExtraInfo2Property());
-    animalForSaleColumn.setCellValueFactory(cellData -> cellData.getValue().getForSaleProperty());
-    animalPriceColumn.setCellValueFactory(cellData -> cellData.getValue().getPriceProperty());
-
-    animalListTable.setItems(viewModel.getList());
-
-    ObservableList<AnimalViewModel> animals = FXCollections.observableArrayList();
-    for (int i = 0; i < petShopModel.getNumberOfAnimalsForSale(); i++)
+  // tjek i morgen, forhåbenligt det sidste der skal fikses
+   /** ObservableList<AnimalViewModel> animals = FXCollections.observableArrayList();
+    for (OwnedAnimal animal : petShopModel.getAnimalsInCare())
     {
-      AnimalForSale animal = petShopModel.getAnimalForSaleByIndex(i);
       animals.add(new AnimalViewModel(animal));
     }
+
     filteredAnimals = new FilteredList<>(animals, p -> true);
     animalListTable.setItems(filteredAnimals);
+
+    typeSearchField.setOnAction(event -> searchByType());
+*/
+    reset();
   }
 
   /**
@@ -112,13 +109,14 @@ public class AnimalListViewController
   {
     try
     {
-      viewHandler.openView("forside");
+      viewHandler.openView("Care");
     }
     catch (Exception e)
     {
       e.printStackTrace();
     }
   }
+
   @FXML private void searchByType()
   {
     String searchText = typeSearchField.getText();
@@ -129,7 +127,7 @@ public class AnimalListViewController
     else
     {
       filteredAnimals.setPredicate(
-          animal -> animal.getTypeProperty().getValue().toString()
+          animal -> animal.getTypeProperty().getValue()
               .contains(searchText));
     }
   }

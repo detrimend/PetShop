@@ -1,77 +1,126 @@
 package view;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.Region;
-import javafx.stage.Stage;
 import model.PetShopModel;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.io.IOException;
-
+/**
+ * Controller class for the VIAPetForside view.
+ * It handles the interaction between the view and the model for the main menu.
+ *
+ * @author Martin Skovby Andersen
+ * @author Rasmus Duus Kristensen
+ * @author Victor Grud Oksen
+ * @author Victor Sander Marx Hoelgaard
+ * @version 1.0 - December 2024
+ */
 public class VIAPetForsideViewController
 {
-
   private Region root;
   private ViewHandler viewHandler;
   private PetShopModel petShopModel;
 
-  public void init(ViewHandler viewHandler, PetShopModel petShopModel, Region root)
+  /**
+   * Initializes the controller with the specified view handler, model, and root region.
+   *
+   * @param viewHandler  the view handler
+   * @param petShopModel the pet shop model
+   * @param root         the root region
+   */
+  public void init(ViewHandler viewHandler, PetShopModel petShopModel,
+      Region root)
   {
     this.petShopModel = petShopModel;
     this.viewHandler = viewHandler;
     this.root = root;
   }
 
-
-  @FXML
-  private void SaleButton() {
-    try {
+  /**
+   * Opens the Sale view.
+   */
+  @FXML private void SaleButton()
+  {
+    try
+    {
       viewHandler.openView("Sale");
-    } catch (Exception e) {
+    }
+    catch (Exception e)
+    {
       e.printStackTrace();
     }
   }
-  @FXML
-  private void CareButton() {
-    try {
+
+  /**
+   * Opens the Care view.
+   */
+  @FXML private void CareButton()
+  {
+    try
+    {
       viewHandler.openView("Care");
-    } catch (Exception e) {
+    }
+    catch (Exception e)
+    {
       e.printStackTrace();
     }
   }
-  @FXML
-  private void NewCustomerButton() {
-    try {
+
+  /**
+   * Opens the New Customer view.
+   */
+  @FXML private void NewCustomerButton()
+  {
+    try
+    {
       viewHandler.openView("NewCustomer");
-    } catch (Exception e) {
+    }
+    catch (Exception e)
+    {
       e.printStackTrace();
     }
   }
-  @FXML
-  private void CustomerListButton() {
-    try {
+
+  /**
+   * Opens the Customer List view.
+   */
+  @FXML private void CustomerListButton()
+  {
+    try
+    {
       viewHandler.openView("CustomerList");
-    } catch (Exception e) {
+    }
+    catch (Exception e)
+    {
       e.printStackTrace();
     }
   }
-  @FXML
-  private void AnimalListButton() {
-    try {
+
+  /**
+   * Opens the Animal List view.
+   */
+  @FXML private void AnimalListButton()
+  {
+    try
+    {
       viewHandler.openView("AnimalList");
-    } catch (Exception e) {
+    }
+    catch (Exception e)
+    {
       e.printStackTrace();
     }
   }
-  @FXML
-  private void AnimalForSaleButton() {
-    try {
+
+  /**
+   * Opens the Add Animal view.
+   */
+  @FXML private void AnimalForSaleButton()
+  {
+    try
+    {
       viewHandler.openView("AddAnimal");
-    } catch (Exception e) {
+    }
+    catch (Exception e)
+    {
       e.printStackTrace();
     }
   }

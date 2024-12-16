@@ -27,7 +27,8 @@
             </TableView>
             <TextField fx:id="numberSearchField" layoutX="14.0" layoutY="93.0" onAction="#searchByPhoneNumber" promptText="Phone Nr." />
             <Button layoutX="163.0" layoutY="93.0" mnemonicParsing="false" onAction="#searchByPhoneNumber" text="Søg" />
-            <Button fx:id="assignButton" onAction="#handleAssign" layoutX="538.0" layoutY="26.0" mnemonicParsing="false" text="Assign" />
+            <Button layoutX="425.0" layoutY="26.0" mnemonicParsing="false" onAction="#AnimalsInCareButton" text="Animals In Care" />
+            <Button fx:id="assignButton" layoutX="538.0" layoutY="26.0" mnemonicParsing="false" onAction="#handleAssign" text="Assign" />
             <Text layoutX="21.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ViaCare">
                <font>
                   <Font size="38.0" />

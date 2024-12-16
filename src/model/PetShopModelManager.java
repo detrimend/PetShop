@@ -46,7 +46,7 @@ public class PetShopModelManager implements PetShopModel, Serializable
           this.customerList);
       System.out.println("PetShopModelManager file created");
     }
-
+    // til debug: ownedAnimalsList.addAnimal(new OwnedAnimal("mammal", "Rasmus", customerList.getCustomerByIndex(0), 'M', 2, "Funnyguy", true, false));
   }
 
   @Override public void saveState()
@@ -70,12 +70,14 @@ public class PetShopModelManager implements PetShopModel, Serializable
   @Override public void removeOldCustomerData()
   {
     purgeGDPR.removeOldCustomerData();
+    saveState();
   }
 
   //Statement til at oprette animalsToPutInCare?
   @Override public boolean addReservation(DateInterval dateInterval,
       Customer customer, OwnedAnimalsList animalsToPutInCare)
   {
+    saveState();
     return reservationList.addReservation(dateInterval, customer,
         animalsToPutInCare);
   }
@@ -89,11 +91,13 @@ public class PetShopModelManager implements PetShopModel, Serializable
         reservationList.registerAnimalHandover(reservation);
       }
     }
+    saveState();
   }
 
   @Override public void removeReservation(int index)
   {
     reservationList.removeReservation(index);
+    saveState();
   }
 
   @Override public Customer getCustomer(int phoneNumber)
@@ -119,12 +123,14 @@ public class PetShopModelManager implements PetShopModel, Serializable
   @Override public Reservation cancelReservation(Reservation reservation)
   {
     reservationList.cancelReservation(reservation);
+    saveState();
     return reservation;
   }
 
   @Override public Reservation endReservation(Reservation reservation)
   {
     reservationList.endReservation(reservation);
+    saveState();
     return reservation;
   }
 
@@ -136,10 +142,24 @@ public class PetShopModelManager implements PetShopModel, Serializable
   @Override public void addExistingReservation(Reservation reservation)
   {
     reservationList.addExistingReservation(reservation);
+    saveState();
+  }
+
+  @Override public OwnedAnimalsList getAnimalsInCare()
+  {
+    OwnedAnimalsList animalsInCare = new OwnedAnimalsList();
+    for(int i = 0; i < ownedAnimalsList.getAmountOfAnimals(); i++)
+    {
+      if(ownedAnimalsList.getAnimalByIndex(i).isInCare())
+      {
+        animalsInCare.addAnimal(ownedAnimalsList.getAnimalByIndex(i));
+      }
+    }
+    return animalsInCare;
   }
 
   @Override public void addCustomer(String firstName, String lastName,
-      String email, String phoneNumber) throws IOException
+      String email, String phoneNumber)
   {
     System.out.println(email);
     String[] split = email.split("@");
@@ -153,20 +173,22 @@ public class PetShopModelManager implements PetShopModel, Serializable
   }
 
   @Override public void addCustomer(Name name, int phoneNumber, Email email)
-      throws IOException
   {
     customerList.addCustomer(name, email, phoneNumber);
+    saveState();
   }
 
   @Override public void removeCustomer(Customer customer)
   {
     customerList.removeCustomer(customer);
+    saveState();
   }
 
   @Override public AnimalForSale removeAnimal(AnimalForSale animal)
   {
     animalsForSaleList.removeAnimal(animal);
     saveAnimalsForSaleList();
+    saveState();
     return animal;
   }
 
@@ -185,6 +207,7 @@ public class PetShopModelManager implements PetShopModel, Serializable
   {
     animalsForSaleList.addAnimal(animal);
     saveAnimalsForSaleList();
+    saveState();
   }
 
   @Override public void addNewAnimalForSale(String animalType, double price,
@@ -195,6 +218,7 @@ public class PetShopModelManager implements PetShopModel, Serializable
         new AnimalForSale(animalType, price, gender, age, species, extraInfo,
             extraInfo2));
     saveAnimalsForSaleList();
+    saveState();
   }
 
   @Override public AnimalsForSaleList getAnimalsByType(String type)
@@ -225,11 +249,13 @@ public class PetShopModelManager implements PetShopModel, Serializable
   @Override public void addAnimal(OwnedAnimal ownedAnimal)
   {
     ownedAnimalsList.addAnimal(ownedAnimal);
+    saveState();
   }
 
   @Override public OwnedAnimal removeAnimal(OwnedAnimal ownedAnimal)
   {
     ownedAnimalsList.removeAnimal(ownedAnimal);
+    saveState();
     return ownedAnimal;
   }
 
@@ -253,6 +279,7 @@ public class PetShopModelManager implements PetShopModel, Serializable
   @Override public void addExistingPurchase(Purchase purchase)
   {
     purchaseList.addExistingPurchase(purchase);
+    saveState();
   }
 
   @Override public void addNewPurchase(Customer customer, AnimalForSale animal,
@@ -260,6 +287,14 @@ public class PetShopModelManager implements PetShopModel, Serializable
   {
     purchaseList.addNewPurchase(customer, animal, nameForPurchasedAnimal);
     animalsForSaleList.removeAnimal(animal);
+    for(int i = 0; i < customer.getOwnedAnimals().getAmountOfAnimals(); i++)
+    {
+      if(customer.getOwnedAnimals().getAnimalByIndex(i).getName().equals(nameForPurchasedAnimal))
+      {
+        ownedAnimalsList.addAnimal(customer.getOwnedAnimals().getAnimalByIndex(i));
+      }
+    }
+    saveState();
     saveAnimalsForSaleList();
   }
 

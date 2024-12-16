@@ -2,7 +2,6 @@ package model;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.time.LocalDate;
 
 public interface PetShopModel extends Serializable {
   void removeOldCustomerData();
@@ -35,6 +34,8 @@ public interface PetShopModel extends Serializable {
   Customer getCustomerByAnimal(OwnedAnimal animal);
 
   void addExistingReservation(Reservation reservation);
+
+  OwnedAnimalsList getAnimalsInCare();
 
   // Salg af dyr
 
@@ -95,5 +96,6 @@ public interface PetShopModel extends Serializable {
   void addNewAnimalForSaleWithStrings(String text, String text1, String text2, String text3, String text4, String value, String value1);
 
   int getNumberOfAnimalsForSale();
+
 }
 

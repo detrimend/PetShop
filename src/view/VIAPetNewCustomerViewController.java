@@ -1,18 +1,21 @@
 package view;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
-import javafx.stage.Stage;
-import model.*;
 import model.PetShopModel;
-import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 
-import java.io.IOException;
-
+/**
+ * Controller class for the New Customer view.
+ * It handles the user interactions and updates the view accordingly.
+ * This class is responsible for creating a new customer in the system.
+ *
+ * @author Martin Skovby Andersen
+ * @author Rasmus Duus Kristensen
+ * @author Victor Grud Oksen
+ * @author Victor Sander Marx Hoelgaard
+ * @version 1.0 - December 2024
+ */
 public class VIAPetNewCustomerViewController
 {
   @FXML TextField firstNameField;
@@ -24,6 +27,13 @@ public class VIAPetNewCustomerViewController
   private ViewHandler viewHandler;
   private PetShopModel petShopModel;
 
+  /**
+   * Initializes the controller with the specified view handler, model, and root region.
+   *
+   * @param viewHandler the view handler to manage view transitions
+   * @param petShopModel the model to interact with the data
+   * @param root the root region of the view
+   */
   public void init(ViewHandler viewHandler, PetShopModel petShopModel,
       Region root)
   {
@@ -32,13 +42,51 @@ public class VIAPetNewCustomerViewController
     this.root = root;
   }
 
+  /**
+   * Resets the input fields to their default state.
+   */
   public void reset()
   {
     firstNameField.setText("");
     lastNameField.setText("");
     emailField.setText("");
     phoneNumberField.setText("");
+  }
 
+  /**
+   * Handles the action of the create button.
+   * It creates a new customer and navigates to the main view.
+   */
+  @FXML private void CreateButton()
+  {
+    try
+    {
+      petShopModel.addCustomer(firstNameField.getText(),
+          lastNameField.getText(), emailField.getText(),
+          phoneNumberField.getText());
+      viewHandler.openView("forside");
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
+      throw new RuntimeException(e);
+    }
+  }
+
+  /**
+   * Handles the action of the back button.
+   * It navigates back to the previous view.
+   */
+  @FXML private void BackButton()
+  {
+    try
+    {
+      viewHandler.openView("forside");
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
+    }
   }
 
   /*@FXML Kode der kan vises til eksamen på hvad vi prøvet på
@@ -74,41 +122,4 @@ public class VIAPetNewCustomerViewController
   }
   }
 */
-
-
-
-
-
-
-
-
-
-
-
-
- @FXML private void CreateButton()
-  {
-    try
-    {
-
-      petShopModel.addCustomer(firstNameField.getText(),lastNameField.getText(),
-          emailField.getText(),phoneNumberField.getText());
-      viewHandler.openView("forside");
-    }
-    catch (Exception e)
-    {
-      e.printStackTrace();
-      throw new RuntimeException(e);
-    }
-  }
-
-  @FXML
-  private void BackButton() {
-    try {
-      viewHandler.openView("forside");
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
-
 }

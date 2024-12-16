@@ -63,7 +63,7 @@ public class Customer extends Person implements Serializable
    */
   public void setPhoneNumber(int phoneNumber)
   {
-    if (phoneNumber <= 0)
+    if (phoneNumber < 0)
     {
       throw new IllegalArgumentException(
           "Phone number must be a positive integer");

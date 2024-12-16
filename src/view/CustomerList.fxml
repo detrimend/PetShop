@@ -10,13 +10,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CustomerListViewController">
    <children>
-      <TextField fx:id="searchField" layoutX="14.0" layoutY="83.0" promptText="Søg" />
-      <Text layoutX="14.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer liste">
+      <TextField fx:id="numberSearchField" onAction="#searchByPhoneNumber" layoutX="14.0" layoutY="83.0" promptText="Søg" />
+      <Text layoutX="14.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer list">
          <font>
             <Font size="38.0" />
          </font>
       </Text>
-      <Button layoutX="164.0" layoutY="83.0" mnemonicParsing="false" text="Søg" />
+      <Button onAction="#searchByPhoneNumber" layoutX="164.0" layoutY="83.0" mnemonicParsing="false" text="Søg" />
       <TableView fx:id="customerListTable" layoutX="14.0" layoutY="108.0" prefHeight="259.0" prefWidth="455.0">
         <columns>
           <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
@@ -24,7 +24,7 @@
             <TableColumn fx:id="emailColumn" prefWidth="205.3332977294922" text="Email" />
         </columns>
       </TableView>
-      <Button layoutX="465.0" layoutY="26.0" mnemonicParsing="false" text="GDPR NUKE" />
+      <Button layoutX="465.0" layoutY="26.0" mnemonicParsing="false" onAction="#removeOldCustomerData" text="GDPR NUKE" />
       <Text fill="#f44141" layoutX="419.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Old costumer have been deleted" />
        <Button layoutX="14.0" layoutY="367.0" mnemonicParsing="false" onAction="#BackButton" prefHeight="33.0" prefWidth="87.0" text="Back" />
    </children>

@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Objects;
 
 /**
@@ -13,8 +14,11 @@ import java.util.Objects;
  * @author Victor Sander Marx Hoelgaard
  * @version 1.0 - December 2024
  */
-public class CustomerList implements Serializable
+public class CustomerList implements Serializable, Iterable<Customer>
 {
+
+  private static final long serialVersionUID = 1L;
+
   private ArrayList<Customer> customers;
 
   /**
@@ -91,8 +95,8 @@ public class CustomerList implements Serializable
     {
       if (c.equals(customer))
       {
-        Name nullName = new Name(null, null);
-        Email nullEmail = new Email(null, null, null);
+        Name nullName = new Name("null", "null");
+        Email nullEmail = new Email("null", "null", "null");
         c.setName(nullName);
         c.setEmail(nullEmail);
         c.setPhoneNumber(0);
@@ -192,5 +196,15 @@ public class CustomerList implements Serializable
       return false;
     CustomerList that = (CustomerList) o;
     return Objects.equals(customers, that.customers);
+  }
+
+  /**
+   * Returns an iterator over the customers in the list.
+   *
+   * @return an iterator
+   */
+  @Override
+  public Iterator<Customer> iterator() {
+    return customers.iterator();
   }
 }
