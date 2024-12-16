@@ -78,7 +78,7 @@ public class PetShopModelManager implements PetShopModel, Serializable
     try
     {
       animalsForSaleListToXML.saveAnimalsForSaleList(animalsForSaleList,
-          "src/Assignment 2 sample/xml/AnimalsForSaleList.xml");
+          "Website/xml/AnimalsForSaleList.xml");
     }
     catch (IOException | ParserException e)
     {
