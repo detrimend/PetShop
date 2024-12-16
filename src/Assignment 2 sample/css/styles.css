@@ -1,0 +1,200 @@
+ 
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: rgb(112, 200, 112);
+      color: black;
+      font-size: 24px;
+      font-weight: bold;
+  }
+  
+ 
+  .logo {
+      font-size: 30px;
+      height: 20px;
+      width: 90%;
+  }
+  
+  .Vialogo{
+      font-size: 20%;
+      height: 30%;
+      width: 10%;
+  }
+  
+
+.card:hover {
+    transform: scale(1.05); /* Slight zoom-in effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+}
+
+
+
+
+
+
+  .carousel-container {
+      display: flex;
+      justify-content: center; 
+      align-items: flex-start; 
+      padding: 20px; 
+      gap: 20px; 
+  }
+  
+  @media (max-width: 1024px){
+      .carousel-container{
+          flex-direction: column;
+      }
+      .news-box{
+          margin-top: auto;
+          
+      }
+  }
+  
+  .carousel-wrapper {
+      width: 100%; 
+  }
+  
+  
+  .news-box {
+      width: 25%;
+      padding: 20px;
+      background-color: white;
+      border: 2px solid #ccc;
+      border-radius: 8%;
+      box-shadow: 0 4px 8px rgba(0,0,0,1
+      );
+      height: auto;
+  }
+  
+  .news-box h4 {
+      font-weight: bold;
+      margin-bottom: 10px;
+  }
+  
+  @media (max-width: 1024px) {
+      .news-box {
+          width: 100%;
+          margin-top: 20px;
+      }
+  }
+  
+  footer {
+      display: block;
+      background-color:rgb(112, 200, 112);
+      
+      left:0;
+      bottom: 0;
+      width: 100%;
+    }
+
+
+
+.div_home {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.div_home img {
+    width: 80px; 
+    height: auto;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 80px; 
+}
+
+.body_green{
+background-color: lightgreen;
+box-shadow: 0 4px 8px rgba(0,0,0,1);
+
+
+}
+
+.body_grey{
+background-color:lightgray;
+box-shadow: 0 4px 8px rgba(0,0,0,1);
+}
+
+.image-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .image-container img {
+    width: 100%;
+    max-width: 250px; 
+    height: auto;
+    margin: 0 auto;
+  }
+  .image-text {
+    font-size: 1rem;
+    text-align: center;
+    color: #333;
+  }
+
+  body {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+
+#jumbotron {
+    background-color: #2FAF1C;
+    padding: 20px;
+}
+
+#box {
+    background-color: lightgray;
+    border-radius: 5px;
+    border-color: black;
+    padding: 2%;
+}
+
+#outline {
+    border-style: solid;
+    border-width: 2px;
+    border-color: gray;
+    padding: 5px;
+}
+
+.staff_img {
+    overflow: auto;
+    width: 100%;
+}
+
+
+#burger {
+width: 35px;
+height: 5px;
+background-color: white;
+margin: 6px 0;
+}
+
+
+h2{
+  float: left;
+
+}
+
+
+#burger {
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
+}
+
+
+#dropdownMenuButton1 {
+    background-color: lightgreen;
+   float: right;
+    
+}
+
+#KaninBur {
+    width: 100%;
+    height: auto;
+    overflow: auto;
+}
