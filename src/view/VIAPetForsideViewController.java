@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.Region;
 import model.PetShopModel;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 /**
  * Controller class for the VIAPetForside view.
  * It handles the interaction between the view and the model for the main menu.
@@ -123,5 +125,13 @@ public class VIAPetForsideViewController
     {
       e.printStackTrace();
     }
+  }
+
+  @FXML
+  private ImageView imView;
+
+  @FXML
+  public void initialize() {
+    imView.setImage(new Image(getClass().getResourceAsStream("/resources/Logo2.png")));
   }
 }

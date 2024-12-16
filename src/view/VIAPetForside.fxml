@@ -16,7 +16,7 @@
          <children>
             <VBox prefHeight="448.0" prefWidth="145.0" style="-fx-border-color: lightgrey;">
                <children>
-                  <ImageView>
+                  <ImageView fx:id="imView">
                      <image>
                         <Image url="@../Hjemmesider/Assignment%202%20sample/Pictures/Logo2.png" />
                      </image>
