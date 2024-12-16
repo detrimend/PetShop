@@ -20,7 +20,7 @@ public abstract class Person implements Serializable
   /**
    * Constructs a Person with the specified name and email.
    *
-   * @param name the name of the person
+   * @param name  the name of the person
    * @param email the email of the person
    */
   public Person(Name name, Email email)
@@ -33,8 +33,8 @@ public abstract class Person implements Serializable
    * Constructs a Person with the specified first name, last name, and email.
    *
    * @param firstName the first name of the person
-   * @param lastName the last name of the person
-   * @param email the email of the person
+   * @param lastName  the last name of the person
+   * @param email     the email of the person
    */
   public Person(String firstName, String lastName, Email email)
   {

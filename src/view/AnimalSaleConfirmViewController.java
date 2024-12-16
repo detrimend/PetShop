@@ -24,11 +24,12 @@ public class AnimalSaleConfirmViewController
   /**
    * Initializes the controller with the specified view handler, model, and root region.
    *
-   * @param viewHandler the view handler to manage view transitions
+   * @param viewHandler  the view handler to manage view transitions
    * @param petShopModel the model to interact with the data
-   * @param root the root region of the view
+   * @param root         the root region of the view
    */
-  public void init(ViewHandler viewHandler, PetShopModel petShopModel, Region root)
+  public void init(ViewHandler viewHandler, PetShopModel petShopModel,
+      Region root)
   {
     this.petShopModel = petShopModel;
     this.viewHandler = viewHandler;
@@ -39,11 +40,14 @@ public class AnimalSaleConfirmViewController
    * Handles the action of the back button.
    * It navigates back to the previous view.
    */
-  @FXML
-  private void BackButton() {
-    try {
+  @FXML private void BackButton()
+  {
+    try
+    {
       viewHandler.openView("forside");
-    } catch (Exception e) {
+    }
+    catch (Exception e)
+    {
       e.printStackTrace();
     }
   }

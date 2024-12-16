@@ -21,8 +21,8 @@ public abstract class AnimalInfo implements Serializable
   /**
    * Constructs an AnimalInfo with the specified gender, age, and species.
    *
-   * @param gender the gender of the animal ('M' or 'F')
-   * @param age the age of the animal
+   * @param gender  the gender of the animal ('M' or 'F')
+   * @param age     the age of the animal
    * @param species the species of the animal
    * @throws IllegalArgumentException if the gender is not 'M' or 'F', or if the age is negative
    */

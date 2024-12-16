@@ -65,7 +65,7 @@ public class AnimalListViewModel
    * Adds a new animal to the list.
    *
    * @param animalForSale the animal for sale to be added
-   * @param ownedAnimal the owned animal to be added
+   * @param ownedAnimal   the owned animal to be added
    */
   public void add(AnimalForSale animalForSale, OwnedAnimal ownedAnimal)
   {

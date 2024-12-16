@@ -28,8 +28,8 @@ public class ReservationList implements Serializable
   /**
    * Adds a reservation to the list if it does not exceed the capacity.
    *
-   * @param dateInterval the date interval of the reservation
-   * @param customer the customer making the reservation
+   * @param dateInterval       the date interval of the reservation
+   * @param customer           the customer making the reservation
    * @param animalsToPutInCare the list of animals being reserved
    * @return true if the reservation was added, false if it exceeds capacity
    */
@@ -40,7 +40,8 @@ public class ReservationList implements Serializable
     LocalDate newEnd = newStart.plusDays(dateInterval.getDays() - 1);
 
     // Iterate through each day in the new reservation interval
-    for (LocalDate date = newStart; !date.isAfter(newEnd); date = date.plusDays(1))
+    for (LocalDate date = newStart; !date.isAfter(newEnd); date = date.plusDays(
+        1))
     {
       int totalAnimals = animalsToPutInCare.getAmountOfAnimals();
 
@@ -49,7 +50,8 @@ public class ReservationList implements Serializable
       {
         DateInterval existingInterval = existingReservation.getDateInterval();
         LocalDate existingStart = existingInterval.getStartDate();
-        LocalDate existingEnd = existingStart.plusDays(existingInterval.getDays() - 1);
+        LocalDate existingEnd = existingStart.plusDays(
+            existingInterval.getDays() - 1);
 
         if (!date.isBefore(existingStart) && !date.isAfter(existingEnd))
         {
@@ -63,7 +65,8 @@ public class ReservationList implements Serializable
         return false; // Capacity exceeded
       }
     }
-    Reservation newReservation = new Reservation(dateInterval, customer, animalsToPutInCare);
+    Reservation newReservation = new Reservation(dateInterval, customer,
+        animalsToPutInCare);
     reservations.add(newReservation);
     return true; // No capacity issues found
   }
@@ -82,7 +85,8 @@ public class ReservationList implements Serializable
       if (incomingAnimals.getAnimalByIndex(i).isInCare()
           && incomingAnimals.getAnimalByIndex(i) != null)
       {
-        throw new IllegalStateException("Animal is already registered as in care.");
+        throw new IllegalStateException(
+            "Animal is already registered as in care.");
       }
       incomingAnimals.getAnimalByIndex(i).putInCare();
     }

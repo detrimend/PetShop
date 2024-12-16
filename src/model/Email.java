@@ -21,8 +21,8 @@ public class Email implements Serializable
   /**
    * Constructs an Email with the specified user, host, and domain.
    *
-   * @param user the user part of the email
-   * @param host the host part of the email
+   * @param user   the user part of the email
+   * @param host   the host part of the email
    * @param domain the domain part of the email
    */
   public Email(String user, String host, String domain)
@@ -85,6 +85,7 @@ public class Email implements Serializable
     if (object == null || getClass() != object.getClass())
       return false;
     Email email = (Email) object;
-    return Objects.equals(user, email.user) && Objects.equals(host, email.host) && Objects.equals(domain, email.domain);
+    return Objects.equals(user, email.user) && Objects.equals(host, email.host)
+        && Objects.equals(domain, email.domain);
   }
 }

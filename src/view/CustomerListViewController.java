@@ -37,25 +37,31 @@ public class CustomerListViewController
   /**
    * Constructs a CustomerListViewController.
    */
-  public CustomerListViewController() {}
+  public CustomerListViewController()
+  {
+  }
 
   /**
    * Initializes the controller with the specified view handler, model, and root region.
    *
-   * @param viewHandler the view handler
+   * @param viewHandler  the view handler
    * @param petShopModel the pet shop model
-   * @param root the root region
+   * @param root         the root region
    */
-  public void init(ViewHandler viewHandler, PetShopModel petShopModel, Region root)
+  public void init(ViewHandler viewHandler, PetShopModel petShopModel,
+      Region root)
   {
     this.petShopModel = petShopModel;
     this.viewHandler = viewHandler;
     this.root = root;
     this.viewModel = new CustomerListViewModel(petShopModel);
 
-    nameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
-    numberColumn.setCellValueFactory(cellData -> cellData.getValue().getPhoneNumberProperty());
-    emailColumn.setCellValueFactory(cellData -> cellData.getValue().getEmailProperty());
+    nameColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getNameProperty());
+    numberColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getPhoneNumberProperty());
+    emailColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getEmailProperty());
 
     customerListTable.setItems(viewModel.getList());
 
@@ -93,11 +99,14 @@ public class CustomerListViewController
   /**
    * Navigates back to the previous view.
    */
-  @FXML
-  private void BackButton() {
-    try {
+  @FXML private void BackButton()
+  {
+    try
+    {
       viewHandler.openView("forside");
-    } catch (Exception e) {
+    }
+    catch (Exception e)
+    {
       e.printStackTrace();
     }
   }

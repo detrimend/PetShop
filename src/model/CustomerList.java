@@ -32,8 +32,8 @@ public class CustomerList implements Serializable, Iterable<Customer>
   /**
    * Adds a customer to the list with the specified name, email, and phone number.
    *
-   * @param name the name of the customer
-   * @param email the email of the customer
+   * @param name        the name of the customer
+   * @param email       the email of the customer
    * @param phoneNumber the phone number of the customer
    * @throws IllegalArgumentException if the name or email is null, or if the phone number is not a positive integer
    */
@@ -45,7 +45,8 @@ public class CustomerList implements Serializable, Iterable<Customer>
     }
     if (phoneNumber <= 0)
     {
-      throw new IllegalArgumentException("Phone number must be a positive integer");
+      throw new IllegalArgumentException(
+          "Phone number must be a positive integer");
     }
     customers.add(new Customer(name, email, phoneNumber));
   }
@@ -53,13 +54,14 @@ public class CustomerList implements Serializable, Iterable<Customer>
   /**
    * Adds a customer to the list with the specified first name, last name, email, and phone number.
    *
-   * @param firstName the first name of the customer
-   * @param lastName the last name of the customer
-   * @param email the email of the customer
+   * @param firstName   the first name of the customer
+   * @param lastName    the last name of the customer
+   * @param email       the email of the customer
    * @param phoneNumber the phone number of the customer
    * @throws IllegalArgumentException if the first name, last name, or email is null, or if the phone number is not a positive integer
    */
-  public void addCustomer(String firstName, String lastName, Email email, int phoneNumber)
+  public void addCustomer(String firstName, String lastName, Email email,
+      int phoneNumber)
   {
     if (firstName == null || lastName == null || email == null)
     {
@@ -67,7 +69,8 @@ public class CustomerList implements Serializable, Iterable<Customer>
     }
     if (phoneNumber <= 0)
     {
-      throw new IllegalArgumentException("Phone number must be a positive integer");
+      throw new IllegalArgumentException(
+          "Phone number must be a positive integer");
     }
     customers.add(new Customer(firstName, lastName, email, phoneNumber));
   }
@@ -88,7 +91,8 @@ public class CustomerList implements Serializable, Iterable<Customer>
     {
       if (customer.getOwnedAnimals().getAnimalByIndex(i).isInCare())
       {
-        throw new IllegalArgumentException("Customer cannot be removed because one or more owned animals are in care");
+        throw new IllegalArgumentException(
+            "Customer cannot be removed because one or more owned animals are in care");
       }
     }
     for (Customer c : customers)
@@ -125,7 +129,8 @@ public class CustomerList implements Serializable, Iterable<Customer>
   {
     if (phoneNumber <= 0)
     {
-      throw new IllegalArgumentException("Phone number must be a positive integer");
+      throw new IllegalArgumentException(
+          "Phone number must be a positive integer");
     }
     for (Customer customer : customers)
     {
@@ -134,7 +139,8 @@ public class CustomerList implements Serializable, Iterable<Customer>
         return customer;
       }
     }
-    throw new IllegalArgumentException("Customer with phone number " + phoneNumber + " not found");
+    throw new IllegalArgumentException(
+        "Customer with phone number " + phoneNumber + " not found");
   }
 
   /**
@@ -203,8 +209,8 @@ public class CustomerList implements Serializable, Iterable<Customer>
    *
    * @return an iterator
    */
-  @Override
-  public Iterator<Customer> iterator() {
+  @Override public Iterator<Customer> iterator()
+  {
     return customers.iterator();
   }
 }

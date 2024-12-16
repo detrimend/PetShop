@@ -52,29 +52,38 @@ public class AnimalListViewController
   /**
    * Initializes the controller with the specified view handler, model, and root region.
    *
-   * @param viewHandler the view handler to manage view transitions
+   * @param viewHandler  the view handler to manage view transitions
    * @param petShopModel the model to interact with the data
-   * @param root the root region of the view
+   * @param root         the root region of the view
    */
-  @FXML void init(ViewHandler viewHandler, PetShopModel petShopModel, Region root)
+  @FXML void init(ViewHandler viewHandler, PetShopModel petShopModel,
+      Region root)
   {
     this.petShopModel = petShopModel;
     this.viewHandler = viewHandler;
     this.root = root;
     this.viewModel = new AnimalListViewModel(petShopModel);
 
-    animalNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
-    animalTypeColumn.setCellValueFactory(cellData -> cellData.getValue().getTypeProperty());
-    animalSpeciesColumn.setCellValueFactory(cellData -> cellData.getValue().getSpeciesProperty());
-    animalGenderColumn.setCellValueFactory(cellData -> cellData.getValue().getGenderProperty());
-    animalAgeColumn.setCellValueFactory(cellData -> cellData.getValue().getAgeProperty());
-    animalExtraInfoColumn.setCellValueFactory(cellData -> cellData.getValue().getExtraInfoProperty());
-    animalExtraInfo2Column.setCellValueFactory(cellData -> cellData.getValue().getExtraInfo2Property());
-    animalForSaleColumn.setCellValueFactory(cellData -> cellData.getValue().getForSaleProperty());
-    animalPriceColumn.setCellValueFactory(cellData -> cellData.getValue().getPriceProperty());
+    animalNameColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getNameProperty());
+    animalTypeColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getTypeProperty());
+    animalSpeciesColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getSpeciesProperty());
+    animalGenderColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getGenderProperty());
+    animalAgeColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getAgeProperty());
+    animalExtraInfoColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getExtraInfoProperty());
+    animalExtraInfo2Column.setCellValueFactory(
+        cellData -> cellData.getValue().getExtraInfo2Property());
+    animalForSaleColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getForSaleProperty());
+    animalPriceColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getPriceProperty());
 
     animalListTable.setItems(viewModel.getList());
-
 
   }
 
@@ -112,6 +121,11 @@ public class AnimalListViewController
       e.printStackTrace();
     }
   }
+
+  /**
+   * Handles the action of the search by type field.
+   * It filters the list of animals by the type specified in the search field.
+   */
   @FXML private void searchByType()
   {
     String searchText = typeSearchField.getText();

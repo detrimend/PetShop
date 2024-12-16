@@ -25,17 +25,16 @@ public class AnimalForSale implements Serializable
    * Constructs an AnimalForSale with the specified attributes.
    *
    * @param animalType the type of the animal (e.g., mammal, fish, reptile, bird)
-   * @param price the price of the animal
-   * @param gender the gender of the animal
-   * @param age the age of the animal
-   * @param species the species of the animal
-   * @param extraInfo additional information specific to the animal type
+   * @param price      the price of the animal
+   * @param gender     the gender of the animal
+   * @param age        the age of the animal
+   * @param species    the species of the animal
+   * @param extraInfo  additional information specific to the animal type
    * @param extraInfo2 additional information specific to the animal type (used for birds)
    * @throws IllegalArgumentException if the price is negative or the animal type is unknown
    */
-  public AnimalForSale(String animalType, double price,
-      char gender, int age, String species, boolean extraInfo,
-      boolean extraInfo2)
+  public AnimalForSale(String animalType, double price, char gender, int age,
+      String species, boolean extraInfo, boolean extraInfo2)
   {
     if (price < 0)
     {

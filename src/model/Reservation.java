@@ -23,8 +23,8 @@ public class Reservation implements Serializable
   /**
    * Constructs a Reservation with the specified date interval, customer, and animals.
    *
-   * @param dateInterval the date interval of the reservation
-   * @param customer the customer making the reservation
+   * @param dateInterval       the date interval of the reservation
+   * @param customer           the customer making the reservation
    * @param animalsToPutInCare the list of animals being reserved
    * @throws IllegalArgumentException if any of the parameters are null
    */
@@ -156,7 +156,8 @@ public class Reservation implements Serializable
 
     Reservation other = (Reservation) obj;
     return other.dateInterval.equals(this.dateInterval)
-        && other.customer.equals(this.customer) && other.animals.equals(this.animals);
+        && other.customer.equals(this.customer) && other.animals.equals(
+        this.animals);
   }
 
   /**

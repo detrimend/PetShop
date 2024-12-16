@@ -45,9 +45,9 @@ public class VIACareViewController
   /**
    * Initializes the controller with the specified view handler, model, and root region.
    *
-   * @param viewHandler the view handler to manage view transitions
+   * @param viewHandler  the view handler to manage view transitions
    * @param petShopModel the model to interact with the data
-   * @param root the root region of the view
+   * @param root         the root region of the view
    */
   public void init(ViewHandler viewHandler, PetShopModel petShopModel,
       Region root)
@@ -76,17 +76,19 @@ public class VIACareViewController
           loadAnimalsForCustomer(newVal);
         });
 
-
     nameAnimalColumn.setCellValueFactory(
         cellData -> cellData.getValue().getNameProperty());
     speciesColumn.setCellValueFactory(
         cellData -> cellData.getValue().getSpeciesProperty());
     animalTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
-
   }
 
-
+  /**
+   * Loads the animals owned by the specified customer.
+   *
+   * @param customerViewModel the customer view model to load animals for
+   */
   private void loadAnimalsForCustomer(CustomerViewModel customerViewModel)
   {
     if (customerViewModel != null)
@@ -104,6 +106,9 @@ public class VIACareViewController
     }
   }
 
+  /**
+   * Searches for customers by name.
+   */
   @FXML private void searchByPhoneNumber()
   {
     String searchText = numberSearchField.getText();
@@ -119,6 +124,10 @@ public class VIACareViewController
     }
   }
 
+  /**
+   * Handles the action of the assign button.
+   * It creates a new reservation for the selected customer and animals.
+   */
   @FXML private void handleAssign()
   {
     if (selectedCustomer == null)
@@ -192,6 +201,13 @@ public class VIACareViewController
     }
   }
 
+  /**
+   * Shows an alert with the specified type, title, and content.
+   *
+   * @param type    the type of the alert
+   * @param title   the title of the alert
+   * @param content the content of the alert
+   */
   private void showAlert(Alert.AlertType type, String title, String content)
   {
     Alert alert = new Alert(type);
@@ -200,6 +216,10 @@ public class VIACareViewController
     alert.showAndWait();
   }
 
+  /**
+   * Handles the action of the back button.
+   * It opens the main menu view.
+   */
   @FXML private void BackButton()
   {
     try
@@ -212,6 +232,10 @@ public class VIACareViewController
     }
   }
 
+  /**
+   * Handles the action of the animals in care button.
+   * It opens the care list view.
+   */
   @FXML private void AnimalsInCareButton()
   {
     try
@@ -224,6 +248,11 @@ public class VIACareViewController
     }
   }
 
+  /**
+   * Returns the root region of the view.
+   *
+   * @return the root region of the view
+   */
   public Region getRoot()
   {
     return root;

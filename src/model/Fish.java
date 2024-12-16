@@ -18,9 +18,9 @@ public class Fish extends AnimalInfo implements Serializable
   /**
    * Constructs a Fish with the specified attributes.
    *
-   * @param gender the gender of the fish ('M' or 'F')
-   * @param age the age of the fish
-   * @param species the species of the fish
+   * @param gender    the gender of the fish ('M' or 'F')
+   * @param age       the age of the fish
+   * @param species   the species of the fish
    * @param saltWater whether the fish lives in salt water
    */
   public Fish(char gender, int age, String species, boolean saltWater)

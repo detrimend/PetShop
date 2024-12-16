@@ -17,8 +17,8 @@ public class PurgeGDPR implements Serializable
    * Constructs a PurgeGDPR with the specified reservation list, purchase list, and customer list.
    *
    * @param reservationList the list of reservations
-   * @param purchaseList the list of purchases
-   * @param customerList the list of customers
+   * @param purchaseList    the list of purchases
+   * @param customerList    the list of customers
    */
   public PurgeGDPR(ReservationList reservationList, PurchaseList purchaseList,
       CustomerList customerList)
@@ -33,7 +33,8 @@ public class PurgeGDPR implements Serializable
    */
   public void removeOldCustomerData()
   {
-    if (reservationList == null || purchaseList == null || customerList == null) {
+    if (reservationList == null || purchaseList == null || customerList == null)
+    {
       throw new IllegalArgumentException("Lists cannot be null");
     }
 

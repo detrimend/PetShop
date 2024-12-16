@@ -33,7 +33,7 @@ public class AnimalInCareViewController
   @FXML TableColumn<AnimalViewModel, String> animalExtraInfo2Column;
   @FXML TableColumn<AnimalViewModel, String> animalSpeciesColumn;
   @FXML private TextField typeSearchField;
-  private FilteredList<AnimalViewModel> filteredAnimals;
+  // private FilteredList<AnimalViewModel> filteredAnimals; // Ikke implementeret
   private Region root;
   private ViewHandler viewHandler;
   private PetShopModel petShopModel;
@@ -49,36 +49,45 @@ public class AnimalInCareViewController
   /**
    * Initializes the controller with the specified view handler, model, and root region.
    *
-   * @param viewHandler the view handler to manage view transitions
+   * @param viewHandler  the view handler to manage view transitions
    * @param petShopModel the model to interact with the data
-   * @param root the root region of the view
+   * @param root         the root region of the view
    */
-  @FXML void init(ViewHandler viewHandler, PetShopModel petShopModel, Region root)
+  @FXML void init(ViewHandler viewHandler, PetShopModel petShopModel,
+      Region root)
   {
     this.petShopModel = petShopModel;
     this.viewHandler = viewHandler;
     this.root = root;
     this.viewModel = new AnimalInCareViewModel(petShopModel);
 
-    animalNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
-    animalTypeColumn.setCellValueFactory(cellData -> cellData.getValue().getTypeProperty());
-    animalSpeciesColumn.setCellValueFactory(cellData -> cellData.getValue().getSpeciesProperty());
-    animalGenderColumn.setCellValueFactory(cellData -> cellData.getValue().getGenderProperty());
-    animalAgeColumn.setCellValueFactory(cellData -> cellData.getValue().getAgeProperty());
-    animalExtraInfoColumn.setCellValueFactory(cellData -> cellData.getValue().getExtraInfoProperty());
-    animalExtraInfo2Column.setCellValueFactory(cellData -> cellData.getValue().getExtraInfo2Property());
- /**
-    ObservableList<AnimalInCareViewModel> animals = FXCollections.observableArrayList();
-    for (OwnedAnimal animal : petShopModel.getAnimalsInCare())
-    {
-      animals.add(new AnimalInCareViewModel(animal));
-    }
+    animalNameColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getNameProperty());
+    animalTypeColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getTypeProperty());
+    animalSpeciesColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getSpeciesProperty());
+    animalGenderColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getGenderProperty());
+    animalAgeColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getAgeProperty());
+    animalExtraInfoColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getExtraInfoProperty());
+    animalExtraInfo2Column.setCellValueFactory(
+        cellData -> cellData.getValue().getExtraInfo2Property());
+    /**
+     * Ikke implementeret
+     ObservableList<AnimalInCareViewModel> animals = FXCollections.observableArrayList();
+     for (OwnedAnimal animal : petShopModel.getAnimalsInCare())
+     {
+     animals.add(new AnimalInCareViewModel(animal));
+     }
 
-    filteredAnimals = new FilteredList<>(animals, p -> true);
-    animalListTable.setItems(filteredAnimals);
+     filteredAnimals = new FilteredList<>(animals, p -> true);
+     animalListTable.setItems(filteredAnimals);
 
-    typeSearchField.setOnAction(event -> searchByType());
-*/
+     typeSearchField.setOnAction(event -> searchByType());
+     */
     reset();
   }
 
@@ -117,6 +126,8 @@ public class AnimalInCareViewController
     }
   }
 
+  /*
+  Ikke implementeret
   @FXML private void searchByType()
   {
     String searchText = typeSearchField.getText();
@@ -131,4 +142,6 @@ public class AnimalInCareViewController
               .contains(searchText));
     }
   }
+
+   */
 }

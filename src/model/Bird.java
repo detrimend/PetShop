@@ -19,13 +19,14 @@ public class Bird extends AnimalInfo implements Serializable
   /**
    * Constructs a Bird with the specified attributes.
    *
-   * @param gender the gender of the bird ('M' or 'F')
-   * @param age the age of the bird
-   * @param species the species of the bird
-   * @param tame whether the bird is tame
+   * @param gender     the gender of the bird ('M' or 'F')
+   * @param age        the age of the bird
+   * @param species    the species of the bird
+   * @param tame       whether the bird is tame
    * @param isTameable whether the bird is tameable
    */
-  public Bird(char gender, int age, String species, boolean tame, boolean isTameable)
+  public Bird(char gender, int age, String species, boolean tame,
+      boolean isTameable)
   {
     super(gender, age, species);
     this.tame = tame;
@@ -59,7 +60,8 @@ public class Bird extends AnimalInfo implements Serializable
    */
   @Override public String toString()
   {
-    return "Bird " + super.toString() + " tame " + tame + " isTameable " + isTameable;
+    return "Bird " + super.toString() + " tame " + tame + " isTameable "
+        + isTameable;
   }
 
   /**

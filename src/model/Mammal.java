@@ -18,9 +18,9 @@ public class Mammal extends AnimalInfo implements Serializable
   /**
    * Constructs a Mammal with the specified attributes.
    *
-   * @param gender the gender of the mammal ('M' or 'F')
-   * @param age the age of the mammal
-   * @param species the species of the mammal
+   * @param gender      the gender of the mammal ('M' or 'F')
+   * @param age         the age of the mammal
+   * @param species     the species of the mammal
    * @param outdoorOnly whether the mammal is outdoor only
    */
   public Mammal(char gender, int age, String species, boolean outdoorOnly)

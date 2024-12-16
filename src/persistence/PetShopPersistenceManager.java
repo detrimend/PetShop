@@ -14,7 +14,8 @@ import java.io.*;
  * @author Victor Sander Marx Hoelgaard
  * @version 1.0 - December 2024
  */
-public class PetShopPersistenceManager {
+public class PetShopPersistenceManager
+{
 
   private static final String FILE_PATH = "PetShopModelManager.bin";
 
@@ -23,11 +24,16 @@ public class PetShopPersistenceManager {
    *
    * @param manager the PetShopModelManager to be saved
    */
-  public void saveState(PetShopModelManager manager) {
-    try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(FILE_PATH))) {
+  public void saveState(PetShopModelManager manager)
+  {
+    try (ObjectOutputStream out = new ObjectOutputStream(
+        new FileOutputStream(FILE_PATH)))
+    {
       out.writeObject(manager);
       System.out.println("State saved successfully.");
-    } catch (IOException e) {
+    }
+    catch (IOException e)
+    {
       System.err.println("Failed to save state: " + e.getMessage());
       e.printStackTrace();
     }
@@ -38,10 +44,15 @@ public class PetShopPersistenceManager {
    *
    * @return the loaded PetShopModelManager, or null if an error occurs
    */
-  public PetShopModelManager loadState() {
-    try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(FILE_PATH))) {
+  public PetShopModelManager loadState()
+  {
+    try (ObjectInputStream in = new ObjectInputStream(
+        new FileInputStream(FILE_PATH)))
+    {
       return (PetShopModelManager) in.readObject();
-    } catch (IOException | ClassNotFoundException e) {
+    }
+    catch (IOException | ClassNotFoundException e)
+    {
       System.err.println("Failed to load state: " + e.getMessage());
       e.printStackTrace();
       return null;

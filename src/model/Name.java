@@ -34,7 +34,7 @@ public class Name implements Serializable
    * Constructs a Name with the specified first name and last name.
    *
    * @param firstName the first name of the person
-   * @param lastName the last name of the person
+   * @param lastName  the last name of the person
    */
   public Name(String firstName, String lastName)
   {
