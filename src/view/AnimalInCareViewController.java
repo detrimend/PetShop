@@ -67,11 +67,11 @@ public class AnimalInCareViewController
     animalAgeColumn.setCellValueFactory(cellData -> cellData.getValue().getAgeProperty());
     animalExtraInfoColumn.setCellValueFactory(cellData -> cellData.getValue().getExtraInfoProperty());
     animalExtraInfo2Column.setCellValueFactory(cellData -> cellData.getValue().getExtraInfo2Property());
-  // tjek i morgen, forhåbenligt det sidste der skal fikses
-   /** ObservableList<AnimalViewModel> animals = FXCollections.observableArrayList();
+ /**
+    ObservableList<AnimalInCareViewModel> animals = FXCollections.observableArrayList();
     for (OwnedAnimal animal : petShopModel.getAnimalsInCare())
     {
-      animals.add(new AnimalViewModel(animal));
+      animals.add(new AnimalInCareViewModel(animal));
     }
 
     filteredAnimals = new FilteredList<>(animals, p -> true);

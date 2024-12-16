@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AnimalListViewController">
    <children>
-      <TextField fx:id="typeSearchField" onAction="#searchByType" layoutX="14.0" layoutY="83.0" promptText="Search type" />
+      <TextField fx:id="typeSearchField" onAction="#searchByType" layoutX="14.0" layoutY="83.0" promptText="Ikke implementeret, Do not use!" />
       <Text layoutX="14.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Animal list">
          <font>
             <Font size="38.0" />

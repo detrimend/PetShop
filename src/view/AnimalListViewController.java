@@ -75,14 +75,7 @@ public class AnimalListViewController
 
     animalListTable.setItems(viewModel.getList());
 
-    ObservableList<AnimalViewModel> animals = FXCollections.observableArrayList();
-    for (int i = 0; i < petShopModel.getNumberOfAnimalsForSale(); i++)
-    {
-      AnimalForSale animal = petShopModel.getAnimalForSaleByIndex(i);
-      animals.add(new AnimalViewModel(animal));
-    }
-    filteredAnimals = new FilteredList<>(animals, p -> true);
-    animalListTable.setItems(filteredAnimals);
+
   }
 
   /**

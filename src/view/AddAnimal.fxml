@@ -25,7 +25,7 @@
             <ComboBox fx:id="extraInfo2Box" layoutX="75.0" layoutY="274.0" prefWidth="150.0" promptText="Extra info 1" />
          </children>
       </AnchorPane>
-      <TextField alignment="TOP_LEFT" layoutX="257.0" layoutY="200.0" prefHeight="133.0" prefWidth="207.0" promptText="Fx. Missing Arm" />
+      <TextField alignment="TOP_LEFT" layoutX="257.0" layoutY="200.0" prefHeight="133.0" prefWidth="207.0" promptText="Ikke implementeret, Do not use!" />
       <TextField fx:id="priceField" layoutX="76.0" layoutY="74.0" promptText="Price" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Text fill="#ff4646" layoutX="76.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price have to be in numbers" />
