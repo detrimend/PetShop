@@ -39,12 +39,11 @@ public class ReservationList implements Serializable
     LocalDate newStart = dateInterval.getStartDate();
     LocalDate newEnd = newStart.plusDays(dateInterval.getDays() - 1);
 
+    int totalAnimals = animalsToPutInCare.getAmountOfAnimals();
     // Iterate through each day in the new reservation interval
     for (LocalDate date = newStart; !date.isAfter(newEnd); date = date.plusDays(
         1))
     {
-      int totalAnimals = animalsToPutInCare.getAmountOfAnimals();
-
       // Count existing guests for the same date
       for (Reservation existingReservation : reservations)
       {
