@@ -4,12 +4,24 @@
     <isForSale>true</isForSale>
     <animalInfo>
       <gender>M</gender>
-      <species>Carp</species>
+      <species>Neon</species>
+      <comment/>
+      <saltWater>true</saltWater>
+      <age>2</age>
+    </animalInfo>
+    <price>50.0</price>
+    <animalType>Fish</animalType>
+  </animals>
+  <animals>
+    <isForSale>true</isForSale>
+    <animalInfo>
+      <gender>M</gender>
+      <species>Guld</species>
       <comment/>
       <saltWater>true</saltWater>
       <age>1</age>
     </animalInfo>
-    <price>1.0</price>
+    <price>20.0</price>
     <animalType>Fish</animalType>
   </animals>
 </AnimalsForSaleList>
