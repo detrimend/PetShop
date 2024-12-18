@@ -36,40 +36,57 @@ public class ReservationList implements Serializable
   public boolean addReservation(DateInterval dateInterval, Customer customer,
       OwnedAnimalsList animalsToPutInCare)
   {
-    LocalDate newStart = dateInterval.getStartDate();
-    LocalDate newEnd = newStart.plusDays(dateInterval.getDays() - 1);
+    LocalDate newStart = dateInterval.getStartDate(); // +1 assignment
+    LocalDate newEnd = newStart.plusDays(dateInterval.getDays() - 1); // +1 assignment +1 for function
 
     // Iterate through each day in the new reservation interval
     for (LocalDate date = newStart; !date.isAfter(newEnd); date = date.plusDays(
-        1))
+        1)) // n for loop + 2 for assignment + 1 for comparing +1 for function
     {
-      int totalAnimals = animalsToPutInCare.getAmountOfAnimals();
+      int totalAnimals = animalsToPutInCare.getAmountOfAnimals(); // +1 for assignment
 
       // Count existing guests for the same date
-      for (Reservation existingReservation : reservations)
+      for (Reservation existingReservation : reservations) //r for loop +1 for function +1 for assignment
       {
-        DateInterval existingInterval = existingReservation.getDateInterval();
-        LocalDate existingStart = existingInterval.getStartDate();
+        DateInterval existingInterval = existingReservation.getDateInterval(); //+1 for assignment
+        LocalDate existingStart = existingInterval.getStartDate(); //+1 for assignment
         LocalDate existingEnd = existingStart.plusDays(
-            existingInterval.getDays() - 1);
+            existingInterval.getDays() - 1); //+1 for assignment +1 for function
 
-        if (!date.isBefore(existingStart) && !date.isAfter(existingEnd))
+        if (!date.isBefore(existingStart) && !date.isAfter(existingEnd)) //+1 for comparing
         {
-          totalAnimals += existingReservation.getAnimals().getAmountOfAnimals();
+          totalAnimals += existingReservation.getAnimals().getAmountOfAnimals(); //+1 for assignment +1 for function
         }
       }
 
       // Check if capacity is exceeded
-      if (totalAnimals > 40)
+      if (totalAnimals > 40) //+ 1 for function
       {
-        return false; // Capacity exceeded
+        return false; // Capacity exceeded // +1 for return
       }
     }
     Reservation newReservation = new Reservation(dateInterval, customer,
-        animalsToPutInCare);
-    reservations.add(newReservation);
-    return true; // No capacity issues found
+        animalsToPutInCare); // +1 for assignment
+    reservations.add(newReservation); // +1 for function
+    return true; // No capacity issues found // +1 for return
   }
+
+  // Detailed Time Complexity Analysis
+  // ---------------------------------
+  // Before loop +2 for assignment and +1 for function calling
+  // Outer loop: n+4
+  // Outer loop body: +1 assignment  +1 for function +1 for return
+  // Inner loop : r +2
+  // Inner loop body: +3 for assignment +1 for function and if the if is false +1 for assignment +1 for function
+  // After Inner loop: +1 for function +1 for return
+  // After outer loop: +1 for assignment +1 for function +1 for return
+
+
+  // OuterLoop = n+7
+  // InnerLoop =r+9
+  // Function  = n*r+16
+  // Dominating Term: O(n*r+16)
+  // Complexity: O(m*r)
 
   /**
    * Registers the handover of animals for a reservation.
