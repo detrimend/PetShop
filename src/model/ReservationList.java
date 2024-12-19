@@ -80,8 +80,6 @@ public class ReservationList implements Serializable
   // Inner loop body: +3 for assignment +1 for function and if the if is false +1 for assignment +1 for function
   // After Inner loop: +1 for function +1 for return
   // After outer loop: +1 for assignment +1 for function +1 for return
-
-
   // OuterLoop = n+7
   // InnerLoop =r+9
   // Function  = n*r+16

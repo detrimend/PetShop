@@ -93,8 +93,6 @@ public class PurgeGDPR implements Serializable
     // Inner Loop 2 Body:+1 for the comparing the two functions
     //+2 for the 2 functions and +1 for the assignment
     //+1 for function and +1 for assignment
-
-
     // OuterLoop = n+3
     // InnerLoop 1=p+9
     // InnerLoop 2=r+9
