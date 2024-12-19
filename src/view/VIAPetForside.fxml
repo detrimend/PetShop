@@ -17,9 +17,6 @@
             <VBox prefHeight="448.0" prefWidth="145.0" style="-fx-border-color: lightgrey;">
                <children>
                   <ImageView fx:id="imView">
-                     <image>
-                        <Image url="@../Hjemmesider/Assignment%202%20sample/Pictures/Logo2.png" />
-                     </image>
                      <VBox.margin>
                         <Insets left="5.0" top="5.0" />
                      </VBox.margin>

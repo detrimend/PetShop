@@ -75,7 +75,7 @@ public class AnimalInCareViewController
         cellData -> cellData.getValue().getExtraInfoProperty());
     animalExtraInfo2Column.setCellValueFactory(
         cellData -> cellData.getValue().getExtraInfo2Property());
-    /**
+    /*
      * Ikke implementeret
      ObservableList<AnimalInCareViewModel> animals = FXCollections.observableArrayList();
      for (OwnedAnimal animal : petShopModel.getAnimalsInCare())
