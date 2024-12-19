@@ -7,21 +7,96 @@
       <species>Neon</species>
       <comment/>
       <saltWater>true</saltWater>
-      <age>2</age>
+      <age>1</age>
     </animalInfo>
-    <price>50.0</price>
+    <price>10.0</price>
     <animalType>Fish</animalType>
   </animals>
   <animals>
     <isForSale>true</isForSale>
     <animalInfo>
-      <gender>M</gender>
-      <species>Guld</species>
+      <gender>F</gender>
+      <species>Neon</species>
       <comment/>
       <saltWater>true</saltWater>
       <age>1</age>
     </animalInfo>
-    <price>20.0</price>
+    <price>11.0</price>
+    <animalType>Fish</animalType>
+  </animals>
+  <animals>
+    <isForSale>true</isForSale>
+    <animalInfo>
+      <gender>F</gender>
+      <species>Neon</species>
+      <comment/>
+      <saltWater>false</saltWater>
+      <age>5</age>
+    </animalInfo>
+    <price>10.1</price>
+    <animalType>Fish</animalType>
+  </animals>
+  <animals>
+    <isForSale>true</isForSale>
+    <animalInfo>
+      <isTameable>false</isTameable>
+      <tame>false</tame>
+      <gender>M</gender>
+      <species>parpegøje</species>
+      <comment/>
+      <age>12</age>
+    </animalInfo>
+    <price>300.0</price>
+    <animalType>Bird</animalType>
+  </animals>
+  <animals>
+    <isForSale>true</isForSale>
+    <animalInfo>
+      <venomous>false</venomous>
+      <gender>M</gender>
+      <species>Salamander</species>
+      <comment/>
+      <age>25</age>
+    </animalInfo>
+    <price>200.0</price>
+    <animalType>Reptile</animalType>
+  </animals>
+  <animals>
+    <isForSale>true</isForSale>
+    <animalInfo>
+      <isTameable>true</isTameable>
+      <tame>true</tame>
+      <gender>M</gender>
+      <species>Kakadue</species>
+      <comment/>
+      <age>4</age>
+    </animalInfo>
+    <price>600.0</price>
+    <animalType>Bird</animalType>
+  </animals>
+  <animals>
+    <isForSale>true</isForSale>
+    <animalInfo>
+      <isTameable>true</isTameable>
+      <tame>true</tame>
+      <gender>M</gender>
+      <species>Parpegøje</species>
+      <comment/>
+      <age>5</age>
+    </animalInfo>
+    <price>400.0</price>
+    <animalType>Bird</animalType>
+  </animals>
+  <animals>
+    <isForSale>true</isForSale>
+    <animalInfo>
+      <gender>M</gender>
+      <species>Sugemalle</species>
+      <comment/>
+      <saltWater>false</saltWater>
+      <age>0</age>
+    </animalInfo>
+    <price>50.0</price>
     <animalType>Fish</animalType>
   </animals>
 </AnimalsForSaleList>
